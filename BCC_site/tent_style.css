@@ -1,0 +1,43 @@
+.row_buffer{
+	margin-top: 15px
+}
+
+.logo{
+	font-size: 16px;
+	color: brown;
+	text-align: right;
+}
+
+.logo strong{
+	color: orange;
+	font-size: 22px;
+	letter-spacing: -2px
+}
+
+.logo i{
+	color: #6666ff;
+	font-size: 12px;
+	text-align: center
+}
+
+
+.present_left h2{
+	text-align: center;
+}
+
+.present_left img{
+	width: 100%;
+	border-radius: 25px;
+}
+
+.present_right{
+    background: #73AD21;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.present_right h5{
+	background-color: red;
+	padding: 0px 50px
+}
