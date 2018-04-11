@@ -1,5 +1,5 @@
 .row_buffer{
-	margin-top: 15px
+	margin-top: 10px
 }
 
 .logo{
@@ -31,13 +31,45 @@
 }
 
 .present_right{
-    background: #73AD21;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 25px;
+   background: #73AD21;
+   margin-top: 20px;
+   padding: 20px;
+   border-radius: 25px;
 }
 
 .present_right h5{
 	background-color: red;
 	padding: 0px 50px
+}
+
+.division_line{
+	display:block; 
+	height:15px;
+	background-color: e7f5fe;
+   border: 1px outset #000010;
+}
+
+#footer{
+    border-top: 10px solid #798992;
+    margin-top: 30px;
+}
+
+.footer_content{
+    background: linear-gradient(#bbd0f7, #77a1ee);
+    padding: 15px 0px;
+}
+
+.donate-btn{ 
+    color: whitesmoke;
+    font-size: 24;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 15px;
+    background-color: #ff4d4d;
+    box-shadow: 0 3px 0 0 #cc0000
+}
+.donate-btn:hover {
+  color: black;
+  background-color: #ff8080;
+  border-color: #ff6666;
 }
