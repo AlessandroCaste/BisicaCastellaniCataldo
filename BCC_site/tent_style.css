@@ -2,15 +2,35 @@
 	margin-top: 10px
 }
 
-.logo{
-    font-size: 16px;
-    color: orange;
-    text-align: right;
-    text-transform: uppercase;
+body{
+	background-color: azure;
 }
 
-.logo i{
-    color: #04bacf;
+#logo {
+	display: block;
+	color: orange;
+	font-size: 22px;
+   text-align: right;
+   text-transform: uppercase;
+}
+
+#logo i{
+   color: #04bacf;
+}
+
+.nav-item{
+	background-color: lawngreen;
+}
+
+.nav-item:hover{
+	box-shadow: 3px 3px 5px #555;
+}
+
+.nav-item a{
+	color: whitesmoke;
+	font-size: 20px;
+	text-transform: uppercase
+
 }
 
 .present_left h2{
@@ -42,54 +62,55 @@
 }
 
 .card-content, img{
-    max-width: 100%;
-    text-align: center
+   max-width: 100%;
+   text-align: center
 }
 
 .body-content{
-    margin-bottom: 150px
+   margin-bottom: 150px;
+	background-color: white;
 }
 
 #footer{
-    border-top: 10px solid #798992;
-    margin-top: 30px;
-    position: fixed;
-    bottom: 0;
-    width: 100%
+   border-top: 10px solid #798992;
+   margin-top: 30px;
+   position: fixed;
+   bottom: 0;
+   width: 100%
 }
 
 .footer_content{
-    background: linear-gradient(#bbd0f7, #77a1ee);
-    padding: 15px 0px;
+   background: linear-gradient(#bbd0f7, #77a1ee);
+   padding: 15px 0px;
 }
 
 .more_info-btn{
-    font-size: 16;
-    text-transform: uppercase;
-    color: #fff;
-    letter-spacing: -1px;
-    background-color: #97cc1e;
+   font-size: 16;
+   text-transform: uppercase;
+   color: #fff;
+   letter-spacing: -1px;
+   background-color: #97cc1e;
 }
 
 .more_info-btn:hover{
-    width: 150px;
-    color: #fff;
-    text-transform: full-width;
-    letter-spacing: 1px;
+	width: 150px;
+   color: #fff;
+   text-transform: full-width;
+   letter-spacing: 1px;
 }
 
 .donate-btn{ 
-    color: whitesmoke;
-    font-size: 24;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 8px 15px;
-    background-color: #ff4d4d;
-    box-shadow: 0 3px 0 0 #cc0000
+	color: whitesmoke;
+	font-size: 24;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	padding: 8px 15px;
+	background-color: #ff4d4d;
+	box-shadow: 0 3px 0 0 #cc0000
 }
 
 .donate-btn:hover {
-  color: black;
-  background-color: #ff8080;
-  border-color: #ff6666;
+	color: black;
+	background-color: #ff8080;
+	border-color: #ff6666;
 }
