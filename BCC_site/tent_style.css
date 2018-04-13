@@ -29,7 +29,6 @@ body{
 
 .nav-item a{
 	font-size: 17px;
-	text-align: center;
 	text-transform: uppercase;
 }
 
@@ -77,13 +76,16 @@ body{
 #footer{
    border-top: 10px solid #798992;
    margin-top: 30px;
-   position: fixed;
+   /*
+	position: fixed;
    bottom: 0;
    width: 100%
+	*/
 }
 
 .footer_content{
-   background: linear-gradient(#bbd0f7, #77a1ee);
+	background-color: yellow;
+   /*background: linear-gradient(#bbd0f7, #77a1ee);*/
    padding: 15px 0px;
 }
 
