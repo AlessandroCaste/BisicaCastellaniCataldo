@@ -34,20 +34,29 @@ body{
 
 .nav-item a{
 	font-size: 17px;
+	text-align: center;
 	text-transform: uppercase;
 }
+
+
+
+
+
+
+/*------ END NAVBAR ------*/
+
 
 .nav-itemfooter a{
 	border-right-style: solid ;
 	border-right-width: 1px;
 	padding-top: 1px;
 	padding-bottom: 1px;
+
 }
 
-
-
-/*------ END NAVBAR ------*/
-
+.navbarfooter{
+	padding: 0px;
+}
 
 .present_left h2{
 	text-align: center;
@@ -71,7 +80,7 @@ body{
 }
 
 .division_line{
-	display:block;
+	display:block; 
 	height: 10px;
 	background-color: e7f5fe;
    border: 1px outset #000010;
@@ -88,19 +97,16 @@ body{
 }
 
 #footer{
-   border-top: 10px solid #798992;
+   border-top: 1px solid #798992;
    margin-top: 30px;
-   /*
-	position: fixed;
+   position: fixed;
    bottom: 0;
    width: 100%
-	*/
 }
 
 .footer_content{
-	background-color: white;
-   /*background: linear-gradient(#bbd0f7, #77a1ee);*/
-   padding: 15px 0px;
+   background: white;
+   padding-top: 9px;
 }
 
 .more_info-btn{
@@ -118,14 +124,14 @@ body{
    letter-spacing: 1px;
 }
 
-.donate-btn{
+.donate-btn{ 
 	color: whitesmoke;
 	font-size: 24;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	padding: 8px 15px;
+	margin-bottom: 10px;
 	background-color: #ff4d4d;
-	box-shadow: 0 3px 0 0 #cc0000
+	box-shadow: 0 3px 0 0 #cc0000;
 }
 
 .donate-btn:hover {
