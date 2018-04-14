@@ -8,7 +8,7 @@
 }
 
 body{
-	background-color: azure;
+	background: url(../images/bg_body.png) 0 0 repeat #f9f9f6;
 }
 
 /*------ NAVBAR ------*/
@@ -62,7 +62,7 @@ body{
 }
 
 .division_line{
-	display:block; 
+	display:block;
 	height: 10px;
 	background-color: e7f5fe;
    border: 1px outset #000010;
@@ -109,7 +109,7 @@ body{
    letter-spacing: 1px;
 }
 
-.donate-btn{ 
+.donate-btn{
 	color: whitesmoke;
 	font-size: 24;
 	text-transform: uppercase;
