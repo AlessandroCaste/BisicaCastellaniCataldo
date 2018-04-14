@@ -8,7 +8,6 @@
 }
 
 body{
-	border-radius: 25px;
 	background: url(../images/bg_body.png) 0 0 repeat #f9f9f6;
 }
 
@@ -37,6 +36,15 @@ body{
 	font-size: 17px;
 	text-transform: uppercase;
 }
+
+.nav-itemfooter a{
+	border-right-style: solid ;
+	border-right-width: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+
 
 /*------ END NAVBAR ------*/
 
@@ -90,7 +98,7 @@ body{
 }
 
 .footer_content{
-	background-color: yellow;
+	background-color: white;
    /*background: linear-gradient(#bbd0f7, #77a1ee);*/
    padding: 15px 0px;
 }
