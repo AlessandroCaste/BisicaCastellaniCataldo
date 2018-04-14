@@ -1,0 +1,125 @@
+.row_buffer{
+	margin-top: 10px
+}
+
+body{
+	background-color: azure;
+}
+
+/*------ NAVBAR ------*/
+#logo {
+	display: block;
+	color: orange;
+	font-size: 22px;
+   text-align: right;
+   text-transform: uppercase;
+}
+
+#logo i{
+   color: #04bacf;
+}
+
+.nav-item.active{
+	box-shadow: 3px 3px 5px #555;
+}
+
+.nav-item:hover{
+	box-shadow: 3px 3px 5px #555;
+}
+
+.nav-item a{
+	font-size: 17px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+/*------ END NAVBAR ------*/
+
+
+.present_left h2{
+	text-align: center;
+}
+
+.present_left img{
+	width: 100%;
+	border-radius: 25px;
+}
+
+.present_right{
+   background: #73AD21;
+   margin-top: 20px;
+   padding: 20px;
+   border-radius: 25px;
+}
+
+.present_right h5{
+	background-color: red;
+	padding: 0px 50px
+}
+
+.division_line{
+	display:block;
+	height: 10px;
+	background-color: e7f5fe;
+   border: 1px outset #000010;
+}
+
+.card-content, img{
+   max-width: 100%;
+   text-align: center
+}
+
+.body-content{
+   margin-bottom: 150px;
+	background-color: white;
+}
+
+#footer{
+   border-top: 10px solid #798992;
+   margin-top: 30px;
+   position: fixed;
+   bottom: 0;
+   width: 100%
+}
+
+.footer_content{
+   background: linear-gradient(#bbd0f7, #77a1ee);
+   padding: 15px 0px;
+}
+
+.more_info-btn{
+   font-size: 16;
+   text-transform: uppercase;
+   color: #fff;
+   letter-spacing: -1px;
+   background-color: #97cc1e;
+}
+
+.more_info-btn:hover{
+	width: 150px;
+   color: #fff;
+   text-transform: full-width;
+   letter-spacing: 1px;
+}
+
+.donate-btn{
+	color: whitesmoke;
+	font-size: 24;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	padding: 8px 15px;
+	background-color: #ff4d4d;
+	box-shadow: 0 3px 0 0 #cc0000
+}
+
+.donate-btn:hover {
+	color: black;
+	background-color: #ff8080;
+	border-color: #ff6666;
+}
+
+
+/* images/WhoWeAre.png */
+#introductory{
+  display : block;
+}

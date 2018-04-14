@@ -1,0 +1,114 @@
+<html>
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="Who_We_Are.css">
+
+
+
+</head>
+
+<body>
+	<!------------------ HEADER ------------------>
+	<header id="header">
+		<div class="container">
+			<nav class="navbar navbar-expand-md navbar-light">
+				<!------LOGO----->
+				<a class="navbar-brand" id="logo" href="#">
+					bcc
+					<br>
+					<i>facciamo le cose</i>
+				</a>
+
+				<!---
+toggler -> bottone di compressione elemento
+collapse -> azione di compressione. Deve esistere un elemento che abbia "~collapse" all'interno
+target -> id dell'elemento compresso
+aria booleano di visualizzazione compressa
+                --->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarContent">
+					<!---
+                        .navbar-nav for a full-height and lightweight navigation (including support for dropdowns).
+                    --->
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active" style="background-color: #92ce0a">
+							<a class="nav-link align-content-center" href="#">Home <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item" style="background-color: #ffe202">
+							<a class="nav-link" href="#">
+								chi siamo</a>
+						</li>
+						<li class="nav-item" style="background-color: #0052da">
+							<a class="nav-link" href="#">Our services</a>
+						</li>
+						<li class="nav-item" style="background-color: #ff7f00">
+							<a class="nav-link" href="#">
+								News</a>
+						</li>
+						<li class="nav-item" style="background-color: #04bacf">
+							<a class="nav-link" href="#">
+								Contacts</a>
+						</li>
+						<li class="nav-item" style="background-color: #ff5241">
+							<a class="nav-link" href="#">
+								Help Us</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+
+	<!------------------ CONTENT ------------------>
+
+
+  <div class="container-fluid text-center">
+    <h1 class="text-center"> Who we are</h1>
+        <img src = "images/WhoWeAre.png" class= "introductory img-thumbnail" alt ="The team" />
+  </div>
+
+
+
+	<!------------------ PRESENTAZIONE ------------------>
+
+
+
+	<!------------------ FOOTER ------------------>
+
+	<footer id="footer">
+		<div class="footer_content">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-12">
+						Qui ci vanno cose a caso
+					</div>
+					<div class="col-md-4 col-sm-12">
+						<a href="#" type="button" class="btn donate-btn float-md-right">
+							donate
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer_bottom">
+			<div class="container">
+				<div class="row">
+
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
