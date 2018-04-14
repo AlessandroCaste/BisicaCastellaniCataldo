@@ -3,7 +3,7 @@
 }
 
 body{
-	background-color: azure;
+	background: url(../images/bg_body.png) 0 0 repeat #f9f9f6;
 }
 
 /*------ NAVBAR ------*/
@@ -70,7 +70,7 @@ body{
 }
 
 .body-content{
-   margin-bottom: 150px;
+	margin-bottom: 150px;
 	background-color: white;
 }
 
@@ -120,6 +120,7 @@ body{
 
 
 /* images/WhoWeAre.png */
-#introductory{
-  display : block;
+.container-fluid{
+	padding-top: 25px;
+	padding-bottom : 50px;
 }
