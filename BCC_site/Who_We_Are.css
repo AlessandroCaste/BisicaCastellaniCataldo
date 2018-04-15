@@ -1,3 +1,5 @@
+/* Usato img_Container e aggiunte le classi per i social*/
+
 .row_buffer{
 	margin-top: 10px
 }
@@ -33,10 +35,10 @@ body{
 	text-transform: uppercase;
 }
 
-
-
-
-
+.social{
+	display : flex;
+	justify-content: center; 
+}
 
 /*------ END NAVBAR ------*/
 
@@ -69,13 +71,24 @@ body{
    border-radius: 25px;
 }
 
+.img_Container{
+	position: relative;
+	margin: 0;
+	max-height: 500px;
+	width: 100%;
+	border-radius: 40px;
+	background: no-repeat center;
+	overflow: hidden;
+	opacity: 0.75;
+}
+
 .present_right h5{
 	background-color: red;
 	padding: 0px 50px
 }
 
 .division_line{
-	display:block; 
+	display:block;
 	height: 10px;
 	background-color: e7f5fe;
    border: 1px outset #000010;
@@ -119,7 +132,7 @@ body{
    letter-spacing: 1px;
 }
 
-.donate-btn{ 
+.donate-btn{
 	color: whitesmoke;
 	font-size: 24;
 	text-transform: uppercase;
