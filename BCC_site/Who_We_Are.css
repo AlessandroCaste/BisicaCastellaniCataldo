@@ -1,4 +1,4 @@
-/* Usato img_Container e aggiunte le classi per i social*/
+/* Usato img_Container e aggiunta la classe per il social*/
 
 .row_buffer{
 	margin-top: 10px
@@ -38,6 +38,12 @@ body{
 .social{
 	display : flex;
 	justify-content: center;
+}
+
+.blockquote{
+	border : 1px solid grey;
+	border-radius : 5px;
+	display:block;
 }
 
 /*------ END NAVBAR ------*/
