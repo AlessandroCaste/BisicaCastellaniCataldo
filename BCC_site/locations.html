@@ -1,18 +1,16 @@
 <html>
 <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="loc_style.css">
-    
-           
-    
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="loc_style.css">
+     
 </head>
 
 <body>
@@ -98,11 +96,42 @@ aria booleano di visualizzazione compressa
 			</div>
 		</div>
 		
-		<span class="division_line row_buffer"> </span>
-		
 	<!------------------ CONTENT ------------------>  
 		
-    
+		<div class="row row_buffer_big">
+			<!--- sfrutta il Column Wrapping & l'Ordering:
+				- 7+5+12 > 12, quindi l'ultima colonna finisce su una nuova riga, senza però creare un nuovo row
+				- le colonne con classe .order-xx-xx vengono ordinate da 0 a 12(last), in base alla dimensione dello schermo
+					* l'attivazione della classe vale dalla grandezza schermo dichiarata in su (order-md-xx vale da md a xl) (order-xs-xx = order-xx) 
+					* si possono combinare più .order di grandezza schermo crescente, insieme a col-xx per ottenere effetti diversi,
+				- le colonne senza classe .order vengono messe prima di quelle con classe .order
+					in questo caso:
+						* 1° colonna non order, finisce per prima
+						* 2° colonna order-xs-last, di base è l'ultima delle 3
+										order-md-0, da md in su diventa la prima tra le colonne ordinate 
+						* 3° colonna non order, su xs diventa seconda perché la terza è quella orfinata
+														su md diventa ultima, perché occupa sempre 12
+			--->
+			<div class="col-md-7 col-xs row_buffer">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non augue semper, suscipit ipsum nec, interdum neque. Aliquam id dapibus erat. Nam posuere et nisl sit amet commodo. Sed sit amet ex a augue ultricies laoreet non nec ex. Donec in congue arcu, id maximus felis. Fusce laoreet arcu quis mattis elementum. Suspendisse potenti. Etiam laoreet gravida lorem eu molestie. Sed sit amet semper sem, ut elementum diam. Nam vulputate, lacus ac lobortis cursus, enim ante dictum nunc, nec lacinia magna lorem efficitur lectus. Donec ac bibendum mauris. In ac augue gravida magna ultricies viverra. Praesent sit amet diam nisi. Vestibulum eu sagittis augue, pulvinar interdum arcu.
+			</div>
+			<div class="col-md-5 col-xs row_buffer order-last order-md-0">
+				<h4 class="text-center">Find Us</h4>
+				<img src="images/maps_template.jpg" class="img-fluid" alt="MAPS">
+				<span class="division_line row_buffer_big"> </span>
+				<div class="contants row_buffer">
+					<h5>contact us</h5>
+					<ul>
+						<li>Stormwind Castle, 15</li>
+						<li>Ask about Arthas</li>
+						<li>+39 45235522344</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col row_buffer">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non augue semper, suscipit ipsum nec, interdum neque. Aliquam id dapibus erat. Nam posuere et nisl sit amet commodo. Sed sit amet ex a augue ultricies laoreet non nec ex. Donec in congue arcu, id maximus felis. Fusce laoreet arcu quis mattis elementum. Suspendisse potenti. Etiam laoreet gravida lorem eu molestie. Sed sit amet semper sem, ut elementum diam. Nam vulputate, lacus ac lobortis cursus, enim ante dictum nunc, nec lacinia magna lorem efficitur lectus. Donec ac bibendum mauris. In ac augue gravida magna ultricies viverra. Praesent sit amet diam nisi. Vestibulum eu sagittis augue, pulvinar interdum arcu.
+			</div>
+		</div>
 		
    
 	</div>
