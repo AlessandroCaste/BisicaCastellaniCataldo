@@ -6,6 +6,7 @@
 
 body{
 	background-color: #FEFAFA;
+
 }
 
 /*------ NAVBAR ------*/
@@ -106,7 +107,7 @@ body{
 }
 
 .body-content{
-   margin-bottom: 150px;
+  margin-bottom: 150px;
 	background-color: white;
 }
 
