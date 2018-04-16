@@ -1,0 +1,145 @@
+<html>
+	<head>
+		<title>Bootstrap Example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="tent_style.css">
+
+
+	</head>
+	
+	<body>
+	<!------------------ HEADER ------------------>    
+		<header id="header">
+			<div class="container">            
+				<nav class="navbar navbar-expand-md navbar-light">
+					<!------LOGO----->
+					<a class="navbar-brand" id="logo" href="#">
+						bcc
+						<br>   
+						<i>facciamo le cose</i>
+					</a>
+
+					<!---
+	toggler -> bottone di compressione elemento
+	collapse -> azione di compressione. Deve esistere un elemento che abbia "~collapse" all'interno
+	target -> id dell'elemento compresso
+	aria booleano di visualizzazione compressa
+						 --->
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarContent">
+						<!---
+									.navbar-nav for a full-height and lightweight navigation (including support for dropdowns).
+							  --->
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item active" style="background-color: #92ce0a">
+								<a class="nav-link align-content-center" href="#">Home <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item" style="background-color: #ffe202">
+								<a class="nav-link" href="#">
+									chi siamo</a>
+							</li>
+							<li class="nav-item dropdown" style="background-color: #0052da">
+								<a class="nav-link dropdown-toggle" href="#" id="dropdownServices" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Our services
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownServices">
+									<a class="dropdown-item" href="#!">Elfic Lecture</a>
+									<a class="dropdown-item" href="#!">Be a Power Ranger</a>
+									<a class="dropdown-item" href="#!">Ninja Turtle helps Child</a>
+									<a class="dropdown-item" href="#!">All our Crossovers</a>
+								</div>
+							</li>
+							<li class="nav-item dropdown" style="background-color: #ff7f00">
+								<a class="nav-link dropdown-toggle" href="#" id="dropdownServices" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									News
+								</a>
+								<div class="dropdown-menu" aria-labelledby="dropdownServices">
+									<a class="dropdown-item" href="#!">All Events</a>
+								</div>
+							</li>
+							<li class="nav-item dropdown" style="background-color: #04bacf">
+								<a class="nav-link dropdown-toggle" href="#" id="dropdownServices" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Contacts
+								</a>
+								<div class="dropdown-menu" aria-labelledby="dropdownServices">
+									<a class="dropdown-item" href="#!">FAQ</a>
+								</div>
+							</li>
+							<li class="nav-item" style="background-color: #ff5241">
+								<a class="nav-link" href="#">
+									Help Us</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+
+
+	<!------------------ FOOTER ------------------>
+		<footer id="footer">
+			<div class="footer_content">
+				<div class="container">
+					<div class="row">
+					<div class="col-md-8 col-md-8 col-xs-8" >
+						<nav class="navbarfooter navbar-expand-lg navbar-light bg-light">
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+							</button>
+
+							<div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color: white">
+								<ul class="navbar-nav mr-auto">
+									<li class="nav-itemfooter">
+										<a class="nav-link" href="#">Home</a>
+									</li>
+									<li class="nav-itemfooter">
+										<a class="nav-link" href="#">Chi siamo</a>
+									</li>
+									<li class="nav-itemfooter">
+										<a class="nav-link" href="#">Cosa Facciamo</a>
+									</li>
+									<li class="nav-itemfooter">
+										<a class="nav-link" href="#">Dove Andiamo</a>
+									</li>
+									<li class="nav-itemfooter">
+										<a class="nav-link" href="#">Perchè</a>
+									</li>
+									<li class="nav-itemfooter">
+										<a class="nav-link" href="#">FAQ</a>
+									</li>
+									<li class="nav-itemfooter">
+										<a class="nav-link" href="#">Link</a>
+									</li>
+								</ul>
+							</div>
+						</nav>
+					</div>
+					<div class="col-md-4 col-md-4 col-xs-4" >
+						<a href="#" type="button" class="btn donate-btn float-md-right">
+							donate
+						</a>
+					</div>
+					</div>
+				</div>
+			</div>   
+
+			<div class="footer_bottom">
+				<div class="container">
+					<div class="row">
+
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
