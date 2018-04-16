@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+	
+	<head>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Tim Project Hypermedia Application Course 2016">
+		
+		<title>
+			TIM - Home
+		</title>
+		
+		<link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/tim/tim-components.css">
+        <link rel="stylesheet" href="css/tim/lista-prodotti.css">
+        <link rel="stylesheet" href="css/tim/utility-classes.css">
+        <link rel="stylesheet" href="css/tim/mobile.css">
+        
+	</head>
+	
+	<body>
+        
+     	<!-- HEADER START -->
+		<nav class="navbar navbar-default tim-header">
+			<div class="container">
+				<div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+					<a class="navbar-brand timbrand" href="index.html">
+						<img alt="TIM" src="img/logo.png">
+					</a>
+				</div>
+                
+                <div class="collapse navbar-collapse" id="header">
+                    <ul class="nav navbar-nav">
+                        <li><a href="innovazione.html" class="menu-textcolor">Chi siamo</a></li>
+                        <li><a href="#" class="menu-textcolor">Il gruppo</a></li>
+                    </ul>
+                    
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="intro_prodotti.html" class="menu-textcolor">PRODOTTI</a></li>
+                        <li><a href="intro_sls.html" class="menu-textcolor">SMARTLIFE</a></li>
+                        <li><a href="intro_assistenza.html" class="menu-textcolor">ASSISTENZA</a></li>
+                        <a class="navbar-brand cartbrand" href="carrello.html">
+                            <img class="cartlogo" alt="Carrello" src="img/cart.png">
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- HEADER END -->
+		
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="pos-rel">
+                        <img src="img/testata_offerte_1920x250.jpg" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+            
+            <p style="margin-bottom: 6%; margin-top: 7%; font-weight: bold; font-size: 3em; color: red; width: 100%;" class="text-center">
+                PRODOTTI IN EVIDENZA
+            </p>
+            
+            <div class="row">
+            
+                <div class="col-xs-12 col-sm-4 colonne">
+                    <div class="panel panel-default pannelli-store">
+                        <span class="label label-info pull-right etichette">RATE</span>
+                        <img class="devicepics" href="#" src="data/s_t/iphone6s/argento/apple-iPhone6s_Svr-1.jpg">
+                        <p class="text-center">Apple iPhone 6s</p>
+                        <p class="text-center prezzi">21.94€/mese</p>
+                        <p class="text-center rate">in 36 rate senza interessi</p>
+                        <a href="prodotto.html?idDevice=1&amp;idCategoria=1">
+                            <button type="button" class="btn btn-default detail-button">DETTAGLI</button>
+                        </a>
+                    </div>
+                </div>
+            
+                <div class="col-xs-12 col-sm-4 colonne">
+                    <div class="panel panel-default pannelli-store">
+                        <span class="label label-warning pull-right etichette">PROMO</span>
+                        <img class="devicepics" href="#" src="data/s_t/lumia950/bianco/microsoft-LUMIA950_wht-1_2.jpg">
+                        <p class="text-center">Lumia 950</p>
+                        <div class="row rigarespo" style="margin-bottom:10px">
+                            <div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 text-center prezzi_scont col-scontati">599.90€</div>
+                            <div class="col-md-5 col-sm-5 text-center prezzi col-scontati">499.90€</div>
+                        </div>
+                        <p class="rate">&nbsp;</p>
+                        <a href="prodotto.html?idDevice=9&amp;idCategoria=1">
+                            <button type="button" class="btn btn-default detail-button">DETTAGLI</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-4 colonne">
+                    <div class="panel panel-default pannelli-store">
+                        <span class="label label-primary pull-right etichette" style="background-color:white;">&nbsp;</span>
+                        <img class="devicepics" href="#" src="data/s_t/huaweip9plus/nocolor/huawei-p9-plus-qrtzgry-front.jpg">
+                        <p class="text-center">Huawei P9 Plus</p>
+                        <p class="text-center prezzi">749.90€</p>
+                        <p class="rate">&nbsp;</p>
+                        <a href="prodotto.html?idDevice=15&amp;idCategoria=1">
+                            <button type="button" class="btn btn-default detail-button">DETTAGLI</button>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- FOOTER START -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row footer-row">
+                            <div class="col-xs-6 col-sm-4 col-lg-3 vertical-align">
+                                <p class="footer-text">Privacy</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-lg-3 vertical-align">
+                                <p class="footer-text">Note Legali</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row footer-row">
+                            <div class="col-xs-3 col-sm-2 col-sm-offset-4 col-lg-1 col-lg-offset-8 vertical-align">
+                                <img src="img/social-icon/facebook-logo.png" class="img-responsive" alt="Facebook">
+                            </div>
+                            <div class="col-xs-3 col-sm-2 col-lg-1 vertical-align">
+                                <img src="img/social-icon/twitter-logo.png" class="img-responsive" alt="Twitter">
+                            </div>
+                            <div class="col-xs-3 col-sm-2 col-lg-1 vertical-align">
+                                <img src="img/social-icon/youtube.png" class="img-responsive" alt="Youtube">
+                            </div>
+                            <div class="col-xs-3 col-sm-2 col-lg-1 vertical-align">
+                                <img src="img/social-icon/google-plus-logo.png" class="img-responsive" alt="Google Plus">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+        
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+		
+    </body>
+</html>

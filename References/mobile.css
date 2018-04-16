@@ -1,0 +1,321 @@
+@media screen and (max-width: 767px) {
+    
+    /*
+        Utility Classes
+    */
+    
+    .push-bottom {
+        position: relative;
+    }
+
+    .disp-flex {
+        display: block;
+    }
+
+    .same-height {
+        flex: none;
+        margin-bottom: 10%;
+        margin-top: 10%;
+    }
+    
+    /*
+        tim-components
+    */
+    
+    body {
+        height: 100%;
+        margin-bottom: 100px;
+        min-width: 320px;
+    }
+    
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        background-color: #004990;
+    }
+    
+    /*
+        innovazione
+    */
+    
+    .innov-puls {
+        background-color: red;
+        background-image: none;
+        border-color: red;
+        color: white;
+        font-size: 9px;
+        font-weight: bolder;
+        margin-top: 0px;
+        margin-bottom: 25px;
+        min-width: 100px;
+        text-shadow: 0 0px 0;
+    }
+    
+    .siamobanner {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-top: 35px;
+        padding-bottom: 35px;
+        color: white;
+        font-size: 20px;
+    }
+    
+    .innov-titoli-xs {
+        font-size: 16px!important;
+        padding: 0 20% 0 20%;
+    }
+    
+    .innov-desc-xs {
+        font-size: 12px!important;
+        padding: 0 20% 0 20%;
+    }
+    
+    .carousel-sfumatura-sin {
+        background-image: linear-gradient(to right, #fff 0%, #fff)!important;
+        text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black!important;
+    }
+
+    .carousel-sfumatura-des {
+        background-image: linear-gradient(to left, #fff 0%, #fff)!important;
+        text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black!important;
+    }
+    
+    /*
+        devices-list
+    */
+    
+    .tim-row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    
+    .pulsantefiltri {
+        margin-bottom: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    
+    .filtroresp {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    
+    .pannelli-store {
+        text-align: center;
+        margin: 20px 20px 20px 20px;
+    }
+    
+    .etichette {
+        height: 16px;
+        margin-top: 10px;
+        margin-right: 10px;
+        width: 54px;
+    }
+    
+    .devicepics {
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .prezzi {
+        color: red;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    
+    .prezzi_scont {
+        color: black;
+        font-size: 16px;
+        font-weight: bolder;
+        text-decoration: line-through;
+    }
+    
+    .rate {
+        font-size: 15px;
+    }
+    
+    .detail-button {
+        background-color: red;
+        background-image: none;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        padding: 12px 30px 12px 30px;
+        text-shadow: none;
+    }
+    
+}
+
+@media screen and (max-width: 365px) {
+    .slider-progetti {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .posizionepic {
+        margin-top: 22%;
+    }
+    
+    .dimensionecarousel-progetti {
+        height: 500px;
+    }
+    
+    .dimensionecarousel-testimonial {
+        height: 500px;
+    }
+    
+    .dimensionecarousel-innovazione {
+        height: 500px;
+    }
+}
+
+@media screen and (width: 768px) {
+    .dimensionecarousel-progetti {
+        height: 575px;
+    }
+    
+    .dimensionecarousel-testimonial {
+        height: 600px;
+    }
+    
+    .dimensionecarousel-innovazione {
+        height: 500px;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 725px) {
+    .dimensionecarousel-progetti {
+        height: 400px;
+    }
+    
+    .dimensionecarousel-testimonial {
+        height: 450px;
+    }
+    
+    .dimensionecarousel-innovazione {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 724px) and (min-width: 561px) {
+    .dimensionecarousel-progetti {
+        height: 475px;
+    }
+    
+    .dimensionecarousel-testimonial {
+        height: 450px;
+    }
+    
+    .dimensionecarousel-innovazione {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 560px) and (min-width: 501px) {
+    .dimensionecarousel-progetti {
+        height: 525px;
+    }
+    
+    .dimensionecarousel-testimonial {
+        height: 450px;
+    }
+    
+    .dimensionecarousel-innovazione {
+        height: 425px;
+    }
+}
+
+@media screen and (max-width: 500px) and (min-width: 461px) {
+    .dimensionecarousel-progetti {
+        height: 550px;
+    }
+    
+    .dimensionecarousel-testimonial {
+        height: 450px;
+    }
+    
+    .dimensionecarousel-innovazione {
+        height: 475px;
+    }
+}
+
+@media screen and (max-width: 460px) and (min-width: 401px) {
+    .dimensionecarousel-progetti {
+        height: 600px;
+    }
+    
+    .dimensionecarousel-testimonial {
+        height: 450px;
+    }
+    
+    .dimensionecarousel-innovazione {
+        height: 500px;
+    }
+}
+
+@media screen and (max-width: 400px) and (min-width: 381px) {
+    .dimensionecarousel-progetti {
+        height: 625px;
+    }
+    
+    .dimensionecarousel-testimonial {
+        height: 450px;
+    }
+    
+    .dimensionecarousel-innovazione {
+        height: 550px;
+    }
+}
+
+@media screen and (max-width: 380px) and (min-width: 345px) {
+    .dimensionecarousel-progetti {
+        height: 675px;
+    }
+    
+    .dimensionecarousel-testimonial {
+        height: 450px;
+    }
+    
+    .dimensionecarousel-innovazione {
+        height: 575px;
+    }
+}
+
+@media screen and (max-width: 344px) {
+    .dimensionecarousel-progetti {
+        height: 750px;
+    }
+    
+    .dimensionecarousel-testimonial {
+        height: 380px;
+    }
+    
+    .dimensionecarousel-innovazione {
+        height: 600px;
+    }
+}
+
+
+@media screen and (min-width: 1017px) {
+    .textalign {
+        text-align: right;
+    }
+}
+
+@media screen and (max-width: 1016px) and (min-width: 768px) {
+    .textalign {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .textalign {
+        text-align: left;
+    }
+}
