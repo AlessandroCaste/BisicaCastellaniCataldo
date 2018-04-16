@@ -1,18 +1,16 @@
 <html>
 <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="loc_style.css">
-    
-           
-    
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="loc_style.css">
+     
 </head>
 
 <body>
@@ -90,7 +88,7 @@ aria booleano di visualizzazione compressa
 	<div class="container body-content">
 		<div class="row_buffer_big"></div>
 		<div class="img_Container">
-			<img src="images/stormwind.jpg" class="img-fluid" alt="Stormwind">
+			<img src="images/locations/stormwind/stormwind.jpg" class="img-fluid" alt="Stormwind">
 			<div class="over_img_opaque_line">
 				<div class="over_img_text">
 					it's a great place to leave
@@ -98,13 +96,147 @@ aria booleano di visualizzazione compressa
 			</div>
 		</div>
 		
-		<span class="division_line row_buffer"> </span>
-		
 	<!------------------ CONTENT ------------------>  
 		
-    
+		<div class="row row_buffer_big">
+			<!--- sfrutta il Column Wrapping & l'Ordering:
+				- 7+5+12 > 12, quindi l'ultima colonna finisce su una nuova riga, senza però creare un nuovo row
+				- le colonne con classe .order-xx-xx vengono ordinate da 0 a 12(last), in base alla dimensione dello schermo
+					* l'attivazione della classe vale dalla grandezza schermo dichiarata in su (order-md-xx vale da md a xl) (order-xs-xx = order-xx) 
+					* si possono combinare più .order di grandezza schermo crescente, insieme a col-xx per ottenere effetti diversi,
+				- le colonne senza classe .order vengono messe prima di quelle con classe .order
+					in questo caso:
+						* 1° colonna non order, finisce per prima
+						* 2° colonna order-xs-last, di base è l'ultima delle 3
+										order-md-0, da md in su diventa la prima tra le colonne ordinate 
+						* 3° colonna non order, su xs diventa seconda perché la terza è quella orfinata
+														su md diventa ultima, perché occupa sempre 12
+			--->
+			<div class="col-md-7 col-xs row_buffer">
+				<p>Stormwind City is located north of Elwynn Forest on the Eastern Kingdom's northwest coast, and is the capital city of the kingdom known as Stormwind and the largest human city of Azeroth. The city is named for the occasional sudden squalls created by a ley line pattern in the mountains around the glorious city, and is one of the last great human cities. The city itself has been rebuilt at least once, and is a marvel of human design and engineering. Its guards keep the peace within the city's walls.</p>
+				
+				<p>Stormwind is the jewel of the Alliance in Azeroth. The grandest human city left, it has weathered three wars, ransacking by the orcs, and invasions by the Alliance to take it back. Although mostly a human city, Stormwind does house dwarves, high elves, night elves, worgen, pandaren, and other Alliance races. Every night at sunset the Cathedral of Light rings a solitary bell whose sweet pitch reaches the entire city. This is for the night elves, who are unaccustomed to living within cities. A day of mourning is set aside for the high elves, remembering Dalaran's destruction. The ale pours free for every dwarf in the city during the holy birthday of Anvil Stormglaive. It also holds celebrations for the Third War veterans, to honor the citizens of all Alliance races who fought in the war.</p>
+			</div>
+			<div class="col-md-5 col-xs row_buffer order-last order-md-0">
+				<h4 class="text-center">Find Us</h4>
+				<img src="images/locations/maps_template.jpg" class="img-fluid" alt="MAPS">
+				<span class="division_line row_buffer_big"> </span>
+				<div class="contants row_buffer">
+					<h5>contact us</h5>
+					<ul>
+						<li>Stormwind Castle, 15</li>
+						<li>Ask about Arthas</li>
+						<li>+39 45235522344</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-12">
+				<p>Stormwind's climate is warm, the skies clear, and the seasons generally temperate. Thus, clothes in the city are composed of light fabric for the most part. Color choices usually are bold: whites, reds, blues, oranges, and yellows. Although one might assume the climate would call for as little clothing as possible, the inhabitants of Stormwind prefer light fabric, but lots of it. Humans usually wear long-sleeved tunics, billowy trousers, leather boots, and sometimes even ridiculously large, floppy hats for excessively sunny days.</p>
+			</div>
+			<div class="col-12 col-md-8 order-11 order-md-1">
+				<div id="carousel_location" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel_location" data-slide-to="1"></li>
+						<li data-target="#carousel_location" data-slide-to="2"></li>
+						<li data-target="#carousel_location" data-slide-to="3"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img class="d-block w-100" src="images/locations/stormwind/slide1.jpg" alt="First slide">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>Life</h5>
+								<p>All our fountains give eternal Life <br>Or Hale</p>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img class="d-block w-100" src="images/locations/stormwind/slide2.jpg" alt="Second slide">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>Our Ambulances</h5>
+								<p>Have a confortable Journey</p>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img class="d-block w-100" src="images/locations/stormwind/slide3.jpg" alt="Third slide">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>The Bank</h5>
+								<p>Care for you Medical Attemption</p>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img class="d-block w-100" src="images/locations/stormwind/slide4.jpg" alt="Fouth slide">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>This is Nothing</h5>
+								<p>Turn around <br> and forget</p>
+							</div>
+						</div>
+					</div>
+					<a class="carousel-control-prev" href="#carousel_location" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#carousel_location" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+			
+			<div class="col col-md-4 order-md-2">
+				<h5 class="text-center">What you can do here</h5>
+					<ul>
+						<li>Elfic Lectures</li>
+						<li>Dwarf hale-pool</li>
+						<li>Join the Burning Legion</li>
+						<li>Be affected by the Plague</li>
+					</ul>
+			</div>
+		</div>
 		
-   
+	<!------------------ DOCTORS LIST ------------------>  
+		<h2 class="text-center row_buffer_big">Who Works here</h2>
+		<div class="row row_buffer">
+			<div class="col-4">
+				<div class="media">
+					<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor1.jpg" alt="doctor_image">
+					<div class="media-body">
+						<h5 class="mt-0">Media heading</h5>
+						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="media">
+					<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor2.jpg" alt="doctor_image">
+					<div class="media-body">
+						<h5 class="mt-0">Media heading</h5>
+						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="media">
+					<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor3.jpg" alt="doctor_image">
+					<div class="media-body">
+						<h5 class="mt-0">Media heading</h5>
+						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#doctors-list">More Doctors</button>
+		<div id="doctors-list" class="collapse">
+			<div class="col-4">
+				<div class="media">
+					<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor4.jpg" alt="doctor_image">
+					<div class="media-body">
+						<h5 class="mt-0">Media heading</h5>
+						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!------------------ FOOTER ------------------>
     

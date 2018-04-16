@@ -3,11 +3,11 @@
 }
 
 .row_buffer_big{
-	margin-top: 25px
+	margin-top: 20px
 }
 
 body{
-	background-color: #FEFAFA;
+	background-color: azure;
 }
 
 /*------ NAVBAR ------*/
@@ -40,11 +40,14 @@ body{
 
 
 .division_line{
-	display:block;
+	display:block; 
 	height: 10px;
 	background-color: e7f5fe;
    border: 1px outset #000010;
 }
+
+
+/*----- PRESENTATION IMAGE -----*/
 
 .img_Container{
 	position: relative;
@@ -68,7 +71,7 @@ body{
 }
 
 .over_img_text{
-	width: 25vmin;
+	width: 25vw;
 	text-align: center;
 	margin: auto;
 	color: whitesmoke;
@@ -92,6 +95,7 @@ body{
 @media (min-width: 576px) and (max-width: 767.98px) {
 	.over_img_text{
 		font-size: 0.75em;
+		width: 25vw;
 	}
 }
 
@@ -99,37 +103,41 @@ body{
 @media (min-width: 768px) and (max-width: 991.98px) {
 	.over_img_text{
 		font-size: 1.25em;
+		width: 35vw;
 	}
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px){
 	.over_img_text{
-		font-size: 1.5em;
+		font-size: 1.7em;
+		width: 35vw;
 	}
 }
+
+/*----- END PRESENTATION IMAGE -----*/
+
+/*----- CONTACTS -----*/
+
+
+.center-cropped {
+  
+  object-position: center; /* Center the image within the element */
+  height: 100px;
+  width: 100px;
+}
+
 /*------ FOOTER ------*/
 
 #footer{
+	margin-top: 100px;
    border-top: 1px solid #798992;
-   margin-top: 30px;
-   position: fixed;
-   bottom: 0;
    width: 100%
 }
 
 .footer_content{
    background: white;
    padding-top: 9px;
-}
-
-
-.more_info-btn{
-   font-size: 16;
-   text-transform: uppercase;
-   color: #fff;
-   letter-spacing: -1px;
-   background-color: #97cc1e;
 }
 
 .more_info-btn:hover{
@@ -139,7 +147,7 @@ body{
    letter-spacing: 1px;
 }
 
-.donate-btn{
+.donate-btn{ 
 	color: whitesmoke;
 	font-size: 24;
 	text-transform: uppercase;
