@@ -1,4 +1,4 @@
-/* Usato img_Container e aggiunta la classe per il social*/
+/*Usata la classe wwa-body*/
 
 .row_buffer{
 	margin-top: 10px
@@ -48,6 +48,12 @@ body{
 }
 
 /*------ END NAVBAR ------*/
+
+.wwa-body{
+	margin : auto;
+	text-align: center;
+	background-color: white;
+}
 
 
 .nav-itemfooter a{
