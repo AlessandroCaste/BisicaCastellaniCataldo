@@ -195,49 +195,66 @@ aria booleano di visualizzazione compressa
 		
 	<!------------------ DOCTORS LIST ------------------>  
 		<h2 class="text-center row_buffer_big">Who Works here</h2>
-		<div class="row row_buffer">
-			<div class="col-4">
-				<div class="media">
-					<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor1.jpg" alt="doctor_image">
-					<div class="media-body">
+		
+		<div class="d-flex flex-column">
+			<div class="d-flex flex-row order-1 flex-wrap flex-md-nowrap">
+				<div class="card m-3">
+					<img class="mr-2 center-cropped" src="images/doctors/doctor1.jpg" alt="doctor_image">
+					<div class="card-body">
+						<h5 class="mt-0">Media heading</h5>
+						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+					</div>
+				</div>
+				<div class="card m-3">
+					<img class="mr-2 center-cropped" src="images/doctors/doctor2.jpg" alt="doctor_image">
+					<div class="card-body">
+						<h5 class="mt-0">Media heading</h5>
+						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+					</div>
+				</div>
+				<div class="card m-3">
+					<img class="mr-2 center-cropped" src="images/doctors/doctor3.jpg" alt="doctor_image">
+					<div class="card-body">
 						<h5 class="mt-0">Media heading</h5>
 						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
 					</div>
 				</div>
 			</div>
-			<div class="col-4">
-				<div class="media">
-					<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor2.jpg" alt="doctor_image">
-					<div class="media-body">
-						<h5 class="mt-0">Media heading</h5>
-						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+			
+			<button class="btn btn-primary order-3" type="button" data-toggle="collapse" data-target="#doctor-list" aria-expanded="false" aria-controls="collapseExample">
+				Show More Doctors
+			</button>
+			
+			<div class="collapse order-2" id="doctor-list">
+				<div class="d-flex flex-row justify-content-around flex-wrap flex-md-nowrap">
+					<div class="card m-3">
+						<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor4.jpg" alt="doctor_image">
+						<div class="card-body">
+							<h5 class="mt-0">Media heading</h5>
+							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="col-4">
-				<div class="media">
-					<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor3.jpg" alt="doctor_image">
-					<div class="media-body">
-						<h5 class="mt-0">Media heading</h5>
-						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+					<div class="card m-3">
+						<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor5.jpg" alt="doctor_image">
+						<div class="card-body">
+							<h5 class="mt-0">Media heading</h5>
+							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+						</div>
+					</div>
+					<div class="card m-3">
+						<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor6.jpg" alt="doctor_image">
+						<div class="card-body">
+							<h5 class="mt-0">Media heading</h5>
+							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#doctors-list">More Doctors</button>
-		<div id="doctors-list" class="collapse">
-			<div class="col-4">
-				<div class="media">
-					<img class="d-flex mr-2 center-cropped" src="images/doctors/doctor4.jpg" alt="doctor_image">
-					<div class="media-body">
-						<h5 class="mt-0">Media heading</h5>
-						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in.
-					</div>
-				</div>
-			</div>
+			
 		</div>
-	</div>
+	
 	<!------------------ FOOTER ------------------>
     
 	<footer id="footer">
@@ -278,9 +295,9 @@ aria booleano di visualizzazione compressa
 					</nav>
 				</div>
 				<div class="col-md-4 col-md-4 col-xs-4" >
-					<a href="#" type="button" class="btn donate-btn float-md-right">
+					<button href="#" type="button" class="btn donate-btn float-md-right">
 						donate
-					</a>
+					</button>
 				</div>
 				</div>
 			</div>
