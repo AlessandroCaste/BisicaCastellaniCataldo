@@ -52,13 +52,15 @@ body{
 
 /**------ PRESENTATION IMAGE -------*/
 
-.img_Container{
-	margin : auto;
-	width:100%;
-	display :block;
+.ciao{
+	text-center;
+	overflow :hidden;
 	max-height: 500px;
-	border-radius: 40px;
-	background-color: white;
+	border : 2px solid black;
+}
+
+.img-ciao{
+	width:100%;
 	opacity: 0.75;
 }
 
