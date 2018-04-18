@@ -53,9 +53,8 @@ body{
 /**------ PRESENTATION IMAGE -------*/
 
 .img_Container{
-	position : relative;
+	width:100%;
 	display :block;
-	width : 100%;
 	max-height: 500px;
 	border-radius: 40px;
 	background-color: white;
