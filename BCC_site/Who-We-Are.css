@@ -53,6 +53,7 @@ body{
 /**------ PRESENTATION IMAGE -------*/
 
 .img_Container{
+	margin : auto;
 	width:100%;
 	display :block;
 	max-height: 500px;
