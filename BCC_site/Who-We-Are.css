@@ -36,7 +36,7 @@ body{
 	justify-content: center;
 }
 
-.blockquote{
+.blockquote-home{
 	display:inline-block;
 	padding : 5px;
 	margin-top: 30px;
@@ -68,6 +68,8 @@ body{
 		object-fit: cover;
 		object-position : 0% 0%;
 }
+
+
 
 .title{
 	margin : auto;
