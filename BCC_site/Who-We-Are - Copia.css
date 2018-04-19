@@ -1,0 +1,188 @@
+/*Usata la classe wwa-body, cambiato img_container e scritta sopra*/
+
+body{
+	background-color: #FEFAFA;
+}
+
+/*------ NAVBAR ------*/
+#logo {
+	display: block;
+	color: orange;
+	font-size: 22px;
+   text-align: right;
+   text-transform: uppercase;
+}
+
+#logo i{
+   color: #04bacf;
+}
+
+.nav-item.active{
+	box-shadow: 3px 3px 5px #555;
+}
+
+.nav-item:hover{
+	box-shadow: 3px 3px 5px #555;
+}
+
+.nav-item a{
+	font-size: 17px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.social{
+	display : flex;
+	justify-content: center;
+}
+
+.blockquote{
+	display:inline-block;
+	padding : 5px;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	border : 1px solid grey;
+	border-radius : 5px;
+}
+
+/**------ PRESENTATION IMAGE -------*/
+
+/*https://css-tricks.com/almanac/properties/o/object-fit/
+	https://css-tricks.com/on-object-fit-and-object-position/ */
+.presentation-image {
+	position : relative;
+	width : 100%;
+	opacity : 0.75;
+	border-radius: 40px;
+	max-height : 500px;
+	object-fit: cover;
+right : 0;	object-position : 0% 0%;
+}
+
+.text-block {
+	/*position: absolute;
+	background-color: rgba(220,220,220,1);
+	border : 2px solid blue;
+	color: white;
+	width : 100%;
+	bottom : 40%;
+	font-family: 'Lato', sans-serif;
+	font-weight: bold;
+	font-size: 120%;
+	padding : 0; */
+	top: 0;
+	left : 0;
+	right : 0;
+	bottom : 0;
+	position : absolute;
+	width : 100%;
+	border:  2px solid blue;
+}
+
+/*------ END NAVBAR ------*/
+
+
+
+.nav-itemfooter a{
+	border-right-style: solid ;
+	border-right-width: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+
+}
+
+.navbarfooter{
+	padding: 0px;
+}
+
+.present_left h2{
+	text-align: center;
+}
+
+.present_left img{
+	width: 100%;
+	border-radius: 25px;
+}
+
+.present_right{
+   background: #73AD21;
+   margin-top: 20px;
+   padding: 20px;
+   border-radius: 25px;
+}
+
+.img_Container{
+	position: relative;
+	margin: 0;
+	max-height: 500px;
+	width: 100%;
+	border-radius: 40px;
+	background: no-repeat center;
+	overflow: hidden;
+	opacity: 0.75;
+}
+
+.present_right h5{
+	background-color: red;
+	padding: 0px 50px
+}
+
+.division_line{
+	display:block;
+	height: 10px;
+	background-color: e7f5fe;
+   border: 1px outset #000010;
+}
+
+.card-content, img{
+   max-width: 100%;
+   text-align: center
+}
+
+.body-content{
+  margin-bottom: 150px;
+	background-color: white;
+}
+
+#footer{
+   border-top: 1px solid #798992;
+   margin-top: 30px;
+   bottom: 0;
+   width: 100%
+}
+
+.footer_content{
+   background: white;
+   padding-top: 9px;
+}
+
+.more_info-btn{
+   font-size: 16;
+   text-transform: uppercase;
+   color: #fff;
+   letter-spacing: -1px;
+   background-color: #97cc1e;
+}
+
+.more_info-btn:hover{
+	width: 150px;
+   color: #fff;
+   text-transform: full-width;
+   letter-spacing: 1px;
+}
+
+.donate-btn{
+	color: whitesmoke;
+	font-size: 24;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-bottom: 10px;
+	background-color: #ff4d4d;
+	box-shadow: 0 3px 0 0 #cc0000;
+}
+
+.donate-btn:hover {
+	color: black;
+	background-color: #ff8080;
+	border-color: #ff6666;
+}
