@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" type="text/css" href="Who-We-Are.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <!-- Bootstrap and JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
 
 
 
@@ -78,18 +78,126 @@ aria booleano di visualizzazione compressa
   <!------------------ PRESENTATION IMAGE ------------------>
 
   <div class="container-fluid">
-    <div  class="row">
 
-    <div class ="col-lg-8  col-xxs-12 text-center" style = "margin:auto">
-        <div class="title text-center">
-          People
-        </div>
-          <img src="images/People.jpg" syle="margin-auto" class = "presentation-image" alt="The team">
+    <div  class="row">
+      <div class ="col-lg-8  col-xxs-12 text-center" style = "margin:auto">
+          <div class="title text-center">
+            People
+          </div>
+            <img src="images/People.jpg" class = "presentation-image" alt="Our mission">
+      </div>
     </div>
 
 
 	<!------------------ CONTENT ------------------>
 
+  <div class = "row">
+
+      <div class = "col-lg-8 col-md-9 col-xs-12 text-center" style = "margin:auto">
+
+        <p>
+          Among us you shall find physiotherapists, speech therapists, language therapists, doctors and volounteers.
+          We work with children who have moderate to severe learning and physical disabilities and sensory impairments – typically autism, cerebral palsy and muscular dystrophy. We also encounter rare syndromes and conditions.
+
+          Referral into the Children with Disabilities Social Work Team comes via the Safeguarding Referral Team (SRT)  and provides a Children and Families Assessment which may lead to the provision of an allocated Social Worker or Social Work Assistant who will draw up a Child In Need Plan to offer Focused and/or Enhanced Social Care Services. These services are coordinated in order to support Stoke on Trent's vision for children and young people as set out in the Children & Young People's Plan is for them
+      </p>
+
+        <h3> Meet us! </h3>
+
+        <p>
+          Here you shall find everything you need to know about our past experiences and our areas of expertise. Find out if we work in the facility you're interested in!
+        </p>
+
+      </div>
+
+  </div>
+
+  <div class = "row">
+
+    <div class = "col-lg-8 col-md-9 col-xs-12 text-center" style = "margin:auto">
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-info">All people</button>
+
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button"
+                  class="btn btn-info dropdown-toggle"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            By Location
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" href="#!">Location 1</a>
+            <a class="dropdown-item" href="#!">Location 2</a>
+            <a class="dropdown-item" href="#!">Location 3</a>
+            <a class="dropdown-item" href="#!">Location 4</a>
+            <a class="dropdown-item" href="#!">Location 5</a>
+          </div>
+        </div>
+
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button"
+                  class="btn btn-info dropdown-toggle"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            By Service
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" href="#!">Service 1</a>
+            <a class="dropdown-item" href="#!">Service 2</a>
+            <a class="dropdown-item" href="#!">Service 3</a>
+            <a class="dropdown-item" href="#!">Service 4</a>
+            <a class="dropdown-item" href="#!">Service 5</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--https://stackoverflow.com/questions/47446225/bootstrap-4-responsive-spacing-not-working -->
+
+  <div class = "container mt-5">
+    <div class="tz-gallery">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/doctors/doctor1.jpg" class = "doctor-card" >
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                  <img src="images/doctors/doctor2.jpg" class = "doctor-card" >
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                  <img src="images/doctors/doctor3.jpg" class = "doctor-card" >
+                </div>
+            </div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-4 offset-2">
+                <div class="card">
+                  <img src="images/doctors/doctor4.jpg" class = "doctor-card" >
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                  <img src="images/doctors/doctor5.jpg" class = "doctor-card" >
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
 
 
 	<!------------------ PRESENTAZIONE ------------------>
