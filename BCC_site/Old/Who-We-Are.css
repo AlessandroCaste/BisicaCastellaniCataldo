@@ -1,7 +1,12 @@
 /*Usata la classe wwa-body, cambiato img_container e scritta sopra*/
 
+.row_buffer{
+	margin-top: 10px
+}
+
 body{
 	background-color: #FEFAFA;
+
 }
 
 /*------ NAVBAR ------*/
@@ -47,40 +52,82 @@ body{
 
 /**------ PRESENTATION IMAGE -------*/
 
-/*https://css-tricks.com/almanac/properties/o/object-fit/
-	https://css-tricks.com/on-object-fit-and-object-position/ */
-.presentation-image {
-	position : relative;
-	width : 100%;
-	opacity : 0.75;
-	border-radius: 40px;
-	max-height : 500px;
-	object-fit: cover;
-right : 0;	object-position : 0% 0%;
+.ciao{
+	text-center;
+	overflow :hidden;
+	max-height: 500px;
+	border : 2px solid black;
 }
 
-.text-block {
-	/*position: absolute;
-	background-color: rgba(220,220,220,1);
-	border : 2px solid blue;
-	color: white;
-	width : 100%;
-	bottom : 40%;
-	font-family: 'Lato', sans-serif;
-	font-weight: bold;
-	font-size: 120%;
-	padding : 0; */
-	top: 0;
-	left : 0;
-	right : 0;
-	bottom : 0;
-	position : absolute;
-	width : 100%;
-	border:  2px solid blue;
+.img-ciao{
+	width:100%;
+	opacity: 0.75;
 }
+
+.over_img_opaque_line_whoweare{
+	position: absolute;
+	width: 100%;
+	top: 60%;
+	left: 50%;
+	overflow:hidden;
+	transform: translate(-50%, -50%);
+	background-color: rgba(191, 191, 191, 0.4);
+}
+
+.over_img_text{
+	width: 25vw;
+	text-align: center;
+	margin: auto;
+	color: whitesmoke;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	background-color: rgba(166, 166, 166, 0.6);
+	text-shadow: 1px 1px 10px #000000;
+	padding: 10px 5px;
+	box-shadow: 3px 3px 4px #666;
+	margin-bottom: 4px;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+	.over_img_text{
+		font-size: 0.5em;
+	}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.over_img_text{
+		font-size: 0.75em;
+		width: 25vw;
+	}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.over_img_text{
+		font-size: 1.25em;
+		width: 35vw;
+	}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px){
+	.over_img_text{
+		font-size: 1.7em;
+		width: 35vw;
+	}
+}
+
 
 /*------ END NAVBAR ------*/
 
+.wwa-body{
+	margin : auto;
+	margin-top : 25px;
+	text-align: center;
+	background-color: white;
+}
 
 
 .nav-itemfooter a{
