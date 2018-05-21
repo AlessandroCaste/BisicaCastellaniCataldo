@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>People</title>
+	<link href = "../assets/img/logo.png" rel="icon">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+	<!-- Bootstrap and JQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+	<!--Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+	<!--CUSTOM CSS and JS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+	<script src="../assets/js/script.js"></script>
+
+</head>
+
+<body>
+	<!------------------ HEADER ------------------>
+	<header class="mb-4">
+		<div class="container-fluid fixed-top" style="padding:0; background-color:#FEFAFA">
+			<div class="col text-center" id="fadeout">
+				<img class="img-fluid" src="../assets/img/logo2.png" style="max-height:120px" />
+			</div>
+			<nav class="navbar navbar-expand-lg" style="margin:0">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin:auto">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+					<ul class="navbar-nav" style="margin:auto">
+						<li class="nav-item"> <a class="nav-link navigation-text" href="../index.html">Home        </a> </li>
+						<li class="nav-item"> <a class="nav-link navigation-text" href="whoweare.html">Who We Are  </a> </li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle navigation-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Our offer
+							</a>
+							<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item navigation-text" href="services.html">Services</a>
+								<a class="dropdown-item navigation-text" href="people.html">People</a>
+								<a class="dropdown-item navigation-text" href="locations.html">Locations</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle navigation-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								News&Events
+							</a>
+							<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item navigation-text" href="#">News</a>
+								<a class="dropdown-item navigation-text" href="#">Events</a>
+							</div>
+						</li>
+						<li class="nav-item"> <a class="nav-link navigation-text" href="contactus.html">Contacts</a> </li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</header>
+  <!------------------ PRESENTATION IMAGE ------------------>
+
+	<div class="container-fluid">
+		<div  class="row">
+			<div class="col-lg-8 col-xxs-12 m-auto text-center">
+				<img src="../assets/img/presentation_img/people.jpg" class = "presentation-image" alt="The team">
+				<div class="opaque_line_text">
+					People
+				</div>
+			</div>
+		</div>
+    </div>
+
+		<!------------------ CONTENT ------------------>
+	<div class="row">
+		<div class="col-lg-8 text-center m-auto">
+			<p>
+				We work with children who have moderate to severe learning and physical disabilities and sensory impairments – typically autism, cerebral palsy and muscular dystrophy. We also encounter rare syndromes and conditions.Referral into the Children with Disabilities Social Work Team comes via the Safeguarding Referral Team (SRT)  and provides a Children and Families Assessment which may lead to the provision of an allocated Social Worker or Social Work Assistant who will draw up a Child In Need Plan to offer Focused and/or Enhanced Social Care Services. These services are coordinated in order to support Stoke on Trent's vision for children and young people as set out in the Children & Young People's Plan is for them
+			</p>
+
+			<h2> Meet us! </h2>
+			<p>Here you shall find everything you need to know about our past experiences and our areas of expertise. Find out if we work in the facility you're interested in!</p>
+		</div>
+	</div>
+
+	<!-- FILTERING BUTTONS  -->
+	<div class="d-flex flex-row justify-content-around flex-wrap w-75 m-auto" id="onClickReturn">
+		<button class="filter_button mt-3 mx-1 p-2" id="allBtn">All People</button>
+		<button class="filter_button mt-3 mx-1 p-2" id="serv1Btn">Advisory</button>
+		<button class="filter_button mt-3 mx-1 p-2" id="serv2Btn">Children</button>
+		<button class="filter_button mt-3 mx-1 p-2" id="serv3Btn">Young Adults</button>
+	</div>
+
+	<div class="container mt-5">
+		<div class="d-flex flex-row flex-wrap justify-content-around" id="card_container">
+
+			<div class="doctor-card m-3 text-center">
+				<p class="sr-only">service1</p>
+				<a href="person1.html">
+					<div class="card-link">
+						<div class="card-img-container">
+							<img class="img-fluid card-img" src="../assets/img/people/person1.jpg" alt="doctor_image">
+							<div class="lens_img"></div>
+						</div>
+						<h3 class="mt-2">Anthony Wilkinson</h3>
+					</div>
+				</a>
+				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person1.html">See More...</a>
+			</div>
+
+			<div class="doctor-card m-3 text-center">
+				<p class="sr-only">service1,service2</p>
+				<a href="person2.html">
+					<div class="card-link">
+						<div class="card-img-container">
+							<img class="img-fluid card-img" src="../assets/img/people/person2.jpg" alt="doctor_image">
+							<div class="lens_img"></div>
+						</div>
+						<h3 class="mt-2">Paula Simpson</h3>
+					</div>
+				</a>
+				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person2.html">See More...</a>
+			</div>
+
+			<div class="doctor-card m-3 text-center">
+				<p class="sr-only">service1,service3</p>
+				<a href="person3.html">
+					<div class="card-link">
+						<div class="card-img-container">
+							<img class="img-fluid card-img" src="../assets/img/people/person3.jpg" alt="doctor_image">
+							<div class="lens_img"></div>
+						</div>
+						<h3 class="mt-2">Steve Rogers</h3>
+					</div>
+				</a>
+				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person3.html">See More...</a>
+			</div>
+
+			<div class="doctor-card m-3 text-center">
+				<p class="sr-only">service2,service3</p>
+				<a href="person4.html">
+					<div class="card-link">
+						<div class="card-img-container">
+							<img class="img-fluid card-img" src="../assets/img/people/person4.jpg" alt="doctor_image">
+							<div class="lens_img"></div>
+						</div>
+						<h3 class="mt-2">John Redford</h3>
+					</div>
+				</a>
+				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person4.html">See More...</a>
+			</div>
+
+			<div class="doctor-card m-3 text-center">
+				<p class="sr-only">service2</p>
+				<a href="person5.html">
+					<div class="card-link">
+						<div class="card-img-container">
+							<img class="img-fluid card-img" src="../assets/img/people/person5.jpg" alt="doctor_image">
+							<div class="lens_img"></div>
+						</div>
+						<h3 class="mt-2">Robert DeSilva</h3>
+					</div>
+				</a>
+				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person5.html">See More...</a>
+			</div>
+		</div>
+	</div>
+
+	<!------------------ FOOTER ------------------>
+
+	<footer>
+		<div class="footer_content">
+			<div class="container-fluid">
+				<div class="row">
+				    <div class="col-md-6 col-xs-10 d-flex flex-column flex-md-row text-center align-items-center nav-itemfooter mb-3" >
+                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="../index.html">Home</a>
+
+                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="#">Privacy</a>
+
+                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="#">Volunteer</a>
+
+                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="#">FAQ</a>
+
+                        <a style="color: white; border-right: none; padding-left: 10px; padding-right: 10px" href="#">Help Us!</a>
+                    </div>
+				<div class="col-md-4 col-xs-10 mb-3" >
+					<div class ="social">
+						<div class="a2a_kit a2a_kit_size_32 a2a_default_style d-flex justify-content-center" style="padding-top: 10px">
+							 <a class="a2a_button_facebook" href="https://www.facebook.com"></a>
+							 <a class="a2a_button_twitter" href="https://www.twitter.com" style="margin-left: 10px"></a>
+							 <a class="a2a_button_google_plus" href="https://www.plus.google.com" style="margin-left: 10px"></a>
+							 <a class="a2a_button_email" style="margin-left: 10px"></a>
+						</div>
+						<script async src="https://static.addtoany.com/menu/page.js"></script>
+					</div>
+				</div>
+				<div class="col-md-2 col-xs-10">
+					<button href="#" type="button" class="btn donate-btn d-block mx-auto mb-3">
+						donate
+					</button>
+				</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
