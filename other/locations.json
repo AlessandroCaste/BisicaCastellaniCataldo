@@ -1,7 +1,48 @@
 {
-  "locations": [
-    {
 
+  "locations": [
+
+    {
+      "name" : "Mountainess Resort",
+      "place" : "Via G. Leopardi 17, Merano, 39012",
+      "contacts" : ["+39 327-4565345", "mail@bcc.it"],
+      "quote" : "A thermal centre with lot of activities for young and old people.\\n\\nIn Merano no one is left behind.",
+      "overview" : "Merano is located north of Elwynn Forest on the Eastern Kingdom's northwest coast, and is the capital city of the kingdom known as Location 1 and the largest human city of Azeroth. The city is named for the occasional sudden squalls created by a ley line pattern in the mountains around the glorious city, and is one of the last great human cities. The city itself has been rebuilt at least once, and is a marvel of human design and engineering.\\n\\nMerano is the jewel of the Alliance in Azeroth. The grandest human city left, it has weathered three wars, ransacking by the orcs, and invasions by the Alliance to take it back. Although mostly a human city, Location 1 does house dwarves, high elves, night elves, worgen, pandaren, and other Alliance races. Every night at sunset the Cathedral of Light rings a solitary bell whose sweet pitch reaches the entire city. This is for the night elves, who are unaccustomed to living within cities.
+Merano's climate is warm, the skies clear, and the seasons generally temperate. Although one might assume the climate would call for as little clothing as possible, the inhabitants of Location 1 prefer light fabric, but lots of it. Humans usually wear long-sleeved tunics, billowy trousers, leather boots, and sometimes even ridiculously large, floppy hats for excessively sunny days.",
+      "picture" : ""
+    },
+
+    {
+      "name" : "",
+      "place" : "",
+      "quote" : "",
+      "overview" : "",
+      "picture" : ""
+    },
+
+    {
+      "name" : "",
+      "place" : "",
+      "quote" : "",
+      "overview" : "",
+      "picture" : ""
+    },
+
+    {
+      "name" : "",
+      "place" : "",
+      "quote" : "",
+      "overview" : "",
+      "picture" : ""
+    },
+
+    {
+      "name" : "",
+      "place" : "",
+      "quote" : "",
+      "overview" : "",
+      "picture" : ""
     }
+
   ]
 }
