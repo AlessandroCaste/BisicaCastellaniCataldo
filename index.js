@@ -57,10 +57,10 @@ function initSqlDB() {
 
 
 function initDoctorsTable() {
-    return sqlDb.schema.hasTable("doctors").then(exists => {
+    return sqlDb.schema.hasTable("people").then(exists => {
         if (!exists) {
             sqlDb.schema
-                .createTable("doctors", table => {
+                .createTable("people", table => {
                     // create the table
                     table.increments("id").primary();
                     table.string("name");s
