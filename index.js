@@ -19,7 +19,7 @@ const nodemailer = require("nodemailer");
 // get json files that contains data to populate db
 let peopleList = require("./other/people.json");
 let locationsList = require("./other/locations.json");
-let servicesList = require("./other/services.json");
+//let servicesList = require("./other/services.json");
 
 
 // use it until testing
@@ -136,30 +136,6 @@ function initServicesTable() {
                         _.map(servicesList, p => {
                             // insert the row
                             return sqlDb("services").insert(p);
-                        })
-                    );
-                });
-        } else {
-            return true;
-        }
-    });
-}
-
-function initServicesLocationsTable() {
-    return sqlDb.schema.hasTable("servicesLocations").then(exists => {
-        if (!exists) {
-            sqlDb.schema
-                .createTable("servicesLocations", table => {
-                    // create the table
-                    table.integer("serviceId");
-                    table.integer("locationId");
-                    table.primary(["serviceId", "locationId"]);
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(servicesLocationsList, p => {
-                            // insert the row
-                            return sqlDb("servicesLocations").insert(p);
                         })
                     );
                 });
