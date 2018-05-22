@@ -19,7 +19,7 @@ const nodemailer = require("nodemailer");
 // get json files that contains data to populate db
 let peopleList = require("./other/people.json");
 let locationsList = require("./other/locations.json");
-//let servicesList = require("./other/services.json");
+let servicesList = require("./other/services.json");
 
 
 // use it until testing
@@ -63,7 +63,7 @@ function initPeopleTable() {
                 .createTable("people", table => {
                     // create the table
                     table.increments("id").primary();
-                    table.string("name");s
+                    table.string("name");
                     table.string("surname");
                     table.string("picture");
                     table.string("profession");
