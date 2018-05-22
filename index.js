@@ -40,7 +40,7 @@ function initSqlDB() {
             debug: true,
             client: "sqlite3",
             connection: {
-                filename: "./other/clinicdb.sqlite"
+                filename: "./other/bccdb.sqlite"
             }
         });
         // actual version of the db
@@ -56,7 +56,7 @@ function initSqlDB() {
 }
 
 
-function initDoctorsTable() {
+function initPeopleTable() {
     return sqlDb.schema.hasTable("people").then(exists => {
         if (!exists) {
             sqlDb.schema
@@ -149,11 +149,9 @@ function initServicesTable() {
 // for each table required, check if already existing
 // if not, create and populate
 function initDb() {
-    initDoctorsTable();
+    initPeopleTable();
     initLocationsTable();
     initServicesTable();
-    initServicesLocationsTable();
-    initWhoWeAreTable();
 
     return true;
 }
