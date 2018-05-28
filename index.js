@@ -69,7 +69,7 @@ function initPeopleTable() {
                     table.string("profession");
                     table.text("bio");
                     table.string("quote");
-                    table.integer("servicesId");
+                    table.string("servicesId");
                 })
                 .then(() => {
                     return Promise.all(

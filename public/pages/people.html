@@ -21,7 +21,7 @@
 
 	<!--CUSTOM CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-	<script src="../assets/js/script.js"></script>
+	
 
 </head>
 
@@ -91,86 +91,16 @@
 	</div>
 
 	<!-- FILTERING BUTTONS  -->
-	<div class="d-flex flex-row justify-content-around flex-wrap w-75 m-auto" id="onClickReturn">
-		<button class="filter_button mt-3 mx-1 p-2" id="allBtn">All People</button>
-		<button class="filter_button mt-3 mx-1 p-2" id="serv1Btn">Advisory</button>
-		<button class="filter_button mt-3 mx-1 p-2" id="serv2Btn">Children</button>
-		<button class="filter_button mt-3 mx-1 p-2" id="serv3Btn">Young Adults</button>
+	<div class="d-flex flex-row justify-content-around flex-wrap w-75 m-auto" id="buttonContainer">
+		<button class="filter_button mt-3 mx-1 p-2" id="allBtn" onClick="showAll()">All People</button>
+		<!--button class="filter_button mt-3 mx-1 p-2" id="serv1Btn" onClick="filterCards('1')">Advisory</button>
+		<button class="filter_button mt-3 mx-1 p-2" id="serv2Btn" onClick="filterCards('2')">Children</button>
+		<button class="filter_button mt-3 mx-1 p-2" id="serv3Btn" onClick="filterCards('3')">Young Adults</button-->
 	</div>
 
-	<div class="container mt-5">
+	<div class="container mt-5" id="onClickReturn">
 		<div class="d-flex flex-row flex-wrap justify-content-around" id="card_container">
-
-			
-			<!--div class="doctor-card m-3 text-center">
-				<p class="sr-only">service1</p>
-				<a href="person1.html">
-					<div class="card-link">
-						<div class="card-img-container">
-							<img class="img-fluid card-img" src="../assets/img/people/person1.jpg" alt="doctor_image">
-							<div class="lens_img"></div>
-						</div>
-						<h3 class="mt-2">Anthony Wilkinson</h3>
-					</div>
-				</a>
-				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person1.html">See More...</a>
-			</div>
-
-			<div class="doctor-card m-3 text-center">
-				<p class="sr-only">service1,service2</p>
-				<a href="person2.html">
-					<div class="card-link">
-						<div class="card-img-container">
-							<img class="img-fluid card-img" src="../assets/img/people/person2.jpg" alt="doctor_image">
-							<div class="lens_img"></div>
-						</div>
-						<h3 class="mt-2">Paula Simpson</h3>
-					</div>
-				</a>
-				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person2.html">See More...</a>
-			</div>
-
-			<div class="doctor-card m-3 text-center">
-				<p class="sr-only">service1,service3</p>
-				<a href="person3.html">
-					<div class="card-link">
-						<div class="card-img-container">
-							<img class="img-fluid card-img" src="../assets/img/people/person3.jpg" alt="doctor_image">
-							<div class="lens_img"></div>
-						</div>
-						<h3 class="mt-2">Steve Rogers</h3>
-					</div>
-				</a>
-				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person3.html">See More...</a>
-			</div>
-
-			<div class="doctor-card m-3 text-center">
-				<p class="sr-only">service2,service3</p>
-				<a href="person4.html">
-					<div class="card-link">
-						<div class="card-img-container">
-							<img class="img-fluid card-img" src="../assets/img/people/person4.jpg" alt="doctor_image">
-							<div class="lens_img"></div>
-						</div>
-						<h3 class="mt-2">John Redford</h3>
-					</div>
-				</a>
-				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person4.html">See More...</a>
-			</div>
-
-			<div class="doctor-card m-3 text-center">
-				<p class="sr-only">service2</p>
-				<a href="person5.html">
-					<div class="card-link">
-						<div class="card-img-container">
-							<img class="img-fluid card-img" src="../assets/img/people/person5.jpg" alt="doctor_image">
-							<div class="lens_img"></div>
-						</div>
-						<h3 class="mt-2">Robert DeSilva</h3>
-					</div>
-				</a>
-				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person5.html">See More...</a>
-			</div-->
+			<!--filled with cards-->
 		</div>
 	</div>
 
@@ -212,19 +142,31 @@
 		</div>
 	</footer>
 	
+	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
+			
+			var serviceId = [];
+			var serviceNames = [];
+			
 			fetch('/people')
 				.then(function(response) {
 					return response.json();
 				})
 				.then(function(data) {
 					data.map(addDoctorCard);
-				});
+					return data;
+				})
+				.then(function(data) {
+					data.map(addFilterButton);
+				})
+				
 			
 			function addDoctorCard(doctor){
 				$('#card_container').append(`
 					<div class="doctor-card m-3 text-center">
+						<p class="sr-only">${doctor.servicesId}</p>
+						<a href="person.html?id=${doctor.id}">
 							<div class="card-link">
 								<div class="card-img-container">
 									<img class="img-fluid card-img" src="${doctor.picture}" alt="doctor_image">
@@ -233,11 +175,60 @@
 								<h3 class="mt-2">${doctor.name} ${doctor.surname}</h3>
 							</div>
 						</a>
-						<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person2.html">See More...</a>
+						<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person.html?id=${doctor.id}">See More...</a>
 					</div>
 				`);
-			}
+			};
+			
+			function addFilterButton(doctor){
+				servId = doctor.servicesId;
+				servArr = servId.split(",");
+				servArr.forEach(function(elem) {
+					if($.inArray(elem, serviceId) == -1){
+						$('#buttonContainer').append(`
+							<button class="filter_button mt-3 mx-1 p-2" id="serv${elem}" onClick="filterCards(this.id)">service${elem}</button>
+						`);
+						serviceId += elem;
+					}
+				});
+			};
+			
+			
+			/*---------------*/
+			
+			
+			
 		});
+		
+		/*---------------*/
+		
+		function filterCards(btnName){
+			var cards = $('#card_container').children();
+			cards.hide();
+			filteredCards = cards.filter(function (a) {
+				var src_text = $(this).find('p').text();
+				var locs = src_text.split(',');
+				return $.inArray(btnName.replace('serv', ''), locs) > -1;
+			});
+			filteredCards.show();
+			scrollOnClick();
+		};
+		
+		function showAll(){
+			var cards = $('#card_container').children();
+			console.log(cards);
+			cards.show();
+			scrollOnClick();
+		};
+		
+		function scrollOnClick(){
+			$('html, body').animate({
+				scrollTop: ($('#onClickReturn').offset().top - 250)
+			}, 500);
+		};
+		
 	</script>
+	
+	
 </body>
 </html>

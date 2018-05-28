@@ -11,63 +11,6 @@ $(document).ready( function() {
 	});
 	
 	
-	/* Filtering Buttons */
-	var divs = $('#card_container').children();
-
-	$('#allBtn').on('click', function () {
-		divs.show();
-		scrollOnClick();
-	});
-			
-	$('#serv1Btn').on('click', function(){
-		filterCards('service1', divs);
-		scrollOnClick();
-	});
-
-	$('#serv2Btn').on('click', function(){
-		filterCards('service2', divs);
-		scrollOnClick();
-	});
-
-	$('#serv3Btn').on('click', function(){
-		filterCards('service3', divs);
-		scrollOnClick();
-	});
-	
-	$('#zone1Btn').on('click', function(){
-		filterCards('zone1', divs);
-		scrollOnClick();
-	});
-	
-	$('#zone2Btn').on('click', function(){
-		filterCards('zone2', divs);
-		scrollOnClick();
-	});
-	
-	$('#zone3Btn').on('click', function(){
-		filterCards('zone3', divs);
-		scrollOnClick();
-	});
-	
-		
-	function filterCards(btnName, cards){
-			cards.hide();
-			filteredCards = cards.filter(function (a) {
-				var src_text = $(this).find('p').text();
-				var locs = src_text.split(',');
-				return $.inArray(btnName, locs) > -1;
-			});
-			filteredCards.show();
-		};
-	
-	function scrollOnClick(){
-		$('html, body').animate({
-        scrollTop: ($('#onClickReturn').offset().top - 250)
-    }, 700);
-	};
-	/* ------ END ------ */
-	
-	
 	/* "Location" carousel caption on other Div*/
 	$(function() {
 		$('.carousel').carousel();
