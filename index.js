@@ -193,8 +193,8 @@ app.get("/whoweare", function(req, res) {
 
 // retrieve data about all the doctors
 // result returned as a JSON array
-app.get("/doctors", function(req, res) {
-    let myQuery = sqlDb("doctors").orderByRaw('surname, name')
+app.get("/people", function(req, res) {
+    let myQuery = sqlDb("people").orderByRaw('surname, name')
         .then(result => {
             res.send(JSON.stringify(result));
         })

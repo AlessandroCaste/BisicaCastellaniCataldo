@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 	<!-- Bootstrap and JQuery -->
-	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 
@@ -82,7 +82,7 @@
 	<div class="row">
 		<div class="col-lg-8 text-center m-auto">
 			<p>
-				We work with children who have moderate to severe learning and physical disabilities and sensory impairments – typically autism, cerebral palsy and muscular dystrophy. We also encounter rare syndromes and conditions.Referral into the Children with Disabilities Social Work Team comes via the Safeguarding Referral Team (SRT)  and provides a Children and Families Assessment which may lead to the provision of an allocated Social Worker or Social Work Assistant who will draw up a Child In Need Plan to offer Focused and/or Enhanced Social Care Services. These services are coordinated in order to support Stoke on Trent's vision for children and young people as set out in the Children &amp; Young People's Plan is for them
+				We work with children who have moderate to severe learning and physical disabilities and sensory impairments – typically autism, cerebral palsy and muscular dystrophy. We also encounter rare syndromes and conditions.Referral into the Children with Disabilities Social Work Team comes via the Safeguarding Referral Team (SRT)  and provides a Children and Families Assessment which may lead to the provision of an allocated Social Worker or Social Work Assistant who will draw up a Child In Need Plan to offer Focused and/or Enhanced Social Care Services. These services are coordinated in order to support Stoke on Trent's vision for children and young people as set out in the Children & Young People's Plan is for them
 			</p>
 
 			<h2> Meet us! </h2>
@@ -101,8 +101,7 @@
 	<div class="container mt-5">
 		<div class="d-flex flex-row flex-wrap justify-content-around" id="card_container">
 
-			
-			<!--div class="doctor-card m-3 text-center">
+			<div class="doctor-card m-3 text-center">
 				<p class="sr-only">service1</p>
 				<a href="person1.html">
 					<div class="card-link">
@@ -170,7 +169,7 @@
 					</div>
 				</a>
 				<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person5.html">See More...</a>
-			</div-->
+			</div>
 		</div>
 	</div>
 
@@ -211,33 +210,5 @@
 			</div>
 		</div>
 	</footer>
-	
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-			fetch('/people')
-				.then(function(response) {
-					return response.json();
-				})
-				.then(function(data) {
-					data.map(addDoctorCard);
-				});
-			
-			function addDoctorCard(doctor){
-				$('#card_container').append(`
-					<div class="doctor-card m-3 text-center">
-							<div class="card-link">
-								<div class="card-img-container">
-									<img class="img-fluid card-img" src="${doctor.picture}" alt="doctor_image">
-									<div class="lens_img"></div>
-								</div>
-								<h3 class="mt-2">${doctor.name} ${doctor.surname}</h3>
-							</div>
-						</a>
-						<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person2.html">See More...</a>
-					</div>
-				`);
-			}
-		});
-	</script>
 </body>
 </html>
