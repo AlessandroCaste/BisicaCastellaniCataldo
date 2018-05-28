@@ -128,6 +128,7 @@ function initServicesTable() {
                     // create the table
                     table.increments("id").primary();
                     table.string("name");
+                    table.string("typology");
                     table.string("picture");
                     table.text("overview");
                 })

@@ -11,7 +11,7 @@ body{
 	margin: 0;
 }
 
-#content-wrapper{
+.content-wrapper{
 	flex: 1 0 auto;
 }
 
