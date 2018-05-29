@@ -38,8 +38,8 @@
 				</button>
 				<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
 					<ul class="navbar-nav" style="margin:auto">
-						<li class="nav-item"> <a class="nav-link navigation-text" href="../index.html">Home        </a> </li>
-						<li class="nav-item"> <a class="nav-link navigation-text" href="whoweare.html">Who We Are  </a> </li>
+						<li class="nav-item"><a class="nav-link navigation-text" href="../index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link navigation-text" href="whoweare.html">Who We Are</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle navigation-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Our offer
@@ -52,7 +52,7 @@
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle navigation-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								News&Events
+								News &amp; Events
 							</a>
 							<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item navigation-text" href="#">News</a>
@@ -65,8 +65,8 @@
 			</nav>
 		</div>
 	</header>
-  <!------------------ PRESENTATION IMAGE ------------------>
-
+  	
+	<!------------------ PRESENTATION IMAGE ------------------>
 	<div class="container-fluid">
 		<div  class="row">
 			<div class="col-lg-8 col-xxs-12 m-auto text-center">
@@ -78,7 +78,7 @@
 		</div>
     </div>
 
-		<!------------------ CONTENT ------------------>
+	<!------------------ DESCRIPTION CONTENT ------------------>
 	<div class="row">
 		<div class="col-lg-8 text-center m-auto">
 			<p>
@@ -90,14 +90,12 @@
 		</div>
 	</div>
 
-	<!-- FILTERING BUTTONS  -->
-	<div class="d-flex flex-row justify-content-around flex-wrap w-75 m-auto" id="buttonContainer">
-		<button class="filter_button mt-3 mx-1 p-2" id="allBtn" onClick="showAll()">All People</button>
-		<!--button class="filter_button mt-3 mx-1 p-2" id="serv1Btn" onClick="filterCards('1')">Advisory</button>
-		<button class="filter_button mt-3 mx-1 p-2" id="serv2Btn" onClick="filterCards('2')">Children</button>
-		<button class="filter_button mt-3 mx-1 p-2" id="serv3Btn" onClick="filterCards('3')">Young Adults</button-->
+	<!------------ FILTERING BUTTONS  ------------>
+	<div class="d-flex flex-row justify-content-center flex-wrap m-auto" id="buttonContainer" style="width: 65%">
+		<button class="filter_button m-3 p-2" id="allBtn" onClick="showAll()">All People</button>
 	</div>
 
+	<!------------ DOCTOR CARDS  ------------>
 	<div class="container mt-5" id="onClickReturn">
 		<div class="d-flex flex-row flex-wrap justify-content-around" id="card_container">
 			<!--filled with cards-->
@@ -142,6 +140,11 @@
 		</div>
 	</footer>
 	
+	
+	<!---------------------------------------------------->
+	<!------------------ DYNAMIC SCRIPT ------------------>
+	<!---------------------------------------------------->
+	
 	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
@@ -158,8 +161,9 @@
 					return data;
 				})
 				.then(function(data) {
-					data.map(addFilterButton);
+					data.map(updateServiceList);
 				})
+				.then(addFilterButton);
 				
 			
 			function addDoctorCard(doctor){
@@ -180,16 +184,22 @@
 				`);
 			};
 			
-			function addFilterButton(doctor){
-				servId = doctor.servicesId;
-				servArr = servId.split(",");
+			
+			function updateServiceList(doctor){
+				servArr = doctor.servicesId.split(",");
 				servArr.forEach(function(elem) {
-					if($.inArray(elem, serviceId) == -1){
-						$('#buttonContainer').append(`
-							<button class="filter_button mt-3 mx-1 p-2" id="serv${elem}" onClick="filterCards(this.id)">service${elem}</button>
-						`);
-						serviceId += elem;
-					}
+					if($.inArray(elem, serviceId) == -1)
+						serviceId.push(elem);
+				});
+			};
+			
+			
+			function addFilterButton(){
+				serviceId.sort();
+				serviceId.forEach(function(elem) {
+					$('#buttonContainer').append(`
+						<button class="filter_button m-3 p-2" id="serv${elem}" onClick="filterCards(this.id)">service${elem}</button>
+					`);
 				});
 			};
 			
