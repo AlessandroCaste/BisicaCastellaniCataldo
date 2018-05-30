@@ -175,22 +175,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // Name of the tables are:
-// doctors
+// people
 // locations
 // services
-// servicesLocations
-// whoweare
 
-
-// retrieve "who we are" data
-// result returned as a JSON array with a single element
-app.get("/whoweare", function(req, res) {
-    // retrieve the whole table, because it contains only 1 entry
-    let myQuery = sqlDb("whoweare")
-        .then(result => {
-            res.send(JSON.stringify(result));
-        })
-})
 
 // retrieve data about all the doctors
 // result returned as a JSON array
@@ -212,8 +200,8 @@ app.get("/locations", function(req, res) {
 
 // given a doctor id, retrieve all data about that doctor
 // result returned as a JSON array with a single element
-app.get("/doctors/:id", function(req, res) {
-    let myQuery = sqlDb("doctors");
+app.get("/people/:id", function(req, res) {
+    let myQuery = sqlDb("people");
     myQuery.where("id", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
