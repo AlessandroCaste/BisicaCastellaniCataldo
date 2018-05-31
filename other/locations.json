@@ -3,7 +3,6 @@
   "locations": [
 
     {
-      "id" : "01",
       "name" : "Mountainess Resort",
       "place" : ["Via G. Leopardi 17, Merano, 39012", "46.667527,11.156346"],
       "contacts" : ["+39 327-4565345", "mail@bcc.it"],
@@ -13,7 +12,6 @@
     },
 
     {
-      "id" : "02",
       "name" : "Hilltop City",
       "place" : ["Via Roma, 27, Matino","40.031282,18.133875"],
       "contacts" : ["+39 341-3345426","mail@bcc.it"],
@@ -23,7 +21,6 @@
     },
 
     {
-      "id" : "03",
       "name" : "The Ferret Room",
       "place" : ["Piazza Danti 18, Perugia 54191", "43.110717,12.390828"] ,
       "contacts" : ["+39 341-3345426","mail@bcc.it"],
@@ -33,7 +30,6 @@
     },
 
     {
-      "id" : "04",
       "name" : "Arrostiland",
       "place" : ["Via de Nicoli, L'Aquila 67100", "42.3503231,13.3990277"] ,
       "contacts" : ["+39 376-9879501","mail@bcc.it"],
@@ -43,7 +39,6 @@
     },
 
     {
-      "id" : "05",
       "name" : "The Sea Canal",
       "place" :  ["Via Canale 55, Venezia 95823", "45.4749351,12.2257579"] ,
       "contacts" : ["+39 398-9867546","mail@bcc.it"],
