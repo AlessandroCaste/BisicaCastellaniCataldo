@@ -100,8 +100,13 @@ function initLocationsTable() {
                     // create the table
                     table.increments("id").primary();
                     table.string("name");
-                    table.string("place");
-                    table.string("contacts");
+                    table.string("region");
+                    table.string("city");
+                    table.string("address");
+                    table.string("CAP");
+                    table.string("coordinates");
+                    table.string("phone");
+                    table.string("mail");
                     table.string("quote");
                     table.text("overview");
                     table.string("pictures");
@@ -119,6 +124,7 @@ function initLocationsTable() {
         }
     });
 }
+
 
 function initServicesTable() {
     return sqlDb.schema.hasTable("services").then(exists => {
@@ -193,6 +199,15 @@ app.get("/people", function(req, res) {
 // result returned as a JSON array
 app.get("/locations", function(req, res) {
     let myQuery = sqlDb("locations")
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
+
+// retrieve data about all the services
+// result returned as a JSON array
+app.get("/services", function(req, res) {
+    let myQuery = sqlDb("services")
         .then(result => {
             res.send(JSON.stringify(result));
         })

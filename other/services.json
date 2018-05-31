@@ -1,7 +1,6 @@
 {
 	"services": [
-		{
-            
+		{            
 			"name": "Parent Courses",
 			"typology": "Advisory",
 			"picture": "../assets/img/service/service1.jpg",
