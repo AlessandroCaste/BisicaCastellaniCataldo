@@ -202,12 +202,7 @@
 					`);
 				});
 			};
-			
-			
-			/*---------------*/
-			
-			
-			
+
 		});
 		
 		/*---------------*/
@@ -217,24 +212,11 @@
 			cards.hide();
 			filteredCards = cards.filter(function (a) {
 				var src_text = $(this).find('p').text();
-				var locs = src_text.split(',');
-				return $.inArray(btnName.replace('serv', ''), locs) > -1;
+				var locations = src_text.split(',');
+				return $.inArray(btnName.replace('serv', ''), locations) > -1;
 			});
 			filteredCards.show();
 			scrollOnClick();
-		};
-		
-		function showAll(){
-			var cards = $('#card_container').children();
-			console.log(cards);
-			cards.show();
-			scrollOnClick();
-		};
-		
-		function scrollOnClick(){
-			$('html, body').animate({
-				scrollTop: ($('#onClickReturn').offset().top - 250)
-			}, 500);
 		};
 		
 	</script>

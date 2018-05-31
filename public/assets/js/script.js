@@ -49,6 +49,18 @@ $(document).ready( function() {
 	});
 });
 
+function showAll(){
+			var cards = $('#card_container').children();
+			console.log(cards);
+			cards.show();
+			scrollOnClick();
+		};
+		
+function scrollOnClick(){
+	$('html, body').animate({
+		scrollTop: ($('#onClickReturn').offset().top - 250)
+	}, 500);
+};
 
 function getAllUrlParams(url) { // get query string from url (optional) or window
 	var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
