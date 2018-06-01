@@ -137,6 +137,7 @@ function initServicesTable() {
                     table.string("typology");
                     table.string("picture");
                     table.text("overview");
+                    table.string("serviceId");
                 })
                 .then(() => {
                     return Promise.all(
@@ -184,10 +185,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // people
 // locations
 // services
+// All data is returned in JSON format
 
 
-// retrieve data about all the doctors
-// result returned as a JSON array
+// Returns data about the workers 
+
+
 app.get("/people", function(req, res) {
     let myQuery = sqlDb("people").orderByRaw('surname, name')
         .then(result => {
@@ -195,8 +198,8 @@ app.get("/people", function(req, res) {
         })
 })
 
-// given a doctor id, retrieve all data about that doctor
-// result returned as a JSON array with a single element
+// Returns data about a specific worker based on its id 
+
 app.get("/people/:id", function(req, res) {
     let myQuery = sqlDb("people");
     myQuery.where("id", req.params.id)
@@ -205,8 +208,8 @@ app.get("/people/:id", function(req, res) {
         })
 })
 
-// retrieve data about all the locations
-// result returned as a JSON array
+// Returns data about locations 
+
 app.get("/locations", function(req, res) {
     let myQuery = sqlDb("locations")
         .then(result => {
@@ -214,8 +217,8 @@ app.get("/locations", function(req, res) {
         })
 })
 
-// given a location id, retrieve all data about that location
-// result returned as a JSON array with a single element
+// Return data about a specific location based on its id 
+
 app.get("/locations/:id", function(req, res) {
     let myQuery = sqlDb("locations");
     myQuery.where("id", req.params.id)
@@ -224,8 +227,8 @@ app.get("/locations/:id", function(req, res) {
         })
 })
 
-// retrieve data about all the services
-// result returned as a JSON array
+// Return data about services 
+
 app.get("/services", function(req, res) {
     let myQuery = sqlDb("services")
         .then(result => {
@@ -233,8 +236,8 @@ app.get("/services", function(req, res) {
         })
 })
 
-// given a service id, retrieve all data about that service
-// result returned as a JSON array with a single element
+// Return data about a specific service based on its id 
+
 app.get("/services/:id", function(req, res) {
     let myQuery = sqlDb("services");
     myQuery.where("id", req.params.id)
@@ -244,8 +247,8 @@ app.get("/services/:id", function(req, res) {
 })
 
 
-// given a service id, retrieve data of the doctors working in it
-// result returned as a JSON array
+// Return a single worker's data given service id
+
 app.get("/doctorsbyservice/:id", function(req, res) {
     let myQuery = sqlDb("doctors");
     myQuery.select().where("serviceId", req.params.id)
@@ -255,8 +258,8 @@ app.get("/doctorsbyservice/:id", function(req, res) {
 })
 
 
-// given a location id, retrieve data of the services located in that location
-// result returned as a JSON array
+// Return workers data by service 
+
 app.get("/servicesbylocation/:id", function(req, res) {
     let myQuery = sqlDb.select().from("services").whereIn("id", function() {
             this.select("serviceId").from("servicesLocations").where("locationId", req.params.id);
@@ -268,7 +271,7 @@ app.get("/servicesbylocation/:id", function(req, res) {
 
 
 // given a service id, retrieve data of the locations in which that service exists
-// result returned as a JSON array
+
 app.get("/locationsbyservice/:id", function(req, res) {
     let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
             this.select("locationId").from("servicesLocations").where("serviceId", req.params.id);
@@ -278,50 +281,7 @@ app.get("/locationsbyservice/:id", function(req, res) {
         })
 })
 
-/////////////////////////////////////////////
-///////////////// APP.POST //////////////////
-/////////////////////////////////////////////
 
-/*  Form data handling. Given the following data:
- *      - name: writer's name
- *      - mail: writer's mail
- *      - subject: subject of the inquery
- *      - message: writer's message
- *
- *      an email will be sent to the writer's mail
- */
-app.post('/contactForm', function(req, res) {
-
-    var smtpConfig = {
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true, // use SSL
-        auth: {
-            user: 'clinic.pms@gmail.com',
-            pass: 'megliosucochemaleaccompagnato'
-        }
-    };
-    var transporter = nodemailer.createTransport(smtpConfig);
-
-    // setup e-mail data with unicode symbols
-    var mailOptions = {
-        from: '"' + req.body.name + '" <clinic.pms@gmail.com>', // sender address
-        to: req.body.mail, // list of receivers
-        subject: req.body.subject, // Subject line
-        html: '<p>Message: ' + req.body.message + '</p>' // html body
-    };
-
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info) {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message sent: ' + info.response);
-    });
-
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end('thanks');
-});
 
 
 /////////////////////////////////////////////
