@@ -129,9 +129,9 @@
 					<img class="rounded_icon" src="../assets/img/icons/child.png">
 					<p>Children are the ones who are very vital for deciding how the world is gonna be after some years. So if one can do some good in the life of a child then there can be change, atleast a slightest change, in the world to come. And if most of them think on same lines then we can hope of a better future ahead. The main component which decides how the person is going to be in the future or the present is the amount of education he/she has within them.</p>
 				</div>
-				<ul class="stylish-list pl-5">
+				<ul class="stylish-list pl-5" id="ChildrenService">
 
-					<li class="my-2" style="border: 3px solid grey;">
+					<!---<li class="my-2" style="border: 3px solid grey;">
 						<a class="d-block" data-toggle="collapse" href="#collapseService_2.1" role="button" aria-expanded="false" aria-controls="collapseService_2.1">
 							Psychoterapy and Assistance
 						</a>
@@ -153,7 +153,7 @@
 								<a href="service3.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
 							</div>
 						</div>
-					</li>
+					</li>--->
 
 				</ul>
 
@@ -219,5 +219,59 @@
 			</div>
 		</div>
 	</footer>
+    
+    
+    <!---------------------------------------------------->
+	<!------------------ DYNAMIC SCRIPT ------------------>
+	<!---------------------------------------------------->
+	
+    <script src="../assets/js/script.js"></script>
+	<script type="text/javascript">
+        jQuery(document).ready(function() {
+            
+            var typologyArr = [];
+            
+            fetch('/services')
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(data) {
+					data.map(createArr);
+                })
+                .then(function(data){
+                    console.log(data);
+                    data.map(addOverviewService);
+                    return data;
+                });
+            
+            console.log(typologyArr);
+                
+            
+            function addOverviewService(service){
+                if(service.typology.localeCompare(typologyArr[1])){
+                $('#ChildrenService').append(`
+                        <li class="my-2" style="border: 3px solid grey;">
+                            <a class="d-block" data-toggle="collapse" href="#collapseService_1.1" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
+                                ${service.name}
+                            </a>
+                            <div class="collapse" id="collapseService_1.1">
+                                <div class="p-1">
+                                    ${service.overview}
+                                    <a href="randomservice.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+                                </div>
+                            </div>
+                        </li>
+                `);
+                }
+            }
+            
+            function createArr(service){
+				if(!typologyArr.includes(service.typology)){
+                    typologyArr.push(service.typology);
+                };
+			};
+        });
+    </script>
+    
 </body>
 </html>
