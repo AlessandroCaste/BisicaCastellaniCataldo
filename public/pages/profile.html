@@ -193,8 +193,8 @@
 		jQuery(document).ready(function() {
 			var doctorID = getAllUrlParams().id;
 			fetch('/people/' + doctorID)
-				.then(function(responce){
-					return responce.json();
+				.then(function(response){
+					return response.json();
 				})
 				.then(function(doctorData){
 					fillDoctorData(doctorData);
