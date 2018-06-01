@@ -110,6 +110,7 @@ function initLocationsTable() {
                     table.string("quote");
                     table.text("overview");
                     table.string("pictures");
+                    table.string("servicesId");
                 })
                 .then(() => {
                     return Promise.all(
@@ -137,7 +138,6 @@ function initServicesTable() {
                     table.string("typology");
                     table.string("picture");
                     table.text("overview");
-                    table.string("serviceId");
                 })
                 .then(() => {
                     return Promise.all(
