@@ -261,14 +261,12 @@ app.get("/doctorsbyservice/:id", function(req, res) {
 // Return a single location's data given service id
 
 app.get("/locationsbyservice/:id", function(req, res) {
-    let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
-            this.select("locationId").from("servicesLocations").where("serviceId", req.params.id);
-        })
+    let myQuery = sqlDb("locations");
+    myQuery.select().where("serviceId", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
         })
 })
-
 
 
 /////////////////////////////////////////////
