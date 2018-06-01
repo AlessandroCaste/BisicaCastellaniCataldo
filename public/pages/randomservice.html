@@ -298,6 +298,7 @@
 		
 			function fillserviceData(service){
 				document.title = service[0].name;
+				$('#breadcrumbName').text(service[0].name);
 				$('#serviceTypology').text(service[0].typology);
 				$('#serviceName').text(service[0].name);
 				$('#serviceOverview').text(service[0].overview);
