@@ -64,9 +64,7 @@
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="locations.html">Locations</a></li>
-			<li class="breadcrumb-item active" aria-current="page">
-				<!--fill with name-->
-			</li>
+			<li class="breadcrumb-item active" aria-current="page" id="breadcrumbName"><!--fill with name--></li>
 		</ol>
 	</nav>
 
@@ -76,8 +74,8 @@
 		<!------------------ PRESENTATION IMAGE ------------------>
 		<div  class="row">
 			<div class ="col-lg-8 m-auto text-center">
-				<img src="#" class="presentation-image" alt="Location 1">
-				<div class="opaque_line_text">
+				<img src="#" class="presentation-image" alt="" id="locImg">
+				<div class="opaque_line_text" id="locName">
 					<!--fill with name-->
 				</div>
 			</div>
@@ -87,22 +85,20 @@
 		<!---------------- LOCATION DESCRIPTION ---------------->
 		<div class="col-lg-10 p-0 mx-auto">
 
-			<blockquote class="mx-auto text-center location_quote mb-5">
+			<blockquote class="mx-auto text-center location_quote mb-5" id="locQuote" style="white-space: pre-wrap">
 				<!--fill with quote-->
 			</blockquote>
 
 			<div class="d-flex flex-row flex-wrap">
 				<!------------------ Text Description ------------------>
-				<div class="col-md-7 align-self-center order-1 ml-auto">
+				<div class="col-md-7 align-self-center order-1 ml-auto" id="locDescription" style="white-space: pre-wrap">
 					<!--fill with description-->
 				</div>
 
 				<!------------------ MAPS ------------------>
 				<div class="col-md-5 align-self-center order-12 order-md-2 mr-auto p-0">
 
-					<h4 class="text-center" style="font-size: 1.7em;">
-						Find Us
-					</h4>
+					<h4 class="text-center" style="font-size: 1.7em;">Find Us</h4>
 
 					<div class="w-100 h-50" id="map"></div>
 					<script>
@@ -128,10 +124,10 @@
 						<ul class="stylish-list ml-3">
 							<li> <!--fill with address, city, CAP--> </li>
 							<li>
-								<a href="#"> <!--fill with phone--> </a>
+								<a href="#" id="locPhone"> <!--fill with phone--> </a>
 							</li>
 							<li>
-								<a href="#"> <!--fill with mail--> </a>
+								<a href="#" id=locMail> <!--fill with mail--> </a>
 							</li>
 						</ul>
 					</div>
@@ -153,7 +149,7 @@
 								</ol>
 								<div class="carousel-inner">
 									<div class="carousel-item active">
-										<img class="d-block w-100" src="../assets/img/locations/location1/slide1.jpg" alt="First slide">
+										<img class="d-block w-100" src="../assets/img/locations/arrostiland/slide1.jpg" alt="First slide">
 										<div class="carousel-caption">
 											<blockquote class="carousel_quote">
 												<h4>The Place</h4>
@@ -162,7 +158,7 @@
 										</div>
 									</div>
 									<div class="carousel-item">
-										<img class="d-block w-100" src="../assets/img/locations/location1/slide2.jpg" alt="Second slide">
+										<img class="d-block w-100" src="../assets/img/locations/arrostiland/slide2.jpg" alt="Second slide">
 										<div class="carousel-caption">
 											<blockquote class="carousel_quote">
 												<h4>Walk</h4>
@@ -171,7 +167,7 @@
 										</div>
 									</div>
 									<div class="carousel-item">
-										<img class="d-block w-100" src="../assets/img/locations/location1/slide3.jpg" alt="Third slide">
+										<img class="d-block w-100" src="../assets/img/locations/arrostiland/slide3.jpg" alt="Third slide">
 										<div class="carousel-caption">
 											<blockquote class="carousel_quote">
 												<h4>The Spa</h4>
@@ -180,7 +176,7 @@
 										</div>
 									</div>
 									<div class="carousel-item">
-										<img class="d-block w-100" src="../assets/img/locations/location1/slide4.jpg" alt="Fouth slide">
+										<img class="d-block w-100" src="../assets/img/locations/arrostiland/slide4.jpg" alt="Fouth slide">
 										<div class="carousel-caption">
 											<blockquote class="carousel_quote">
 												<h4>Children come here</h4>
@@ -329,15 +325,32 @@
 	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
+			
 			var locationID = getAllUrlParams().id;
+			
 			fetch('/locations/' + locationID)
 				.then(function(response) {
 					return response.json();
 				})
 				.then(function(data) {
-					console.log(data);
+					fillLocationData(data);
 					return data;
-				})
+				});
+			
+			
+			function fillLocationData(location){
+				document.title = location[0].name;
+				$('#breadcrumbName').text(location[0].name);
+				$('#locImg').attr({
+					src: location[0].pictures + 'location' + location[0].id + '.jpg',
+					alt: 'Location' + location[0].id
+				});
+				$('#locName').text(location[0].name);
+				$('#locQuote').text((location[0].quote).replace("\\n\\n", '<br/>'));	
+				$('#locDescription').text((location[0].overview).replaceAll("\\n\\n", '<br/>'));
+			}
+			
+			
 		});
 
 	</script>

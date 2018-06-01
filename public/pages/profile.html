@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Anthony Wilkinson</title>
+	<title>Profile</title>
 	<link href = "../assets/img/logo.png" rel="icon">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,6 @@
 	<!--CUSTOM CSS and JS -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 	<script src="../assets/js/script.js"></script>
-
 </head>
 
 <body>
@@ -38,8 +37,8 @@
 				</button>
 				<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
 					<ul class="navbar-nav" style="margin:auto">
-						<li class="nav-item"> <a class="nav-link navigation-text" href="../index.html">Home        </a> </li>
-						<li class="nav-item"> <a class="nav-link navigation-text" href="whoweare.html">Who We Are  </a> </li>
+						<li class="nav-item"><a class="nav-link navigation-text" href="../index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link navigation-text" href="whoweare.html">Who We Are</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle navigation-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Our offer
@@ -59,7 +58,7 @@
 								<a class="dropdown-item navigation-text" href="#">Events</a>
 							</div>
 						</li>
-						<li class="nav-item"> <a class="nav-link navigation-text" href="contactus.html">Contacts</a> </li>
+						<li class="nav-item"><a class="nav-link navigation-text" href="contactus.html">Contacts</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -197,10 +196,9 @@
 				.then(function(responce){
 					return responce.json();
 				})
-				.then(function(data){
-					console.log(data);
-					fillDoctorData(data);
-					return data;
+				.then(function(doctorData){
+					fillDoctorData(doctorData);
+					return doctorData;
 				});
 			
 			function fillDoctorData(doctor){

@@ -195,10 +195,30 @@ app.get("/people", function(req, res) {
         })
 })
 
+// given a doctor id, retrieve all data about that doctor
+// result returned as a JSON array with a single element
+app.get("/people/:id", function(req, res) {
+    let myQuery = sqlDb("people");
+    myQuery.where("id", req.params.id)
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
+
 // retrieve data about all the locations
 // result returned as a JSON array
 app.get("/locations", function(req, res) {
     let myQuery = sqlDb("locations")
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
+
+// given a location id, retrieve all data about that location
+// result returned as a JSON array with a single element
+app.get("/locations/:id", function(req, res) {
+    let myQuery = sqlDb("locations");
+    myQuery.where("id", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
         })
@@ -213,30 +233,10 @@ app.get("/services", function(req, res) {
         })
 })
 
-// given a doctor id, retrieve all data about that doctor
-// result returned as a JSON array with a single element
-app.get("/people/:id", function(req, res) {
-    let myQuery = sqlDb("people");
-    myQuery.where("id", req.params.id)
-        .then(result => {
-            res.send(JSON.stringify(result));
-        })
-})
-
 // given a service id, retrieve all data about that service
 // result returned as a JSON array with a single element
 app.get("/services/:id", function(req, res) {
     let myQuery = sqlDb("services");
-    myQuery.where("id", req.params.id)
-        .then(result => {
-            res.send(JSON.stringify(result));
-        })
-})
-
-// given a location id, retrieve all data about that location
-// result returned as a JSON array with a single element
-app.get("/locations/:id", function(req, res) {
-    let myQuery = sqlDb("locations");
     myQuery.where("id", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
