@@ -304,24 +304,9 @@
 					These courses may also be geared towards parents who are considering having a child, or adopting one, or are pregnant. Findings from a recently published review of eleven effectiveness trials and four scaled-up parenting programmes reflect a range in delivery settings, generation of target beneficiaries, curricula and key messages. All programmes report substantial positive outcomes for children (e.g. cognitive, social and emotional development) and two of the programmes report significant improvements in adult parenting knowledge and the home environment. There are also some interesting patterns to the results that have important implications for future programme design. First, the findings suggest that programmes that employ more than one delivery mechanism are more effective than those that rely on a single mechanism, and programmes that address the parent and child (i.e. two-generation programmes) are more effective than those that only focus on the parent. The effects of the evaluated programmes were also stronger among younger children; this result demonstrates support for the hypothesis that earlier intervention yields better outcomes. Also, results were stronger for poorer children when compared with their wealthier peers; this finding validates previous work on programme impact and disadvantage.
 				`);
 			};
-			
-			function addFilterButton(service){
-				servId = service.servicesId;
-				servArr = servId.split(",");
-				servArr.forEach(function(elem) {
-					if($.inArray(elem, serviceId) == -1){
-						$('#buttonContainer').append(`
-							<button class="filter_button mt-3 mx-1 p-2" id="serv${elem}" onClick="filterCards(this.id)">service${elem}</button>
-						`);
-						serviceId += elem;
-					}
-				});
-            };
+
         });
         </script>
-
-
-
 
 </body>
 </html>

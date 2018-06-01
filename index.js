@@ -258,19 +258,7 @@ app.get("/doctorsbyservice/:id", function(req, res) {
 })
 
 
-// Return workers data by service 
-
-app.get("/servicesbylocation/:id", function(req, res) {
-    let myQuery = sqlDb.select().from("services").whereIn("id", function() {
-            this.select("serviceId").from("servicesLocations").where("locationId", req.params.id);
-        })
-        .then(result => {
-            res.send(JSON.stringify(result));
-        })
-})
-
-
-// given a service id, retrieve data of the locations in which that service exists
+// Return a single location's data given service id
 
 app.get("/locationsbyservice/:id", function(req, res) {
     let myQuery = sqlDb.select().from("locations").whereIn("id", function() {
@@ -280,7 +268,6 @@ app.get("/locationsbyservice/:id", function(req, res) {
             res.send(JSON.stringify(result));
         })
 })
-
 
 
 
