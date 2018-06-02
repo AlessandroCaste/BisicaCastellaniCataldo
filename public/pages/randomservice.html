@@ -280,7 +280,7 @@
 					return serviceData;
 				});
 
-			fetch('/doctorsbyservice/' + serviceID)
+			fetch('/service/'+ serviceID+'/people')
 				.then(function(response) {
 					return response.json();
 				})
