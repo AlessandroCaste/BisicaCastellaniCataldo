@@ -19,6 +19,8 @@ const process = require("process");
 let peopleList = require("./other/people.json");
 let locationsList = require("./other/locations.json");
 let servicesList = require("./other/services.json");
+let servicesLocationsList = require("./other/serviceslocations.json");
+let servicesPeopleList = require("./other/servicespeople.json");
 
 
 // use it until testing
@@ -68,7 +70,6 @@ function initPeopleTable() {
                     table.string("profession");
                     table.text("bio");
                     table.string("quote");
-                    table.string("servicesId");
                 })
                 .then(() => {
                     return Promise.all(
@@ -109,7 +110,6 @@ function initLocationsTable() {
                     table.string("quote");
                     table.text("overview");
                     table.string("pictures");
-                    table.string("servicesId");
                 })
                 .then(() => {
                     return Promise.all(
@@ -152,6 +152,53 @@ function initServicesTable() {
     });
 }
 
+function initServicesLocationsTable() {
+    return sqlDb.schema.hasTable("serviceslocations").then(exists => {
+        if (!exists) {
+            sqlDb.schema
+                .createTable("serviceslocations", table => {
+                    // create the table
+                    table.integer("servicesId");
+                    table.integer("locationsId");
+                })
+                .then(() => {
+                    return Promise.all(
+                        _.map(servicesLocationsList, p => {
+                            // insert the row
+                            return sqlDb("services").insert(p);
+                        })
+                    );
+                });
+        } else {
+            return true;
+        }
+    });
+}
+
+function initServicesPeopleTable() {
+    return sqlDb.schema.hasTable("servicespeople").then(exists => {
+        if (!exists) {
+            sqlDb.schema
+                .createTable("servicespeople", table => {
+                    // create the table
+                    table.integer("servicesId");
+                    table.integer("peopleId");
+                })
+                .then(() => {
+                    return Promise.all(
+                        _.map(servicesPeopleList, p => {
+                            // insert the row
+                            return sqlDb("servicespeople").insert(p);
+                        })
+                    );
+                });
+        } else {
+            return true;
+        }
+    });
+}
+
+
 
 // for each table required, check if already existing
 // if not, create and populate
@@ -159,7 +206,9 @@ function initDb() {
     initPeopleTable();
     initLocationsTable();
     initServicesTable();
-
+    initServicesLocationsTable();
+    initServicesLocationsTable();
+    
     return true;
 }
 
