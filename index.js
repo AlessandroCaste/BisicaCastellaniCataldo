@@ -9,7 +9,6 @@ const bodyParser = require("body-parser");
 const sqlDbFactory = require("knex");
 const _ = require("lodash");
 const process = require("process");
-const nodemailer = require("nodemailer");
 
 
 ////////////////////////////////////////////////
@@ -247,11 +246,11 @@ app.get("/services/:id", function(req, res) {
 })
 
 
-// Return a single worker's data given service id
+// Return workers' data by service given a service id
 
 app.get("/doctorsbyservice/:id", function(req, res) {
-    let myQuery = sqlDb("doctors");
-    myQuery.select().where("serviceId", req.params.id)
+    let myQuery = sqlDb("people");
+    myQuery.select().whereIn("servicesId", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
         })
