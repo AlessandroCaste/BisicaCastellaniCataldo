@@ -248,12 +248,14 @@ app.get("/services/:id", function(req, res) {
 
 // Return workers' data by service given a service id
 
-app.get("/services/:id", function(req, res) {
+app.get("/services/:id/people", function(req, res) {
     let myQuery = sqlDb("people");
-    myQuery.select().whereIn("servicesId", req.params.id)
+    let ciao = myQuery.select();
+    console.log(ciao);
+  /*  myQuery.select().whereIn("servicesId", req.params.id)
         .then(result => {
             res.send(JSON.stringify(result));
-        })
+        })*/
 })
 
 

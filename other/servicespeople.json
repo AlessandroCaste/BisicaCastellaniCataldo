@@ -1,0 +1,37 @@
+[
+	{
+		"serviceId" : 1,
+		"peopleId" : 1
+	},
+
+	{
+		"serviceId" : 2,
+		"peopleId" : 3
+	},
+
+	{
+		"serviceId" : 3,
+		"peopleId"  : 2
+	},
+	
+	{
+		"serviceId" : 3,
+		"peopleId"  : 4
+	},
+	
+	{
+		"serviceId" : 3,
+		"peopleId"  : 5
+	},
+
+	{
+		"serviceId" : 4,
+		"peopleId"  : 4
+	},
+
+	{
+		"serviceId" : 5,
+		"peopleId"  : 5
+	}
+
+]
