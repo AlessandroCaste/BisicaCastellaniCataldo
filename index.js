@@ -159,7 +159,7 @@ function initServicesLocationsTable() {
                 .createTable("serviceslocations", table => {
                     // create the table
                     table.integer("serviceId");
-                    table.integer("locationsId");
+                    table.integer("locationId");
                 })
                 .then(() => {
                     return Promise.all(
@@ -299,24 +299,23 @@ app.get("/services/:id", function(req, res) {
 
 app.get("/services/:id/people", function(req, res) {
     let myQuery = sqlDb("servicespeople");
-    myQuery.select().where("serviceId", req.params.id).innerJoin("people","servicespeople.serviceId","people.id")
+    myQuery.select().where("serviceId", req.params.id).innerJoin("people","servicespeople.personId","people.id")
         .then(result => {
             res.send(JSON.stringify(result));
         })
 })
 
 
-// Return a single location's data given service id
+// Return a locations data given service id
 
-/*
-app.get("/locationsbyservice/:id", function(req, res) {
-    let myQuery = sqlDb("locations");
-    myQuery.select().where("serviceId", req.params.id)
+app.get("/services/:id/locations", function(req, res) {
+    let myQuery = sqlDb("serviceslocations");
+    myQuery.select().where("serviceId", req.params.id).innerJoin("locations","serviceslocations.locationId","locations.id")
         .then(result => {
             res.send(JSON.stringify(result));
         })
 })
-*/
+
 
 /////////////////////////////////////////////
 /////////////////// INIT ////////////////////
