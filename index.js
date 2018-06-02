@@ -158,14 +158,14 @@ function initServicesLocationsTable() {
             sqlDb.schema
                 .createTable("serviceslocations", table => {
                     // create the table
-                    table.integer("servicesId");
+                    table.integer("serviceId");
                     table.integer("locationsId");
                 })
                 .then(() => {
                     return Promise.all(
                         _.map(servicesLocationsList, p => {
                             // insert the row
-                            return sqlDb("services").insert(p);
+                            return sqlDb("serviceslocations").insert(p);
                         })
                     );
                 });
@@ -181,8 +181,8 @@ function initServicesPeopleTable() {
             sqlDb.schema
                 .createTable("servicespeople", table => {
                     // create the table
-                    table.integer("servicesId");
-                    table.integer("peopleId");
+                    table.integer("serviceId");
+                    table.integer("personId");
                 })
                 .then(() => {
                     return Promise.all(
@@ -207,8 +207,8 @@ function initDb() {
     initLocationsTable();
     initServicesTable();
     initServicesLocationsTable();
-    initServicesLocationsTable();
-    
+    initServicesPeopleTable();
+
     return true;
 }
 
@@ -298,18 +298,17 @@ app.get("/services/:id", function(req, res) {
 // Return workers' data by service given a service id
 
 app.get("/services/:id/people", function(req, res) {
-    let myQuery = sqlDb("people");
-    let ciao = myQuery.select();
-    console.log(ciao);
-  /*  myQuery.select().whereIn("servicesId", req.params.id)
+    let myQuery = sqlDb("servicespeople");
+    myQuery.select().where("serviceId", req.params.id).innerJoin("people","servicespeople.serviceId","people.id")
         .then(result => {
             res.send(JSON.stringify(result));
-        })*/
+        })
 })
 
 
 // Return a single location's data given service id
 
+/*
 app.get("/locationsbyservice/:id", function(req, res) {
     let myQuery = sqlDb("locations");
     myQuery.select().where("serviceId", req.params.id)
@@ -317,7 +316,7 @@ app.get("/locationsbyservice/:id", function(req, res) {
             res.send(JSON.stringify(result));
         })
 })
-
+*/
 
 /////////////////////////////////////////////
 /////////////////// INIT ////////////////////
