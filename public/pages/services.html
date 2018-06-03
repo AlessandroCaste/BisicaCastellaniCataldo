@@ -96,9 +96,9 @@
 					<p>The goal of an advisory is to help students figure out who they are, where they’re headed, and how they’re going to get there. Through an advisory system, each student has an adult who knows them and helps them navigate high school so that they leave with a meaningful, personalized plan and are prepared for postsecondary options.</p>
 
 				</div>
-				<ul class="stylish-list pl-5">
+				<ul class="stylish-list pl-5" id="AdvisoryService">
 
-					<li class="my-2" style="border: 3px solid grey;">
+					<!---<li class="my-2" style="border: 3px solid grey;">
 						<a class="d-block" data-toggle="collapse" href="#collapseService_1.1" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
 							Parent Courses
 						</a>
@@ -120,7 +120,7 @@
 								<a href="service2.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
 							</div>
 						</div>
-					</li>
+					</li>--->
 				</ul>
 
 				<!--CHILDREN-->
@@ -164,9 +164,9 @@
 					<p>Growing up, we learn to resent being told what to do. It’s almost instinctive. If it’s not our parents, it’s our teachers, if it’s not our teachers it’s that ever present “society” that tells us we aren’t old enough to make decisions for ourselves so we’re to follow their rules until we’re old enough to “know better”.</p>
 				</div>
 
-				<ul class="stylish-list pl-5">
+				<ul class="stylish-list pl-5" id="YoungAdultService">
 
-					<li class="my-2" style="border: 3px solid grey;">
+					<!--<li class="my-2" style="border: 3px solid grey;">
 						<a class="d-block" data-toggle="collapse" href="#collapseService_3.1" role="button" aria-expanded="false" aria-controls="collapseService_3.1">
 							Psychoterapy and Assistance
 						</a>
@@ -176,7 +176,7 @@
 								<a href="service5.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
 							</div>
 						</div>
-					</li>
+					</li>-->
 				</ul>
 
 			</div>
@@ -229,33 +229,69 @@
 	<script type="text/javascript">
         jQuery(document).ready(function() {
             
-            var typologyArr = [];
+            var serviceTemp;
             
             fetch('/services')
-                .then(function(response){
-                    return response.json();
-                })
-                .then(function(data){
-                    console.log(data);
-                    data.map(addOverviewService);
-                    return data;
-                })
-                .then(function(data) {
-					data.map(createArr)
-                });
-            console.log(typologyArr);
+				.then(function(response) {
+					return response.json();
+				})
+				.then(function(data) {
+					data.map(addOverviewChildren);
+                    data.map(addOverviewAdvisory);
+                    data.map(addOverviewYoungAdults);
+					return data;
+				});
+            
                 
             
-            function addOverviewService(service){
-                if(service.typology.localeCompare(typologyArr[1])){
+         function addOverviewChildren(service){
+                if(!service.typology.localeCompare("Children")){
                 $('#ChildrenService').append(`
                         <li class="my-2" style="border: 3px solid grey;">
-                            <a class="d-block" data-toggle="collapse" href="#collapseService_1.1" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
+                            <a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
                                 ${service.name}
                             </a>
-                            <div class="collapse" id="collapseService_1.1">
+                            <div class="collapse" id="collapseService_${service.id}">
                                 <div class="p-1">
-                                    ${service.overview}
+                                    ${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
+                                    <a href="service.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+                                </div>
+                            </div>
+                        </li>
+                `);
+                }
+            }
+            
+            function addOverviewAdvisory(service){
+                if(!service.typology.localeCompare("Advisory")){
+                    //serviceTemp=service.overview.split(".");
+                $('#AdvisoryService').append(`
+                        <li class="my-2" style="border: 3px solid grey;">
+                            <a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
+                                ${service.name}
+                            </a>
+                            <div class="collapse" id="collapseService_${service.id}">
+                                <div class="p-1">
+                                    ${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
+                                    <a href="service.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+                                </div>
+                            </div>
+                        </li>
+                `)
+                }
+            }
+            
+            function addOverviewYoungAdults(service){
+                if(!service.typology.localeCompare("Young Adults")){
+                    //serviceTemp=service.overview.split(".");
+                $('#YoungAdultService').append(`
+                        <li class="my-2" style="border: 3px solid grey;">
+                            <a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
+                                ${service.name}
+                            </a>
+                            <div class="collapse" id="collapseService_${service.id}">
+                                <div class="p-1">
+                                    ${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
                                     <a href="randomservice.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
                                 </div>
                             </div>
@@ -263,6 +299,8 @@
                 `);
                 }
             }
+            
+            
             
             function createArr(service){
 				if(!typologyArr.includes(service.typology)){
