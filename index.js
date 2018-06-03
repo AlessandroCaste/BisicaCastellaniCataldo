@@ -208,7 +208,7 @@ function initLocationsInfoTable(){
                 .createTable("locationsInfo",table => {
                     //create the table
                     table.string("name");
-                    table.string("slide");
+                    table.string("header");
                     table.string("description");
                     table.string("source");
                 })
@@ -350,9 +350,10 @@ app.get("/services/:id/locations", function(req, res) {
 
 app.get("/locations/:id/info", function(req, res) {
     let myQuery = sqlDb("locations");
-    myQuery.select().where("id", req.params.id).innerJoin("locationsInfo","locations.name","locationsInfo.name")
+    myQuery.select('locationsInfo.name','header','description','source').where("id", req.params.id).innerJoin("locationsInfo","locations.name","locationsInfo.name")
         .then(result => {
             res.send(JSON.stringify(result));
+            console.log(JSON.stringify(result));
         })
 })
 

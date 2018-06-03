@@ -149,10 +149,8 @@
 									<li data-target="#carousel_location" data-slide-to="2"></li>
 									<li data-target="#carousel_location" data-slide-to="3"></li>
 								</ol>
-								<div class="carousel-inner" id="carousel">
-									<!--Fill with 4 carousel pictures-->
-								</div>
-								<a class="carousel-control-prev" href="#carousel_location" role="button" data-slide="prev">
+							<div class="carousel-inner" id="carousel">
+									<a class="carousel-control-prev" href="#carousel_location" role="button" data-slide="prev">
 									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 									<span class="sr-only">Previous</span>
 								</a>
@@ -325,8 +323,8 @@
 					alt: 'Location' + location[0].id
 				});
 				$('#locName').text(location[0].name);
-				$('#locQuote').text((location[0].quote).replace("\n\n", '\n'));
-				var str = (location[0].overview).split('\n\n').join('<br>');
+				$('#locQuote').text(location[0].quote);
+				var str = (location[0].overview).split('\n').join('<br><br>');
 				$('#locDescription').append(str);
 				$('#locCoord').text(location[0].coordinates);
 				$('#locAddr').text(location[0].address);
@@ -334,16 +332,18 @@
 				$('#locMail').text(location[0].mail);
 			}
 			
-			function addCarousel(location){
+			//Questo era solo un test ed è da rifare 
+
+			function addCarousel(slide){
 				$('#carousel').append(`
 				<div class="carousel-item active">
-					<img class="d-block w-100" src=$(location.description) alt="Slide">
+					<img class="d-block w-100" src="${slide[0].source}" alt="Slide">
 					<div class="carousel-caption">
 						<blockquote class="carousel_quote">
-							<h4>$(location.slide)</h4><p>$(location.description)</p>
+							<h4>${slide[0].header}</h4><p>${slide[0].description}</p>
 						</blockquote>
 					</div>
-				</div>1
+				</div>
 				`);
 			};			
 		});
