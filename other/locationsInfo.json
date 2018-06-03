@@ -1,0 +1,120 @@
+[
+    {            
+        "name" : "Mountainess Resort",
+        "slide" : "The Place",
+        "description" :  "Surrounded by mountains everything is more familiar and close. Everyone knows each other and the activities are designed to share everything",
+        "source" : "slide1.jpg"
+    },
+    {
+        "name" : "Mountainess Resort",
+        "slide" : "The Walk",
+        "description" : "Walking is the best therapy, especially when the scenery is breathtaking and our guides and doctors are friendly and affectionate"
+    },
+    {
+        "name" : "Mountainess Resort",
+        "slide" : "Children come here",
+        "description" : "It is always possible to relax in our spa . Children can splash around and receive useful lessons"
+    },
+    {
+        "name": "Mountainess Resort",
+        "typology":"The SPA",
+        "picture": "../assets/img/service/PsychotherapyAssistance-youngadults.png",
+        "overview": "Psychotherapy, often referred to just as therapy, is a general term used to describe treatment that occurs through communicating (usually by talking) with a trained mental health professional. There are many different approaches to therapy, each with its own techniques and strategies. Generally, though, therapy tries to educate a person more about their condition, how to identify productive or negative thoughts or feelings, and how to cope with difficult circumstances. Many of the people we interviewed described experiences with receiving therapy. Young adult issues, which may arise in those who are in their late teens and early twenties, may consist of difficulties with peers, sexual or developmental concerns, school or career challenges, family differences, and so on.\n\nThere are two key stages of therapy with young adults; short term and long term. In the short term, the young person and their parent(s) will work collaboratively to identify goals and objectives for immediate emphasis. This is often facilitated with family therapy or adjunctive parent(s) sessions. In the longer term, we will conceptualize and work toward larger goals. The goals and objectives in both the short term and the long term are as unique as the young person themselves. Like any powerful relationship in a young person's life, an early goal in therapy is create and sustain safety, trust and honesty within the therapeutic experience. My priority will always be their emotional and psychological security, their capacity and pace for change, and the development of healing relationships - both in therapy and in the home. Healing begins with these fundamentals firmly established. Whether facing anxiety, depression, trauma or other distressing developmental challenges, it is paramount to offer the young adult a chance to explore their own complexity with a potent balance of warmth and wonder. In therapy, my approach offers the young adult the chance to experience solution-focused collaborative work that strives to answer complicated questions about their presenting issues with a spirit of curiosity and empowerment. We will work to externalize the problem(s) in order to best assess and eliminate them."
+    },
+    {
+        "name" : "Hilltop City",
+        "slide" : "The Place",
+        "description" : "Let your children slip into our white relaxing structure.\n\nYou will find staff always ready to serve you for all your needs.",
+        "source": "slide1.jpg"    
+    },
+    {
+        "name" : "Hilltop City",
+        "slide" : "The Food",
+        "description" : "You will try our tasty dishes, recipes you've never tried before.\n\nDiscover a whole new food culture, for the wellbeing of our patients",
+        "source" : "slide2.jpg"
+    },
+    {
+        "name" : "Hilltop City",
+        "slide" : "Amusement",
+        "description" : "Children and teens can participate to our many acting and social activities",
+        "source" : "slide3.jpg"
+    },
+    {
+        "name" : "Hilltop City",
+        "slide" : "Let's Move",
+        "description" : "Playgrounds are now very near to a football pitch, so children will be able to experience matches live.",
+        "source" : "slide4.jpg"
+    },
+    {
+        "name" : "The Ferret Room",
+        "slide" : "The Place",
+        "description" : "In the historical center of the magnificent city, our hospital is easily reachable and welcomes patients with its incredible architectural works.",
+        "source" : "slide1.jpg"
+    },
+    {
+        "name" : "The Ferret Room",
+        "slide" : "The Cafe",
+        "description" : "The open air café allows you to fully breathe the beneficial air that only our countryside and hills can offer.",
+        "source" : "slide2.jpg"
+    },
+    {
+        "name" : "The Ferret Room",
+        "slide" : "Let's Have Fun",
+        "description" : "Ferrets love fun! We organize a lot of outdoor play around the city when the days are warm.An opportunity not to be missed",
+        "source" : "slide3.jpg"
+    },
+    {
+        "name" : "The Ferret Room",
+        "slide" : "Relax",
+        "description" : "Quieter spaces allow kids and parents alike to relax and speak with our specialists.",
+        "source" : "slide4.jpg"
+    },
+    {
+        "name" : "Arrostiland",
+        "slide" : "The Place",
+        "description" : "Our structure it's placed in one of the city biggest castle. With it's big room every patient can have a quiet place where to live.",
+        "source" : "slide1.jpg"
+    },
+    {
+        "name" : "Arrostiland",
+        "slide" : "The Water",
+        "description" : "The castle is also located near a spring water source with incredible magical properties",
+        "source" : "slide2.jpg" 
+    },
+    {
+        "name" : "Arrostiland",
+        "slide" : "Activities",
+        "description" : "Our patients will always have a moment of leisure with the most dangerous activities ever thought",
+        "source" : "slide3.jpg"
+    },
+    {
+        "name" : "Arrostiland",
+        "slide" : "The Food",
+        "description" : "Let's not forget our wonderful dishes based on succulent sheep! This will cheer up our little guests!",
+        "source" : "slide4.jpg"
+    },
+    {
+        "name" : "The Sea Canal",
+        "slide" : "The Place",
+        "description" : "The location is built on a canal very close to the sea. You can always feel the relaxing sound of the waves",
+        "source" : "slide1.jpg"
+    },
+    {
+        "name" : "The Sea Canal",
+        "slide" : "The Food",
+        "description" : "Our canteen is one of the most famous in the city. patients have plenty of choices and combinations of types of dishes to choose from",
+        "source" : "slide2.jpg"
+    },
+    {
+        "name" : "The Sea Canal",
+        "slide" : "Ships",
+        "description" :"It is always possible to relax in our spa . Children can splash around and receive useful lessons",
+        "source" : "slide3.jpg"
+    },
+    {
+        "name" : "The Sea Canal",
+        "slide" : "Great Company",
+        "description" : "Experiences outdoor allow kids to socialize and meet new friends in the lively environment of the city",
+        "source" : "slide4.jpg"
+    }
+]

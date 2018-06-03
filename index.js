@@ -21,7 +21,7 @@ let locationsList = require("./other/locations.json");
 let servicesList = require("./other/services.json");
 let servicesLocationsList = require("./other/serviceslocations.json");
 let servicesPeopleList = require("./other/servicespeople.json");
-
+let locationsInfoList = require("./other/locationsInfo.json");
 
 // use it until testing
 process.env.TEST = true;
@@ -110,6 +110,8 @@ function initLocationsTable() {
                     table.string("quote");
                     table.text("overview");
                     table.string("pictures");
+                    table.integer("pictureNumber");
+                    table.string("carousel");
                 })
                 .then(() => {
                     return Promise.all(
@@ -199,6 +201,30 @@ function initServicesPeopleTable() {
 }
 
 
+function initLocationInfoTable(){
+    
+    return sqlDb.schema.hasTable("locationInfo").then(exists =>{
+        if(!exists){
+            sqlDB.schema
+                .createTable("locationsInfo",table => {
+                    //create the table
+                    table.string("locationName");
+                    table.string("slide");
+                    table.string("description");
+                    table.string("overview");
+                })
+                .then(()=>{
+                    return Promise.all(
+                        _.map(locationsInfoList, p=> {
+                            return sqlDb("locationInfo".insert(p))
+                        })
+                    )
+                })
+        }
+    })
+}
+
+
 
 // for each table required, check if already existing
 // if not, create and populate
@@ -208,7 +234,7 @@ function initDb() {
     initServicesTable();
     initServicesLocationsTable();
     initServicesPeopleTable();
-
+    initLocationInfoTable();
     return true;
 }
 
@@ -233,6 +259,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // people
 // locations
 // services
+// servicesLocations
+// servicesPeople
+// locationsInfo
 // All data is returned in JSON format
 
 
@@ -316,6 +345,35 @@ app.get("/services/:id/locations", function(req, res) {
         })
 })
 
+// Return a locations carousel data given its id
+
+app.get("/locations/:id/info", function(req, res) {
+    let myQuery = sqlDb("locationsInfo");
+    myQuery.select().where("id", req.params.id).innerJoin("locationsInfo","locations.name","locationsInfo.name")
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
+
+// Return a locations services given its id
+
+app.get("/locations/:id/services", function(req, res) {
+    let myQuery = sqlDb("servicesLocations");
+    myQuery.select().where("locationId", req.params.id).innerJoin("services","servicesLocations.serviceId","services.id")
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
+
+// Return a person's services given its id
+
+app.get("/people/:id/services", function(req, res) {
+    let myQuery = sqlDb("servicesPeople");
+    myQuery.select().where("personId", req.params.id).innerJoin("services","servicesPeople.serviceId","services.id")
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
 
 /////////////////////////////////////////////
 /////////////////// INIT ////////////////////
