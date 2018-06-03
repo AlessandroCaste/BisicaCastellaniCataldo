@@ -121,8 +121,10 @@
 
 					<div class="contants">
 						<h5 class="text-center  mt-3 mb-0">Reach Us Out</h5>
-						<ul class="stylish-list ml-3" id="locCoord">
-							<li> <!--Fill with address, city, CAP--> </li>
+						<ul class="stylish-list ml-3">
+							<li id="locAddr"> 
+								<!--Fill with address, city, CAP-->
+							</li>
 							<li>
 								<a href="#" id="locPhone"> <!--Fill with phone--> </a>
 							</li>
@@ -137,53 +139,18 @@
 
 				<!------------------ Carousel ------------------>
 				<div class="col-12 order-4 m-auto" style="min-height: 515px;">
-					<div class="row m-0" id="carousel">
+					<div class="row m-0">
 						<div class="col-12 p-0">
 							<div id="carousel_location" class="carousel slide" data-ride="carousel" >
 								<ol class="carousel-indicators">
-									<!--add dinamically slides-->
+									<!--Add dinamically slides-->
 									<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 									<li data-target="#carousel_location" data-slide-to="1"></li>
 									<li data-target="#carousel_location" data-slide-to="2"></li>
 									<li data-target="#carousel_location" data-slide-to="3"></li>
 								</ol>
-								<div class="carousel-inner">
-									<div class="carousel-item active">
-										<img class="d-block w-100" src="../assets/img/locations/arrostiland/slide1.jpg" alt="First slide">
-										<div class="carousel-caption">
-											<blockquote class="carousel_quote">
-												<h4>The Place</h4>
-												<p>Surrounded by mountains everything is more familiar and close. Everyone knows each other and the activities are designed to share everything</p>
-											</blockquote>
-										</div>
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-100" src="../assets/img/locations/arrostiland/slide2.jpg" alt="Second slide">
-										<div class="carousel-caption">
-											<blockquote class="carousel_quote">
-												<h4>Walk</h4>
-												<p>Walking is best therapy, especially when the scenery is breathtaking and our guides and doctors are friendly and affectionate</p>
-											</blockquote>
-										</div>
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-100" src="../assets/img/locations/arrostiland/slide3.jpg" alt="Third slide">
-										<div class="carousel-caption">
-											<blockquote class="carousel_quote">
-												<h4>The Spa</h4>
-												<p>It is always possible to relax in our spa . Children can splash around and receive useful lessons</p>
-											</blockquote>
-										</div>
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-100" src="../assets/img/locations/arrostiland/slide4.jpg" alt="Fouth slide">
-										<div class="carousel-caption">
-											<blockquote class="carousel_quote">
-												<h4>Children come here</h4>
-												<p> Our group game therapies take place in the hi-tech playgrounds that our city has seen. Everyone is safe, under the supervision of our educators</p>
-											</blockquote>
-										</div>
-									</div>
+								<div class="carousel-inner" id="carousel">
+									<!--Fill with 4 carousel pictures-->
 								</div>
 								<a class="carousel-control-prev" href="#carousel_location" role="button" data-slide="prev">
 									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -195,10 +162,10 @@
 								</a>
 							</div>
 						</div>
-						<!--area riempita dall'header del carosello da jQuery-->
+						<!--Area riempita dall'header del carosello da jQuery-->
 						<div class="new-caption-area col mt-3 mb-0 text-center"></div>
 					</div>
-					<!--only visible till md-->
+					<!--Only visible till md-->
 					<hr class="division_line my-3 d-md-none">
 				</div>
 			</div>
@@ -333,12 +300,24 @@
 					return response.json();
 				})
 				.then(function(data) {
-					FillLocationData(data);
+					fillLocationData(data);
+					return data;
+				})
+				.then(function(data){
+					addCarousel(data);
+					return data;
+				});
+
+			fetch('/locations/' + locationID +"/info")
+				.then(function(response) {
+					return response.json();
+				})
+				.then(function(data){
+					addCarousel(data);
 					return data;
 				});
 			
-			
-			function FillLocationData(location){
+			function fillLocationData(location){
 				document.title = location[0].name;
 				$('#breadcrumbName').text(location[0].name);
 				$('#locImg').attr({
@@ -346,15 +325,28 @@
 					alt: 'Location' + location[0].id
 				});
 				$('#locName').text(location[0].name);
-				$('#locQuote').text((location[0].quote).replace("\n\n", '<br/>'));
-				var str = (location[0].overview).split('\n\n').join('<br/>');
-				$('#locDescription').text(str);
+				$('#locQuote').text((location[0].quote).replace("\n\n", '\n'));
+				var str = (location[0].overview).split('\n\n').join('<br>');
+				$('#locDescription').append(str);
 				$('#locCoord').text(location[0].coordinates);
+				$('#locAddr').text(location[0].address);
 				$('#locPhone').text(location[0].phone);
 				$('#locMail').text(location[0].mail);
 			}
 			
-			
+			function addCarousel(location){
+				$('#carousel').append(`
+				<div class="carousel-item active">
+					<img class="d-block w-100" src=$(location.description) alt="Slide">
+					<div class="carousel-caption">
+						<blockquote class="carousel_quote">
+							<h4>$(location.slide)</h4><p>$(location.description)</p>
+						</blockquote>
+					</div>
+				</div>1
+				`);
+				};			
+			};
 		});
 
 	</script>
