@@ -207,8 +207,8 @@
 				$('#breadcrumbName').text(service[0].name);
 				$('#serviceTypology').text(service[0].typology);
 				$('#serviceName').text(service[0].name);
-				$('#serviceOverview-1').text(service[0].overview.split("\\")[0]);
-				$('#serviceOverview-2').text(service[0].overview.split("\\")[1]);
+				$('#serviceOverview-1').text(service[0].overview.split("\n\n")[0]);
+				$('#serviceOverview-2').text(service[0].overview.split("\n\n")[1]);
 				$('#serviceImg').attr("src", service[0].picture);
 			};
 
