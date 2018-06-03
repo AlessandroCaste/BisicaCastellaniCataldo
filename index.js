@@ -201,27 +201,28 @@ function initServicesPeopleTable() {
 }
 
 
-function initLocationInfoTable(){
-    
-    return sqlDb.schema.hasTable("locationInfo").then(exists =>{
+function initLocationsInfoTable(){    
+    return sqlDb.schema.hasTable("locationsInfo").then(exists =>{
         if(!exists){
-            sqlDB.schema
+            sqlDb.schema
                 .createTable("locationsInfo",table => {
                     //create the table
-                    table.string("locationName");
+                    table.string("name");
                     table.string("slide");
                     table.string("description");
-                    table.string("overview");
+                    table.string("source");
                 })
                 .then(()=>{
                     return Promise.all(
                         _.map(locationsInfoList, p=> {
-                            return sqlDb("locationInfo".insert(p))
+                            return sqlDb("locationsInfo").insert(p);
                         })
-                    )
-                })
+                    );
+                });
+        } else {
+            return true;
         }
-    })
+    });
 }
 
 
@@ -234,7 +235,7 @@ function initDb() {
     initServicesTable();
     initServicesLocationsTable();
     initServicesPeopleTable();
-    initLocationInfoTable();
+    initLocationsInfoTable();
     return true;
 }
 
@@ -348,7 +349,7 @@ app.get("/services/:id/locations", function(req, res) {
 // Return a locations carousel data given its id
 
 app.get("/locations/:id/info", function(req, res) {
-    let myQuery = sqlDb("locationsInfo");
+    let myQuery = sqlDb("locations");
     myQuery.select().where("id", req.params.id).innerJoin("locationsInfo","locations.name","locationsInfo.name")
         .then(result => {
             res.send(JSON.stringify(result));
