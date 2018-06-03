@@ -342,14 +342,12 @@
 				document.title = location[0].name;
 				$('#breadcrumbName').text(location[0].name);
 				$('#locImg').attr({
-					src: location[0].pictures + 'location' + location[0].id + '.jpg',
+					src: location[0].pictures + 'cover.jpg',
 					alt: 'Location' + location[0].id
 				});
 				$('#locName').text(location[0].name);
 				$('#locQuote').text((location[0].quote).replace("\\n\\n", '<br/>'));
-				console.log(location[0].overview);
 				var str = (location[0].overview).split('\n\n').join('<br/>');
-				console.log(str);
 				$('#locDescription').text(str);
 			}
 			
