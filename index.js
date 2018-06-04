@@ -21,7 +21,7 @@ let locationsList = require("./other/locations.json");
 let servicesList = require("./other/services.json");
 let servicesLocationsList = require("./other/serviceslocations.json");
 let servicesPeopleList = require("./other/servicespeople.json");
-let locationsInfoList = require("./other/locationsInfo.json");
+let locationSlideList = require("./other/locationSlide.json");
 
 // use it until testing
 process.env.TEST = true;
@@ -109,7 +109,7 @@ function initLocationsTable() {
                     table.string("mail");
                     table.string("quote");
                     table.text("overview");
-                    table.string("pictures");
+                    table.string("picture");
                     table.integer("pictureNumber");
                     table.string("carousel");
                 })
@@ -201,11 +201,11 @@ function initServicesPeopleTable() {
 }
 
 
-function initLocationsInfoTable(){    
-    return sqlDb.schema.hasTable("locationsInfo").then(exists =>{
+function initlocationSlideTable(){    
+    return sqlDb.schema.hasTable("locationSlide").then(exists =>{
         if(!exists){
             sqlDb.schema
-                .createTable("locationsInfo",table => {
+                .createTable("locationSlide",table => {
                     //create the table
                     table.string("name");
                     table.string("header");
@@ -214,8 +214,8 @@ function initLocationsInfoTable(){
                 })
                 .then(()=>{
                     return Promise.all(
-                        _.map(locationsInfoList, p=> {
-                            return sqlDb("locationsInfo").insert(p);
+                        _.map(locationSlideList, p=> {
+                            return sqlDb("locationSlide").insert(p);
                         })
                     );
                 });
@@ -235,7 +235,7 @@ function initDb() {
     initServicesTable();
     initServicesLocationsTable();
     initServicesPeopleTable();
-    initLocationsInfoTable();
+    initlocationSlideTable();
     return true;
 }
 
@@ -262,12 +262,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // services
 // servicesLocations
 // servicesPeople
-// locationsInfo
+// locationSlide
 // All data is returned in JSON format
 
 
-// Returns data about the workers 
+////////////////// PEOPLE //////////////////
 
+// Return general Slide about workers ordered by surname and  name
 
 app.get("/people", function(req, res) {
     let myQuery = sqlDb("people").orderByRaw('surname, name')
@@ -276,7 +277,7 @@ app.get("/people", function(req, res) {
         })
 })
 
-// Returns data about a specific worker based on its id 
+// Returns data about a specific worker based on her id 
 
 app.get("/people/:id", function(req, res) {
     let myQuery = sqlDb("people");
@@ -286,10 +287,23 @@ app.get("/people/:id", function(req, res) {
         })
 })
 
-// Returns data about locations 
+// Return a worker's services given its id
+
+app.get("/people/:id/services", function(req, res) {
+    let myQuery = sqlDb("servicesPeople");
+    myQuery.select().where("personId", req.params.id).innerJoin("services","servicesPeople.serviceId","services.id")
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
+
+////////////////// LOCATIONS //////////////////
+
+// Returns general data about locations. Used for preview thumbnails 
 
 app.get("/locations", function(req, res) {
-    let myQuery = sqlDb("locations")
+    let myQuery = sqlDb("locations");
+    myQuery.select('id','name','region','city','address','phone','mail','picture')
         .then(result => {
             res.send(JSON.stringify(result));
         })
@@ -304,6 +318,29 @@ app.get("/locations/:id", function(req, res) {
             res.send(JSON.stringify(result));
         })
 })
+
+// Return a locations carousel data given its id
+
+app.get("/locations/:id/Slide", function(req, res) {
+    let myQuery = sqlDb("locations");
+    myQuery.select('locationSlide.name','header','description','source').where("id", req.params.id).innerJoin("locationSlide","locations.name","locationSlide.name")
+        .then(result => {
+            res.send(JSON.stringify(result));
+            console.log(JSON.stringify(result));
+        })
+})
+
+// Return a locations services given its id
+
+app.get("/locations/:id/services", function(req, res) {
+    let myQuery = sqlDb("servicesLocations");
+    myQuery.select().where("locationId", req.params.id).innerJoin("services","servicesLocations.serviceId","services.id")
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
+
+////////////////// SERVICES //////////////////
 
 // Return data about services 
 
@@ -323,7 +360,6 @@ app.get("/services/:id", function(req, res) {
             res.send(JSON.stringify(result));
         })
 })
-
 
 // Return workers' data by service given a service id
 
@@ -346,36 +382,6 @@ app.get("/services/:id/locations", function(req, res) {
         })
 })
 
-// Return a locations carousel data given its id
-
-app.get("/locations/:id/info", function(req, res) {
-    let myQuery = sqlDb("locations");
-    myQuery.select('locationsInfo.name','header','description','source').where("id", req.params.id).innerJoin("locationsInfo","locations.name","locationsInfo.name")
-        .then(result => {
-            res.send(JSON.stringify(result));
-            console.log(JSON.stringify(result));
-        })
-})
-
-// Return a locations services given its id
-
-app.get("/locations/:id/services", function(req, res) {
-    let myQuery = sqlDb("servicesLocations");
-    myQuery.select().where("locationId", req.params.id).innerJoin("services","servicesLocations.serviceId","services.id")
-        .then(result => {
-            res.send(JSON.stringify(result));
-        })
-})
-
-// Return a person's services given its id
-
-app.get("/people/:id/services", function(req, res) {
-    let myQuery = sqlDb("servicesPeople");
-    myQuery.select().where("personId", req.params.id).innerJoin("services","servicesPeople.serviceId","services.id")
-        .then(result => {
-            res.send(JSON.stringify(result));
-        })
-})
 
 /////////////////////////////////////////////
 /////////////////// INIT ////////////////////

@@ -306,7 +306,7 @@
 					return data;
 				});
 
-			fetch('/locations/' + locationID +"/info")
+			fetch('/locations/' + locationID +"/slide")
 				.then(function(response) {
 					return response.json();
 				})
@@ -319,7 +319,7 @@
 				document.title = location[0].name;
 				$('#breadcrumbName').text(location[0].name);
 				$('#locImg').attr({
-					src: location[0].pictures + 'cover.jpg',
+					src: location[0].picture + 'cover.jpg',
 					alt: 'Location' + location[0].id
 				});
 				$('#locName').text(location[0].name);
