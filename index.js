@@ -301,9 +301,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 ////////////////// PEOPLE //////////////////
 
-// Return general Slide about workers ordered by surname and  name
+// Return data about workers
 
 app.get("/people", function(req, res) {
+    let myQuery = sqlDb("people").orderByRaw('surname, name')
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
+
+// Return data about workers ordered by surname and  name
+
+app.get("/people?sort=desc", function(req, res) {
     let myQuery = sqlDb("people").orderByRaw('surname, name')
         .then(result => {
             res.send(JSON.stringify(result));
