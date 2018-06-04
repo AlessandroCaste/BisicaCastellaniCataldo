@@ -1,5 +1,4 @@
-{
-  "locations": [
+[
     {
 		 "name" : "Mountainess Resort",
 		 "region" : "North",
@@ -65,5 +64,4 @@
 		 "overview" : "Venezia, is the capital of the Veneto region. It is situated across a group of 118 small islands that are separated by canals and linked by bridges, of which there are 400.\nThe name is derived from the ancient Veneti people who inhabited the region by the 10th century BCE. The city was historically the capital of the Republic of Venice. Venice has been known as the La Dominante, Serenissima, Queen of the Adriatic, City of Water, City of Masks, City of Bridges, The Floating City, and City of Canals.\nThe Republic of Venice was a major financial and maritime power during the Middle Ages and Renaissance, and a staging area for the Crusades and the Battle of Lepanto, as well as a very important center of commerce (especially silk, grain, and spice) and art in the 13th century up to the end of the 17th century. The city-state of Venice is considered to have been the first real international financial center which gradually emerged from the 9th century to its peak in the 14th century. This made Venice a wealthy city throughout most of its history.",
 		 "picture" : "../assets/img/locations/the_sea_canal/"
 	 }
-  ]
-}
+]

@@ -1,7 +1,4 @@
-{
-
-  "people" : [
-
+[
     {
       "name" : "Anthony",
       "surname" : "Wilkinson",
@@ -46,6 +43,5 @@
       "bio" : "Rupert DeSilva, commonly referred to simply as House leads a team of diagnosticians as the Head of Diagnostic Medicine at the Princeton-Plainsboro Teaching Hospital in Princeton, New Jersey. DeSilva's unorthodox diagnostic approaches, radical therapeutic motives, and stalwart rationality have resulted in much conflict between him and his colleagues. House is also often portrayed as lacking sympathy for his patients, a practice that allots him time to solve pathological enigmas.",
       "quote" : "Let's get it done!"
     }
+ ]
 
-  ]
-}

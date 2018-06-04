@@ -21,7 +21,8 @@ let locationsList = require("./other/locations.json");
 let servicesList = require("./other/services.json");
 let servicesLocationsList = require("./other/serviceslocations.json");
 let servicesPeopleList = require("./other/servicespeople.json");
-let locationSlideList = require("./other/locationSlide.json");
+let locationSlideList = require("./other/locationslide.json");
+let whoweareList = require("./other/whoweare.json");
 
 // use it until testing
 process.env.TEST = true;
@@ -55,6 +56,36 @@ function initSqlDB() {
         });
     }
 }
+
+function initWhoweareTable(){
+        return sqlDb.schema.hasTable("whoweare").then(exists => {
+            if (!exists) {
+                sqlDb.schema
+                    .createTable("whoweare", table => {
+                        // create the table
+                        table.string("picture");
+                        table.string("text");
+                        table.string("quote");
+                        table.string("quoteAuthor");
+                    })
+                    .then(() => {
+                        return Promise.all(
+                            _.map(whoweareList, p => {
+                                // insert the row
+                                // delete p.basicInfo;
+                                return sqlDb("whoweare").insert(p).catch(function(err) {
+                                    console.log("Error in whoweare extraction");
+                                    console.log(err);
+                                    // console.log(err);
+                                });
+                            })
+                        );
+                    });
+            } else {
+                return true;
+            }
+        });
+};
 
 
 function initPeopleTable() {
@@ -236,6 +267,7 @@ function initDb() {
     initServicesLocationsTable();
     initServicesPeopleTable();
     initlocationSlideTable();
+    initWhoweareTable();
     return true;
 }
 
@@ -263,6 +295,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // servicesLocations
 // servicesPeople
 // locationSlide
+// whoweare
 // All data is returned in JSON format
 
 
@@ -382,6 +415,15 @@ app.get("/services/:id/locations", function(req, res) {
         })
 })
 
+////////////////// WHOWEARE //////////////////
+
+// Return all info required for the page whoweare
+app.get("/whoweare", function(req, res) {
+    let myQuery = sqlDb("whoweare")
+        .then(result => {
+            res.send(JSON.stringify(result));
+        })
+})
 
 /////////////////////////////////////////////
 /////////////////// INIT ////////////////////

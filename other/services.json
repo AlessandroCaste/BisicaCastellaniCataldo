@@ -1,5 +1,4 @@
-{
-	"services": [
+[
 		{            
 			"name": "Parent Courses",
 			"typology": "Advisory",
@@ -30,5 +29,5 @@
 			"picture": "../assets/img/service/PsychotherapyAssistance-youngadults.png",
 			"overview": "Psychotherapy, often referred to just as therapy, is a general term used to describe treatment that occurs through communicating (usually by talking) with a trained mental health professional. There are many different approaches to therapy, each with its own techniques and strategies. Generally, though, therapy tries to educate a person more about their condition, how to identify productive or negative thoughts or feelings, and how to cope with difficult circumstances. Many of the people we interviewed described experiences with receiving therapy. Young adult issues, which may arise in those who are in their late teens and early twenties, may consist of difficulties with peers, sexual or developmental concerns, school or career challenges, family differences, and so on.\n\nThere are two key stages of therapy with young adults; short term and long term. In the short term, the young person and their parent(s) will work collaboratively to identify goals and objectives for immediate emphasis. This is often facilitated with family therapy or adjunctive parent(s) sessions. In the longer term, we will conceptualize and work toward larger goals. The goals and objectives in both the short term and the long term are as unique as the young person themselves. Like any powerful relationship in a young person's life, an early goal in therapy is create and sustain safety, trust and honesty within the therapeutic experience. My priority will always be their emotional and psychological security, their capacity and pace for change, and the development of healing relationships - both in therapy and in the home. Healing begins with these fundamentals firmly established. Whether facing anxiety, depression, trauma or other distressing developmental challenges, it is paramount to offer the young adult a chance to explore their own complexity with a potent balance of warmth and wonder. In therapy, my approach offers the young adult the chance to experience solution-focused collaborative work that strives to answer complicated questions about their presenting issues with a spirit of curiosity and empowerment. We will work to externalize the problem(s) in order to best assess and eliminate them."
 		}	
-	]
-}
+]
+
