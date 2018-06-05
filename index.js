@@ -141,8 +141,6 @@ function initLocationsTable() {
                     table.string("quote");
                     table.text("overview");
                     table.string("picture");
-                    table.integer("pictureNumber");
-                    table.string("carousel");
                 })
                 .then(() => {
                     return Promise.all(
