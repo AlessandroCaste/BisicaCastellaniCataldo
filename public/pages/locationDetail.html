@@ -91,7 +91,7 @@
 
 			<div class="d-flex flex-row flex-wrap">
 				<!------------------ Text Description ------------------>
-				<div class="col-md-7 align-self-center order-1 ml-auto" id="locDescription" style="white-space: pre-wrap">
+				<div class="col-md-7 align-self-center order-1 ml-auto" id="locDescription">
 					<!--Fill with description-->
 				</div>
 
@@ -312,17 +312,27 @@
 				document.title = location[0].name;
 				console.log(folderName);
 				$('#breadcrumbName').text(location[0].name);
+				
 				$('#locImg').attr({
 					src: location[0].picture + 'cover.jpg',
 					alt: 'Location' + location[0].id
 				});
+				
 				$('#locName').text(location[0].name);
 				$('#locQuote').text(location[0].quote);
-				var str = (location[0].overview).split('\n').join('<br><br>');
-				$('#locDescription').append(str);
+				
+				location[0].overview.split('\n')
+					.forEach(function(par){
+						$('#locDescription').append(`
+							<p>${par}</p>
+						`);
+					});
+				
+				
 				$('#locCoord').text(location[0].coordinates);
 				$('#locAddr').text(location[0].address);
 				$('#locPhone').text(location[0].phone);
+				
 				$('#locMail').text(location[0].mail);
 			}
 			
