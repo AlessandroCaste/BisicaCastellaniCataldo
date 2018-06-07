@@ -100,8 +100,8 @@
 
 					<h4 class="text-center" style="font-size: 1.7em;">Find Us</h4>
 
-					<div class="w-100 h-50" id="map"></div>
-					<script>
+					<div class="" id="map" style="width: 370px; height: 300px"></div>
+					<!--script>
 						function myMap() {
 							var latlng = new google.maps.LatLng(46.667527,11.156346);
 							var mapOptions = {
@@ -116,7 +116,7 @@
 								title: 'Noi siamo qui'
 							});
 						};
-					</script>
+					</script-->
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb2UR8QOXPqDDCeMDyzk37TL86jZZdzcc&callback=myMap"></script>
 
 					<div class="contants">
@@ -328,14 +328,29 @@
 						`);
 					});
 				
-				
-				$('#locCoord').text(location[0].coordinates);
 				$('#locAddr').text(location[0].address);
 				$('#locPhone').text(location[0].phone);
-				
 				$('#locMail').text(location[0].mail);
+				
+				var coord = location[0].coordinates.split(',');
+				myMap(coord);
 			}
 			
+			function myMap(coord) {
+				var latlng = new google.maps.LatLng(coord[0],coord[1]);
+				var mapOptions = {
+					center: latlng,
+					zoom: 15,
+					mapTypeId: google.maps.MapTypeId.map
+				}
+				var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+				var marker = new google.maps.Marker({
+					position: latlng,
+					map: map,
+					title: 'Noi siamo qui'
+				});
+			};
+
 			function createCarousel(data){
 				if(data.length>0){
 					for(var i=0; i<data.length; i++){
