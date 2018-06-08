@@ -100,23 +100,9 @@
 
 					<h4 class="text-center" style="font-size: 1.7em;">Find Us</h4>
 
+					<!--filled with dynamic Google Maps' Pointer-->
 					<div class="" id="map" style="width: 370px; height: 300px"></div>
-					<!--script>
-						function myMap() {
-							var latlng = new google.maps.LatLng(46.667527,11.156346);
-							var mapOptions = {
-								center: latlng,
-								zoom: 15,
-								mapTypeId: google.maps.MapTypeId.map
-							}
-							var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-							var marker = new google.maps.Marker({
-								position: latlng,
-								map: map,
-								title: 'Noi siamo qui'
-							});
-						};
-					</script-->
+					
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb2UR8QOXPqDDCeMDyzk37TL86jZZdzcc&callback=myMap"></script>
 
 					<div class="contants">
@@ -143,9 +129,10 @@
 						<div class="col-12 p-0">
 							<div id="carousel_location" class="carousel slide" data-ride="carousel">
 								<ol class="carousel-indicators" id="carousel-indicators">
-									<!--add dinamically slides-->
+									<!--add dinamically indicators-->
 								</ol>
 								<div class="carousel-inner" id="carousel-inner">
+									<!--add dinamically slides-->
 								</div>
 								<a class="carousel-control-prev" href="#carousel_location" role="button" data-slide="prev">
 									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -163,85 +150,84 @@
 					<!--only visible till md-->
 					<hr class="division_line my-3 d-md-none">
 				</div>
-		</div>
+			</div>
 
 
-		<hr class="division_line my-5" id="division_line1">
+			<hr class="division_line my-5" id="division_line1">
 
 		<!-----SERVICES CATEGORY----->
-		<div class="col-lg-10 col-md-10 col-xs-10 d-flex justify-content-center mx-auto mt-5">
-			<h2 style="color: #FA6359">THE SERVICES</h2>
-		</div>
-		<div class="col-lg-10 m-auto" id="myGroup">
-
-			<!--Advisory-->
-			<div class="pl-3 mt-3" style="border-left: 13px solid blue">
-				<h2>Advisory</h2>
-				<img class="rounded_icon"  src="../assets/img/icons/book.png">
-				<p>The goal of an advisory is to help students figure out who they are, where they’re headed, and how they’re going to get there. Through an advisory system, each student has an adult who knows them and helps them navigate high school so that they leave with a meaningful, personalized plan and are prepared for postsecondary options.</p>
-
+			<div class="col-lg-10 col-md-10 col-xs-10 d-flex justify-content-center mx-auto mt-5">
+				<h2 style="color: #FA6359">THE SERVICES</h2>
 			</div>
-			<ul class="stylish-list pl-5">
+			<div class="col-lg-10 m-auto" id="myGroup">
 
-				<li class="my-2" style="border: 3px solid grey;">
-					<a class="d-block" data-toggle="collapse" href="#collapseService_1.1" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
-						Parent Courses
-					</a>
-					<div class="collapse" id="collapseService_1.1">
-						<div class="p-1">
-							Our courses are here to support you and to help you build a strong and secure relationship with your child.
-							<a href="randomservice.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-						</div>
-					</div>
-				</li>
+				<!--Advisory-->
+				<div class="pl-3 mt-3" style="border-left: 13px solid blue">
+					<h2>Advisory</h2>
+					<img class="rounded_icon"  src="../assets/img/icons/book.png">
+					<p>The goal of an advisory is to help students figure out who they are, where they’re headed, and how they’re going to get there. Through an advisory system, each student has an adult who knows them and helps them navigate high school so that they leave with a meaningful, personalized plan and are prepared for postsecondary options.</p>
 
-				<li class="my-2" style="border: 3px solid grey;">
-					<a class="d-block" data-toggle="collapse" href="#collapseService_1.2" role="button" aria-expanded="false" aria-controls="collapseService_1.2">
-						Psycological Meetings
+				</div>
+				<ul class="stylish-list pl-5">
+
+					<li class="my-2" style="border: 3px solid grey;">
+						<a class="d-block" data-toggle="collapse" href="#collapseService_1.1" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
+							Parent Courses
 						</a>
-					<div class="collapse" id="collapseService_1.2">
-						<div class="p-1">
-							A prominent aspect of health psychology is the psychoeducation of patients: instructing them in how to follow a medical regimen.
-							<a href="service2.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+						<div class="collapse" id="collapseService_1.1">
+							<div class="p-1">
+								Our courses are here to support you and to help you build a strong and secure relationship with your child.
+								<a href="randomservice.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+							</div>
 						</div>
-					</div>
-				</li>
-			</ul>
+					</li>
 
-			<!--CHILDREN-->
-			<div class="pl-3 mt-5" style="border-left: 15px solid green">
-				<h2>Children</h2>
-				<img class="rounded_icon" src="../assets/img/icons/child.png">
-				<p>Children are the ones who are very vital for deciding how the world is gonna be after some years. So if one can do some good in the life of a child then there can be change, atleast a slightest change, in the world to come. And if most of them think on same lines then we can hope of a better future ahead. The main component which decides how the person is going to be in the future or the present is the amount of education he/she has within them.</p>
+					<li class="my-2" style="border: 3px solid grey;">
+						<a class="d-block" data-toggle="collapse" href="#collapseService_1.2" role="button" aria-expanded="false" aria-controls="collapseService_1.2">
+							Psycological Meetings
+						</a>
+						<div class="collapse" id="collapseService_1.2">
+							<div class="p-1">
+								A prominent aspect of health psychology is the psychoeducation of patients: instructing them in how to follow a medical regimen.
+								<a href="service2.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+
+				<!--CHILDREN-->
+				<div class="pl-3 mt-5" style="border-left: 15px solid green">
+					<h2>Children</h2>
+					<img class="rounded_icon" src="../assets/img/icons/child.png">
+					<p>Children are the ones who are very vital for deciding how the world is gonna be after some years. So if one can do some good in the life of a child then there can be change, atleast a slightest change, in the world to come. And if most of them think on same lines then we can hope of a better future ahead. The main component which decides how the person is going to be in the future or the present is the amount of education he/she has within them.</p>
+				</div>
+				<ul class="stylish-list">
+
+					<li class="my-2" style="border: 3px solid grey;">
+						<a class="d-block" data-toggle="collapse" href="#collapseService_2.1" role="button" aria-expanded="false" aria-controls="collapseService_2.1">
+							Psychoterapy and Assistance
+						</a>
+						<div class="collapse" id="collapseService_2.1">
+							<div class="p-1">
+								The therapeutic relationship is developed through talking or play, depending on age. The child has an opportunity to work towards a better understanding of themselves, their relationships and their established patterns of behaviour.
+								<a href="service4.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+							</div>
+						</div>
+					</li>
+
+					<li class="my-2" style="border: 3px solid grey;">
+						<a class="d-block" data-toggle="collapse" href="#collapseService_1.3" role="button" aria-expanded="false" aria-controls="collapseService_1.3">
+							Learning Experiences
+						</a>
+						<div class="collapse" id="collapseService_1.3">
+							<div class="p-1">
+								Learning experience refers to any interaction, course, program, or other experience in which learning takes place.
+								<a href="service3.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+							</div>
+						</div>
+					</li>
+				</ul>
 			</div>
-			<ul class="stylish-list">
-
-				<li class="my-2" style="border: 3px solid grey;">
-					<a class="d-block" data-toggle="collapse" href="#collapseService_2.1" role="button" aria-expanded="false" aria-controls="collapseService_2.1">
-						Psychoterapy and Assistance
-					</a>
-					<div class="collapse" id="collapseService_2.1">
-						<div class="p-1">
-							The therapeutic relationship is developed through talking or play, depending on age. The child has an opportunity to work towards a better understanding of themselves, their relationships and their established patterns of behaviour.
-							<a href="service4.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-						</div>
-					</div>
-				</li>
-
-				<li class="my-2" style="border: 3px solid grey;">
-					<a class="d-block" data-toggle="collapse" href="#collapseService_1.3" role="button" aria-expanded="false" aria-controls="collapseService_1.3">
-						Learning Experiences
-					</a>
-					<div class="collapse" id="collapseService_1.3">
-						<div class="p-1">
-							Learning experience refers to any interaction, course, program, or other experience in which learning takes place.
-							<a href="service3.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-						</div>
-					</div>
-				</li>
-
-			</ul>
-
 		</div>
 	</div>
 
@@ -383,7 +369,21 @@
 					`)}	
 				);
 				$('#carousel-inner div').first().addClass("active");
+				//add first carousel caption in other div
+				$('.carousel').carousel();
+				var caption = $('div.carousel-item:nth-child(1) .carousel-caption');
+				$('.new-caption-area').html(caption.html());
+				caption.css('display', 'none');
 			}
+			
+			/* "dinamically change carousel caption on other Div*/
+			$(function() {
+				$(".carousel").on('slide.bs.carousel',function (evt) {
+					var caption = $('div.carousel-item:nth-child(' + ($(evt.relatedTarget).index() + 1) + ') .carousel-caption');
+					$('.new-caption-area').html(caption.html());
+					caption.css('display', 'none');
+				});
+			});	
 		});
 
 	</script>

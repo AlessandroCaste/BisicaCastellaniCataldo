@@ -11,20 +11,6 @@ $(document).ready( function() {
 	});
 	
 	
-	/* "Location" carousel caption on other Div*/
-	$(function() {
-		$('.carousel').carousel();
-		var caption = $('div.carousel-item:nth-child(1) .carousel-caption');
-		$('.new-caption-area').html(caption.html());
-		caption.css('display', 'none');
-
-		$(".carousel").on('slide.bs.carousel',function (evt) {
-			var caption = $('div.carousel-item:nth-child(' + ($(evt.relatedTarget).index() + 1) + ') .carousel-caption');
-			$('.new-caption-area').html(caption.html());
-			caption.css('display', 'none');
-		});
-	});
-	
 	/* "Location" More-Button change text
 	Use in final version of website
 	$('#show_doctor').click(function(){
@@ -50,10 +36,9 @@ $(document).ready( function() {
 });
 
 function showAll(){
-			var cards = $('#card_container').children();
-			console.log(cards);
-			cards.show();
-			scrollOnClick();
+	var cards = $('#card_container').children();
+	cards.show();
+	scrollOnClick();
 		};
 		
 function scrollOnClick(){
@@ -62,7 +47,9 @@ function scrollOnClick(){
 	}, 500);
 };
 
-function getAllUrlParams(url) { // get query string from url (optional) or window
+
+// get query string from url (optional) or window
+function getAllUrlParams(url) { 
 	var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
 
 	// we'll store the parameters here
