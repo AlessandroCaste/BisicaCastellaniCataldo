@@ -155,77 +155,37 @@
 
 			<hr class="division_line my-5" id="division_line1">
 
-		<!-----SERVICES CATEGORY----->
-			<div class="col-lg-10 col-md-10 col-xs-10 d-flex justify-content-center mx-auto mt-5">
-				<h2 style="color: #FA6359">THE SERVICES</h2>
-			</div>
+			<!-----SERVICES CATEGORY----->
 			<div class="col-lg-10 m-auto" id="myGroup">
 
 				<!--Advisory-->
-				<div class="pl-3 mt-3" style="border-left: 13px solid blue">
+				<div class="pl-3 mt-3 d-none" style="border-left: 15px solid blue" id="AdvisoryTipology">
 					<h2>Advisory</h2>
-					<img class="rounded_icon"  src="../assets/img/icons/book.png">
+					<img class="rounded_icon" src="../assets/img/icons/book.png">
 					<p>The goal of an advisory is to help students figure out who they are, where they’re headed, and how they’re going to get there. Through an advisory system, each student has an adult who knows them and helps them navigate high school so that they leave with a meaningful, personalized plan and are prepared for postsecondary options.</p>
-
 				</div>
-				<ul class="stylish-list pl-5">
-
-					<li class="my-2" style="border: 3px solid grey;">
-						<a class="d-block" data-toggle="collapse" href="#collapseService_1.1" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
-							Parent Courses
-						</a>
-						<div class="collapse" id="collapseService_1.1">
-							<div class="p-1">
-								Our courses are here to support you and to help you build a strong and secure relationship with your child.
-								<a href="randomservice.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-							</div>
-						</div>
-					</li>
-
-					<li class="my-2" style="border: 3px solid grey;">
-						<a class="d-block" data-toggle="collapse" href="#collapseService_1.2" role="button" aria-expanded="false" aria-controls="collapseService_1.2">
-							Psycological Meetings
-						</a>
-						<div class="collapse" id="collapseService_1.2">
-							<div class="p-1">
-								A prominent aspect of health psychology is the psychoeducation of patients: instructing them in how to follow a medical regimen.
-								<a href="service2.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-							</div>
-						</div>
-					</li>
+				<ul class="stylish-list pl-5" id="AdvisoryList">
+					<!---fill with list--->
 				</ul>
 
 				<!--CHILDREN-->
-				<div class="pl-3 mt-5" style="border-left: 15px solid green">
+				<div class="pl-3 mt-5 d-none" style="border-left: 15px solid green" id="ChildrenTypology">
 					<h2>Children</h2>
 					<img class="rounded_icon" src="../assets/img/icons/child.png">
 					<p>Children are the ones who are very vital for deciding how the world is gonna be after some years. So if one can do some good in the life of a child then there can be change, atleast a slightest change, in the world to come. And if most of them think on same lines then we can hope of a better future ahead. The main component which decides how the person is going to be in the future or the present is the amount of education he/she has within them.</p>
 				</div>
-				<ul class="stylish-list">
+				<ul class="stylish-list pl-5" id="ChildrenList">
+					<!---fill with list--->
+				</ul>
 
-					<li class="my-2" style="border: 3px solid grey;">
-						<a class="d-block" data-toggle="collapse" href="#collapseService_2.1" role="button" aria-expanded="false" aria-controls="collapseService_2.1">
-							Psychoterapy and Assistance
-						</a>
-						<div class="collapse" id="collapseService_2.1">
-							<div class="p-1">
-								The therapeutic relationship is developed through talking or play, depending on age. The child has an opportunity to work towards a better understanding of themselves, their relationships and their established patterns of behaviour.
-								<a href="service4.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-							</div>
-						</div>
-					</li>
-
-					<li class="my-2" style="border: 3px solid grey;">
-						<a class="d-block" data-toggle="collapse" href="#collapseService_1.3" role="button" aria-expanded="false" aria-controls="collapseService_1.3">
-							Learning Experiences
-						</a>
-						<div class="collapse" id="collapseService_1.3">
-							<div class="p-1">
-								Learning experience refers to any interaction, course, program, or other experience in which learning takes place.
-								<a href="service3.html" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-							</div>
-						</div>
-					</li>
+				<!--YOUNG ADULTS-->
+				<div class="pl-3 mt-5 d-none" style="border-left: 15px solid red" id="YoungTypology">
+					<h2>Young Adults</h2>
+					<img class="rounded_icon" src="../assets/img/icons/young_adult.png">
+					<p>Growing up, we learn to resent being told what to do. It’s almost instinctive. If it’s not our parents, it’s our teachers, if it’s not our teachers it’s that ever present “society” that tells us we aren’t old enough to make decisions for ourselves so we’re to follow their rules until we’re old enough to “know better”.</p>
+				</div>
+				<ul class="stylish-list pl-5" id="YoungList">
+					<!---fill with list--->       
 				</ul>
 			</div>
 		</div>
@@ -292,6 +252,16 @@
 				.then(function(data){
 					createCarousel(data);
 					addCarouselData(data);
+				});
+			
+			fetch('/locations/' + locationID + '/services')
+				.then(function(response){
+					return response.json();
+				})
+				.then(function(data){
+					data.map(addChildrenService);
+					data.map(addAdvisoryService);
+					data.map(addYoungService);
 				});
 			
 			function fillLocationData(location){
@@ -375,6 +345,66 @@
 				$('.new-caption-area').html(caption.html());
 				caption.css('display', 'none');
 			}
+			
+			function addChildrenService(service){
+				if(!service.typology.localeCompare("Children")){
+					var d = document.getElementById("ChildrenTypology");
+					d.classList.remove("d-none");
+					$('#ChildrenList').append(`
+						<li class="my-2" style="border: 3px solid grey;">
+							<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
+								${service.name}
+							</a>
+							<div class="collapse" id="collapseService_${service.id}">
+								<div class="p-1">
+									${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
+									<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+								</div>
+							</div>
+						</li>
+					`);
+				}
+			}
+            
+			function addAdvisoryService(service){
+				if(!service.typology.localeCompare("Advisory")){
+					var d = document.getElementById("AdvisoryTipology");
+					d.classList.remove("d-none");
+					$('#AdvisoryList').append(`
+						<li class="my-2" style="border: 3px solid grey;">
+							<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
+								${service.name}
+							</a>
+							<div class="collapse" id="collapseService_${service.id}">
+								<div class="p-1">
+									${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
+									<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+								</div>
+							</div>
+						</li>
+					`);
+				}
+			}
+            
+			function addYoungService(service){
+				if(!service.typology.localeCompare("Young Adults")){
+					var d = document.getElementById("YoungTypology");
+					d.classList.remove("d-none");
+					$('#YoungList').append(`
+						<li class="my-2" style="border: 3px solid grey;">
+							<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
+								${service.name}
+							</a>
+							<div class="collapse" id="collapseService_${service.id}">
+								<div class="p-1">
+									${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
+									<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+								</div>
+							</div>
+						</li>
+					`);
+				}
+			} 
 			
 			/* "dinamically change carousel caption on other Div*/
 			$(function() {
