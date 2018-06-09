@@ -277,8 +277,8 @@
 			var folderName;
 			
 			fetch('/locations/' + locationID)
-				.then(function(responce) {
-					return responce.json();
+				.then(function(response) {
+					return response.json();
 				})
 				.then(function(data) {
 					fillLocationData(data);
@@ -286,8 +286,8 @@
 				});
 			
 			fetch('/locations/' + locationID + "/slide")
-				.then(function(responce){
-					return responce.json();
+				.then(function(response){
+					return response.json();
 				})
 				.then(function(data){
 					createCarousel(data);
