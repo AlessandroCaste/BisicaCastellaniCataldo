@@ -73,7 +73,7 @@ function initWhoweareTable(){
 				return Promise.all(
 					_.map(whoweareList, p => {
 						// insert the row
-						// delete p.basicInfo;
+						Ï
 						return sqlDb("whoweare").insert(p).catch(function(err) {
 							console.log("Error in whoweare extraction");
 							console.log(err);
@@ -108,7 +108,6 @@ function initPeopleTable() {
 				return Promise.all(
 					_.map(peopleList, p => {
 						// insert the row
-						// delete p.basicInfo;
 						return sqlDb("people").insert(p).catch(function(err) {
 							console.log("Error in people extraction");
 							console.log(err);
@@ -309,7 +308,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 ////////////////// PEOPLE //////////////////
 
 // Return data about workers
-
 app.get("/people", function(req, res) {
 	let myQuery = sqlDb("people").orderByRaw('surname, name')
 		.then(result => {
@@ -317,8 +315,8 @@ app.get("/people", function(req, res) {
 		})
 })
 
-// Return data about workers ordered by surname and  name
 
+// Return data about workers ordered by surname and  name
 app.get("/people?sort=desc", function(req, res) {
 	let myQuery = sqlDb("people").orderByRaw('surname, name')
 		.then(result => {
@@ -326,8 +324,18 @@ app.get("/people?sort=desc", function(req, res) {
 		})
 })
 
-// Returns data about a specific worker based on her id 
 
+// Returns data about a specific worker based on her id 
+app.get("/people/basic_info", function(req, res) {
+	let myQuery = sqlDb("people");
+	myQuery.select('id', 'name', 'surname', 'picture')
+		.then(result => {
+			res.send(JSON.stringify(result));
+	})
+})
+
+
+// Returns data about a specific worker based on her id 
 app.get("/people/:id", function(req, res) {
 	let myQuery = sqlDb("people");
 	myQuery.where("id", req.params.id)
@@ -336,8 +344,8 @@ app.get("/people/:id", function(req, res) {
 	})
 })
 
-// Return a worker's services given its id
 
+// Return a worker's services given its id
 app.get("/people/:id/services", function(req, res) {
 	let myQuery = sqlDb("servicesPeople");
 	myQuery.select().where("personId", req.params.id).innerJoin("services","servicesPeople.serviceId","services.id")
@@ -345,6 +353,7 @@ app.get("/people/:id/services", function(req, res) {
 			res.send(JSON.stringify(result));
 		})
 })
+
 
 ////////////////// LOCATIONS //////////////////
 

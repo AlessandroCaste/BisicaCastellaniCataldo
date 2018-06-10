@@ -150,7 +150,7 @@
 			var serviceId = [];
 			var serviceNames = [];
 			
-			fetch('/people?sort=desc')
+			fetch('/people/basic_info')
 				.then(function(response) {
 					return response.json();
 				})
