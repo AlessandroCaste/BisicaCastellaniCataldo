@@ -89,8 +89,8 @@
 	</div>
 
 	<!------------ FILTERING BUTTONS  ------------>
-	<div class="d-flex flex-row justify-content-center flex-wrap m-auto" id="buttonContainer" style="width: 65%">
-		<button class="filter_button m-3 p-2" id="allBtn" onClick="showAll()">All People</button>
+	<div class="d-flex flex-row justify-content-around flex-wrap m-auto" id="buttonContainer" style="width: 50%">
+		<button class="filter_button m-4 p-2" id="allBtn" onClick="showAll()">All People</button>
 	</div>
 
 	<!------------ DOCTOR CARDS  ------------>
@@ -145,29 +145,58 @@
 	
 	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
+		
+		'use strict';
+		
 		jQuery(document).ready(function() {
-			
-			var serviceId = [];
-			var serviceNames = [];
 			
 			fetch('/people/basic_info')
 				.then(function(response) {
 					return response.json();
 				})
-				.then(function(data) {
-					data.map(addDoctorCard);
-					return data;
-				})
-				.then(function(data) {
-					data.map(updateServiceList);
-				})
-				.then(addFilterButton);
-				
+				.then(function(doctors){
+					doctors.forEach(function(doc){
+						fetch('/people/' + doc.id + '/services/typology')
+							.then(function(secondResponse){
+								return secondResponse.json();
+							})
+							.then(function(typoList) {
+								doc.typoString = typoList.map(function(elem){
+															return elem.typology;
+														}).join(',');
+								addDoctorCard(doc);
+							});
+					});
+				});
+			
+			fetch('/services/basic_info')
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(services){
+				let typoList = services.map(function(elem){
+										return elem.typology;
+									})
+									.filter(function(elem, index, self) {
+        								return index == self.indexOf(elem);
+    								});
+				createFilterButtons(typoList); 
+			});
+			
+			
+			function createFilterButtons(serviceList){
+				serviceList.forEach(function(serv){
+					$('#buttonContainer').append(`
+						<button class="filter_button m-4 p-2" id="${serv}" onClick="filterCards(this.id)">${serv}</button>
+					`);
+				});
+			};
+			
 			
 			function addDoctorCard(doctor){
 				$('#card_container').append(`
 					<div class="doctor-card m-3 text-center">
-						<p class="sr-only">${doctor.servicesId}</p>
+						<p class="sr-only">${doctor.typoString}</p>
 						<a href="personDetail.html?id=${doctor.id}">
 							<div class="card-link">
 								<div class="card-img-container">
@@ -182,25 +211,6 @@
 				`);
 			};
 			
-			
-			function updateServiceList(doctor){
-				servArr = doctor.servicesId.split(",");
-				servArr.forEach(function(elem) {
-					if($.inArray(elem, serviceId) == -1)
-						serviceId.push(elem);
-				});
-			};
-			
-			
-			function addFilterButton(){
-				serviceId.sort();
-				serviceId.forEach(function(elem) {
-					$('#buttonContainer').append(`
-						<button class="filter_button m-3 p-2" id="serv${elem}" onClick="filterCards(this.id)">service${elem}</button>
-					`);
-				});
-			};
-
 		});
 		
 		/*---------------*/
@@ -208,10 +218,10 @@
 		function filterCards(btnName){
 			var cards = $('#card_container').children();
 			cards.hide();
-			filteredCards = cards.filter(function (a) {
+			var filteredCards = cards.filter(function (a) {
 				var src_text = $(this).find('p').text();
 				var locations = src_text.split(',');
-				return $.inArray(btnName.replace('serv', ''), locations) > -1;
+				return $.inArray(btnName, locations) > -1;
 			});
 			filteredCards.show();
 			scrollOnClick();

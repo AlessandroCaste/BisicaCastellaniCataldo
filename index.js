@@ -354,11 +354,20 @@ app.get("/people/:id/services", function(req, res) {
 		})
 })
 
+// Return a worker's services typology given its id
+app.get("/people/:id/services/typology", function(req, res) {
+	let myQuery = sqlDb("servicesPeople");
+	myQuery.distinct('typology').select()
+		.where("personId", req.params.id).innerJoin("services","servicesPeople.serviceId","services.id")
+			.then(result => {
+				res.send(JSON.stringify(result));
+			})
+})
+
 
 ////////////////// LOCATIONS //////////////////
 
 // Returns general data about locations. Used for preview thumbnails 
-
 app.get("/locations", function(req, res) {
 	let myQuery = sqlDb("locations");
 	myQuery.select('id','name','region','city','address','phone','mail','picture')
@@ -367,8 +376,8 @@ app.get("/locations", function(req, res) {
 	})
 })
 
-// Return data about a specific location based on its id 
 
+// Return data about a specific location based on its id 
 app.get("/locations/:id", function(req, res) {
 	let myQuery = sqlDb("locations");
 	myQuery.where("id", req.params.id)
@@ -377,8 +386,8 @@ app.get("/locations/:id", function(req, res) {
 	})
 })
 
-// Return a locations carousel data given its id
 
+// Return a locations carousel data given its id
 app.get("/locations/:id/Slide", function(req, res) {
 	let myQuery = sqlDb("locations");
 	myQuery.select('locationSlide.name','header','description','source').where("id", req.params.id).innerJoin("locationSlide","locations.name","locationSlide.name")
@@ -387,8 +396,8 @@ app.get("/locations/:id/Slide", function(req, res) {
 	})
 })
 
-// Return a locations services given its id
 
+// Return a locations services given its id
 app.get("/locations/:id/services", function(req, res) {
 	let myQuery = sqlDb("servicesLocations");
 	myQuery.select().where("locationId", req.params.id).innerJoin("services","servicesLocations.serviceId","services.id")
@@ -400,7 +409,6 @@ app.get("/locations/:id/services", function(req, res) {
 ////////////////// SERVICES //////////////////
 
 // Return data about services 
-
 app.get("/services", function(req, res) {
 	let myQuery = sqlDb("services")
 		.then(result => {
@@ -408,8 +416,18 @@ app.get("/services", function(req, res) {
 		})
 })
 
-// Return data about a specific service based on its id 
 
+// Return Basic data about services 
+app.get("/services/basic_info", function(req, res) {
+	let myQuery = sqlDb("services");
+	myQuery.select('id', 'name', 'typology')
+		.then(result => {
+			res.send(JSON.stringify(result));
+	})
+})
+
+
+// Return data about a specific service based on its id 
 app.get("/services/:id", function(req, res) {
 	let myQuery = sqlDb("services");
 	myQuery.where("id", req.params.id)
@@ -418,8 +436,19 @@ app.get("/services/:id", function(req, res) {
 		})
 })
 
-// Return workers' data by service given a service id
 
+// Return workers' Basic data by service given a service id
+app.get("/services/:id/people/basic_info", function(req, res) {
+	let myQuery = sqlDb("servicespeople");
+	myQuery.select('id', 'name', 'surname', 'picture')
+		.where("serviceId", req.params.id).innerJoin("people","servicespeople.personId","people.id")
+		.then(result => {
+			res.send(JSON.stringify(result));
+		})
+})
+
+
+// Return workers' data by service given a service id
 app.get("/services/:id/people", function(req, res) {
 	let myQuery = sqlDb("servicespeople");
 	myQuery.select().where("serviceId", req.params.id).innerJoin("people","servicespeople.personId","people.id")
@@ -430,7 +459,6 @@ app.get("/services/:id/people", function(req, res) {
 
 
 // Return a locations data given service id
-
 app.get("/services/:id/locations", function(req, res) {
 	let myQuery = sqlDb("serviceslocations");
 	myQuery.select().where("serviceId", req.params.id).innerJoin("locations","serviceslocations.locationId","locations.id")
