@@ -15,7 +15,7 @@ const process = require("process");
 ////////////////// INIT DB /////////////////////
 ////////////////////////////////////////////////
 
-// get json files that contains data to populate db
+// JSON files required to create the db
 let peopleList = require("./other/people.json");
 let locationsList = require("./other/locations.json");
 let servicesList = require("./other/services.json");
@@ -73,7 +73,6 @@ function initWhoweareTable(){
 				return Promise.all(
 					_.map(whoweareList, p => {
 						// insert the row
-						Ï
 						return sqlDb("whoweare").insert(p).catch(function(err) {
 							console.log("Error in whoweare extraction");
 							console.log(err);
@@ -293,7 +292,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 ////////////////// APP.GET //////////////////
 /////////////////////////////////////////////
 
-
+//We define routing using methods of the Express app object that correspond to HTTP methods; app.get() handles GET 
 // Name of the tables are:
 // people
 // locations
@@ -309,7 +308,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Return data about workers
 app.get("/people", function(req, res) {
-	let myQuery = sqlDb("people").orderByRaw('surname, name')
+	let myQuery = sqlDb("people")
 		.then(result => {
 			res.send(JSON.stringify(result));
 		})
@@ -325,7 +324,7 @@ app.get("/people?sort=desc", function(req, res) {
 })
 
 
-// Returns data about a specific worker based on her id 
+// Returns summary of info about about a specific worker based on her id 
 app.get("/people/basic_info", function(req, res) {
 	let myQuery = sqlDb("people");
 	myQuery.select('id', 'name', 'surname', 'picture')
@@ -388,7 +387,7 @@ app.get("/locations/:id", function(req, res) {
 
 
 // Return a locations carousel data given its id
-app.get("/locations/:id/Slide", function(req, res) {
+app.get("/locations/:id/slide", function(req, res) {
 	let myQuery = sqlDb("locations");
 	myQuery.select('locationSlide.name','header','description','source').where("id", req.params.id).innerJoin("locationSlide","locations.name","locationSlide.name")
 		.then(result => {
@@ -436,6 +435,15 @@ app.get("/services/:id", function(req, res) {
 		})
 })
 
+
+// Return workers' data by service given a service id
+app.get("/services/:id/people", function(req, res) {
+	let myQuery = sqlDb("servicespeople");
+	myQuery.select().where("serviceId", req.params.id).innerJoin("people","servicespeople.personId","people.id")
+		.then(result => {
+			res.send(JSON.stringify(result));
+		})
+})
 
 // Return workers' Basic data by service given a service id
 app.get("/services/:id/people/basic_info", function(req, res) {
