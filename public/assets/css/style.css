@@ -354,27 +354,6 @@ blockquote.carousel_quote{
 }
 
 
-							/* ==== OTHER ==== */
-
-.title{
-	margin : auto;
-	width : 100%;
-	font-family: 'Fredericka the Great', serif;
-	font-size: 2.5em;
-	color: rgb(120,215,252);
-}
-
-img.rounded_icon{
-	position: relative;
-	bottom: calc(3rem - 2vw);
-	display: block;
-	width: 85px;
-	box-shadow: 1px 1px rgba(0,0,0,0.2);
-	float: right;
-	border-radius: 85px;
-}
-
-
 
 							/* ==== LIST ==== */
 
@@ -411,7 +390,6 @@ ul.stylish-list li > a{
 
 
 
-
 							/* ==== DIVISION LINES ==== */
 
 hr.division_line_curvy{
@@ -444,4 +422,30 @@ hr.division_line:after {
 	border-radius: 40px;
 	box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.4);
 	transform: rotate(55deg);
+}
+
+
+
+							/* ==== OTHER ==== */
+
+.title{
+	margin : auto;
+	width : 100%;
+	font-family: 'Fredericka the Great', serif;
+	font-size: 2.5em;
+	color: rgb(120,215,252);
+}
+
+img.rounded_icon{
+	position: relative;
+	bottom: calc(3rem - 2vw);
+	display: block;
+	width: 85px;
+	box-shadow: 1px 1px rgba(0,0,0,0.2);
+	float: right;
+	border-radius: 85px;
+}
+
+.serviceOverview{
+	border: 3px solid grey;
 }
