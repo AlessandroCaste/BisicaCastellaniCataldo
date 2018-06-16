@@ -35,8 +35,8 @@
 				</button>
 				<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
 					<ul class="navbar-nav" style="margin:auto">
-						<li class="nav-item"> <a class="nav-link navigation-text" href="../index.html">Home        </a> </li>
-						<li class="nav-item"> <a class="nav-link navigation-text" href="whoweare.html">Who We Are  </a> </li>
+						<li class="nav-item"><a class="nav-link navigation-text" href="../index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link navigation-text" href="whoweare.html">Who We Are</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle navigation-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Our offer
@@ -49,7 +49,7 @@
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle navigation-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								News&Events
+								News &amp; Events
 							</a>
 							<div class="dropdown-menu text-center" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item navigation-text" href="#">News</a>
@@ -67,9 +67,9 @@
 	<!------------------ CONTENT ------------------>
 	<div class="container-fluid" id="content-wrapper">
 
-    <!------------------ PRESENTATION IMAGE ------------------>
+	<!------------------ PRESENTATION IMAGE ------------------>
 		<div  class="row">
-      	<div class ="col-lg-8 col-xxs-12 m-auto text-center">
+			<div class ="col-lg-8 col-xxs-12 m-auto text-center">
 				<img src="../assets/img/presentation_img/ContactUs.png" class = "presentation-image" alt="Assisting" style="height: 350px">
 				<div class="opaque_line_text">
 					Contact Us
@@ -102,20 +102,19 @@
 				<div id="map" style="max-width:400px; height:400px; background:yellow"></div>
 
 				<script>
-							function myMap() {
-                                var latlng = new google.maps.LatLng(45.480291,9.224303);
-                                var mapOptions = {
-                                     center: latlng,
-                                     zoom: 15,
-                                     mapTypeId: google.maps.MapTypeId.map
-                                }
-                                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                                var marker = new google.maps.Marker({
-                                    position: latlng,
-                                    map: map,
-                                    title: 'Noi siamo qui' });
-                            }
-
+					function myMap() {
+						var latlng = new google.maps.LatLng(45.480291,9.224303);
+						var mapOptions = {
+							center: latlng,
+							zoom: 15,
+							mapTypeId: google.maps.MapTypeId.map
+						}
+						var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+						var marker = new google.maps.Marker({
+							position: latlng,
+							map: map,
+							title: 'Noi siamo qui' });
+					}
 				</script>
 				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb2UR8QOXPqDDCeMDyzk37TL86jZZdzcc&callback=myMap"></script>
 
@@ -134,33 +133,29 @@
 		<div class="footer_content">
 			<div class="container-fluid">
 				<div class="row">
-				    <div class="col-md-6 col-xs-10 d-flex flex-column flex-md-row text-center align-items-center nav-itemfooter mb-3" >
-                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="../index.html">Home</a>
-
-                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="#">Privacy</a>
-
-                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="#">Volunteer</a>
-
-                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="#">FAQ</a>
-
-                        <a style="color: white; border-right: none; padding-left: 10px; padding-right: 10px" href="#">Help Us!</a>
-                    </div>
-				<div class="col-md-4 col-xs-10 mb-3" >
-					<div class ="social">
-						<div class="a2a_kit a2a_kit_size_32 a2a_default_style d-flex justify-content-center" style="padding-top: 10px">
-							 <a class="a2a_button_facebook" href="https://www.facebook.com"></a>
-							 <a class="a2a_button_twitter" href="https://www.twitter.com" style="margin-left: 10px"></a>
-							 <a class="a2a_button_google_plus" href="https://www.plus.google.com" style="margin-left: 10px"></a>
-							 <a class="a2a_button_email" style="margin-left: 10px"></a>
-						</div>
-						<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<div class="col-md-6 col-xs-10 d-flex flex-column flex-md-row text-center align-items-center nav-itemfooter mb-3" >
+						<a style="color: white; padding-left: 10px; padding-right: 10px" href="../index.html">Home</a>
+						<a style="color: white; padding-left: 10px; padding-right: 10px" href="#">Privacy</a>
+						<a style="color: white; padding-left: 10px; padding-right: 10px" href="#">Volunteer</a>
+						<a style="color: white; padding-left: 10px; padding-right: 10px" href="#">FAQ</a>
+						<a style="color: white; border-right: none; padding-left: 10px; padding-right: 10px" href="#">Help Us!</a>
 					</div>
-				</div>
-				<div class="col-md-2 col-xs-10">
-					<button href="#" type="button" class="btn donate-btn d-block mx-auto mb-3">
-						donate
-					</button>
-				</div>
+					<div class="col-md-4 col-xs-10 mb-3" >
+						<div class ="social">
+							<div class="a2a_kit a2a_kit_size_32 a2a_default_style d-flex justify-content-center" style="padding-top: 10px">
+								<a class="a2a_button_facebook" href="https://www.facebook.com"></a>
+								<a class="a2a_button_twitter" href="https://www.twitter.com" style="margin-left: 10px"></a>
+								<a class="a2a_button_google_plus" href="https://www.plus.google.com" style="margin-left: 10px"></a>
+								<a class="a2a_button_email" style="margin-left: 10px"></a>
+							</div>
+							<script async src="https://static.addtoany.com/menu/page.js"></script>
+						</div>
+					</div>
+					<div class="col-md-2 col-xs-10">
+						<button href="#" type="button" class="btn donate-btn d-block mx-auto mb-3">
+							donate
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

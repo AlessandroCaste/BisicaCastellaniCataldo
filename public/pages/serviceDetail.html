@@ -77,8 +77,8 @@
     <div class="container-fluid content-wrapper">
 		<div class="row">
 			<div class = "col text-center mt-1 mb-4">
-					<h2 class="service-title" id="serviceTypology"><!--Fill with typology Name--></h2>
-					<h2 class="service-subtitle" id="serviceName">-<!--Fill with service Name-->-</h2>
+				<h2 class="title" id="serviceName"><!--Fill with service Name--></h2>
+				<h2 id="serviceTypology" style="color: #FA6359;"><!--Fill with typology Name--></h3>
 			</div>
 		</div>
 
@@ -229,13 +229,15 @@
 					</div>
 				`);
 			};
-
+			
 			function addLocationCard(location){
-				$('#card_containerLocations').append(`<div class="location-card m-3 pb-md-2 text-center">
-						<a href="location1.html">
+				$('#card_containerLocations').append(`
+					<div class="location-card m-3 pb-md-2 text-center">
+						<p class="sr-only">${location.region}</p>
+						<a href="locationDetail.html?id=${location.id}">
 							<div class="card-link">
 								<div class="card-img-container">
-									<img class="img-fluid card-img" src="${location.pictures}cover.jpg" alt="location_image">
+									<img class="img-fluid card-img" src="${location.picture}cover.jpg" alt="location_image">
 									<div class=lens_img></div>
 								</div>
 								<h3 class="mt-2">${location.name}</h3>
@@ -243,14 +245,16 @@
 						</a>
 						<div class="card-info">
 							<h6 style="color: rgb(226,162,30);
-										 font-family: 'Montserrat',sans-serif">${location.city} <br>${location.address}</h6>
+										 font-family: 'Montserrat',sans-serif">
+								${location.city} <br> ${location.address}
+							</h6>
 							<hr class="division_line_curvy">
-							<a href="tel:+393274565345" class="d-block"><strong>${location.phone}</strong></a>
+							<a href="tel:+39${location.phone}" class="d-block"><strong>${location.phone}</strong></a>
 							<a href="mailto:${location.mail}" class="d-block">${location.mail}</a>
 						</div>
-						<a class="btn d-md-none btn-sm btn-outline-secondary float-right my-2" href="location1.html">See More...</a>
-					</div>
-					`);
+						<a class="btn d-md-none btn-sm btn-outline-secondary float-right my-2" href="locationDetail.html?id=${location.id}">See More...</a>
+					</div>	
+				`);
 			};
 		});
 
