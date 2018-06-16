@@ -158,27 +158,29 @@
 							.then(secondResponse => secondResponse.json())
 							.then(function(typoList) {
 								doc.typoString = typoList
-															.map(elem => elem.typology)
-															.join(',');
+															.map(elem => elem.typology) //extract only typology
+															.map(type => type.replace(/\s+/g, '')) //delete spaces
+															.join(','); //create String from Array
 								addDoctorCard(doc);
 							});
 					});
-				});
+			});
 			
 			fetch('/services/basic_info')
-			.then(response => response.json())
-			.then(function(services){
-				let typoList = services
-										.map(serv => serv.typology)
-										.filter((elem, index, self) => index == self.indexOf(elem));
-				createFilterButtons(typoList);
+				.then(response => response.json())
+				.then(function(serviceList){
+					let typoList = serviceList
+											.map(serv => serv.typology) //extract only typology
+											.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
+					addFilterButtons(typoList);
 			});
 			
 			
-			function createFilterButtons(serviceList){
-				serviceList.forEach(function(serv){
+			function addFilterButtons(typologyList){
+				typologyList.forEach(function(type){
+					var type_NoSpaces = type.replace(/\s+/g, '');
 					$('#buttonContainer').append(`
-						<button class="filter_button m-4 p-2" id="${serv}" onClick="filterCards(this.id)">${serv}</button>
+						<button class="filter_button m-4 p-2" id="${type_NoSpaces}" onClick="filterCards(this.id)">${type}</button>
 					`);
 				});
 			};
@@ -206,16 +208,20 @@
 		
 		/*---------------*/
 		
+		/**every doctor-card's <div> is checked;
+		 * card's sr-only <p>, containing a string of the operating service category is extracted
+		 * if there's No match between typology string and the button Name the card is hided
+		 */
 		function filterCards(btnName){
-			var cards = $('#card_container').children();
-			cards.hide();
-			var filteredCards = cards.filter(function (a) {
-				var src_text = $(this).find('p').text();
-				var locations = src_text.split(',');
-				return $.inArray(btnName, locations) > -1;
+			$('.doctor-card').each(function(){
+				let card = this; //jQuery object containing the single doctor-card's <div>
+				var srOnly_text = $(card).find('p').text();
+				var services = srOnly_text.split(',');
+				if($.inArray(btnName, services) > -1)
+					$(card).show();
+				else
+					$(card).hide();
 			});
-			filteredCards.show();
-			scrollOnClick();
 		};
 		
 	</script>
