@@ -157,9 +157,9 @@
 						fetch('/people/' + doc.id + '/services/typology')
 							.then(secondResponse => secondResponse.json())
 							.then(function(typoList) {
-								doc.typoString = typoList.map(function(elem){
-															return elem.typology;
-														}).join(',');
+								doc.typoString = typoList
+															.map(elem => elem.typology)
+															.join(',');
 								addDoctorCard(doc);
 							});
 					});
