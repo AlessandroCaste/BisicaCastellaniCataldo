@@ -189,10 +189,8 @@
 							.then(secondResponse => secondResponse.json())
 							.then(function(serviceLocList){
 								let locList = serviceLocList
-														//extract region from location
-														.map(loc => loc.region)
-														//delete duplicates
-														.filter((elem, index, self) => (index == self.indexOf(elem)));
+														.map(loc => loc.region) //extract region from location
+														.filter((elem, index, self) => (index == self.indexOf(elem))); //delete duplicates
 
 								service.regionList = locList;
 							
@@ -237,7 +235,7 @@
 								<div class="collapse" id="collapseService_${service.id}">
 									<div class="p-1">
 										${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
-										<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+										<a href="serviceDetail.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
 									</div>
 								</div>
 							</li>
