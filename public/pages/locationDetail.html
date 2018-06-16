@@ -241,7 +241,7 @@
 				.then(response => response.json())
 				.then(function(locationData) {
 					fillLocationData(locationData);
-				});
+			});
 			
 			// location slides, with picture-source and texts are fetched.
 			// Carousel, empty at the beginning is filled with data
@@ -250,22 +250,21 @@
 				.then(function(slides){
 					createCarousel(slides);
 					addCarouselData(slides);
-				});
+			});
 			
 			// location services, with typology and overview are fetched.
 			// data is groupped by typology, and each services fills the corresponding area
 			fetch('/locations/' + locationID + '/services')
-			.then(response => response.json())
-			.then(function(serviceList){
-				//typologies of services operated in this location
-				let typoList = serviceList
-											.map(serv => serv.typology) //extract only typology
-											.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
-											.map(type => type.replace(/\s+/g, '')); //delete spaces
-				
-				//each 'typology area' is filled with correct 'service overview'
-				typoList.map(addOverview, serviceList);
-				
+				.then(response => response.json())
+				.then(function(serviceList){
+					//typologies of services operated in this location
+					let typoList = serviceList
+												.map(serv => serv.typology) //extract only typology
+												.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
+												.map(type => type.replace(/\s+/g, '')); //delete spaces
+
+					//each 'typology area' is filled with correct 'service overview'
+					typoList.map(addOverview, serviceList);	
 			});
 			
 			
