@@ -58,6 +58,7 @@ function initSqlDB() {
 	}
 }
 
+
 function initWhoweareTable(){
 	return sqlDb.schema.hasTable("whoweare").then(exists => {
 		if (!exists) {
