@@ -20,6 +20,12 @@
 
 	<!--CUSTOM CSS -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+	
+	<style>
+		.serviceOverview{
+			border: 3px solid grey;
+		}
+	</style>
 </head>
 
 <body>
@@ -85,6 +91,11 @@
 		</div>
 		<div class="row mt-5">
 
+			<div class="d-flex flex-row justify-content-around flex-wrap m-auto" id="buttonContainer" style="width: 50%">
+				<button class="filter_button m-4 p-2" id="allBtn" onClick="showEverything()">All Regions</button>
+			</div>
+			
+			
 			<!-----SERVICES CATEGORY----->
 			<div class="col-lg-10 m-auto" id="myGroup">
 
@@ -95,7 +106,7 @@
 					<p>The goal of an advisory is to help students figure out who they are, where they’re headed, and how they’re going to get there. Through an advisory system, each student has an adult who knows them and helps them navigate high school so that they leave with a meaningful, personalized plan and are prepared for postsecondary options.</p>
 
 				</div>
-				<ul class="stylish-list pl-5" id="AdvisoryService">
+				<ul class="stylish-list pl-5" id="Advisory">
 					<!---fill with services--->
 				</ul>
 
@@ -105,7 +116,7 @@
 					<img class="rounded_icon" src="../assets/img/icons/child.png">
 					<p>Children are the ones who are very vital for deciding how the world is gonna be after some years. So if one can do some good in the life of a child then there can be change, atleast a slightest change, in the world to come. And if most of them think on same lines then we can hope of a better future ahead. The main component which decides how the person is going to be in the future or the present is the amount of education he/she has within them.</p>
 				</div>
-				<ul class="stylish-list pl-5" id="ChildrenService">
+				<ul class="stylish-list pl-5" id="Children">
 					<!---fill with services--->
 				</ul>
 
@@ -116,7 +127,7 @@
 					<p>Growing up, we learn to resent being told what to do. It’s almost instinctive. If it’s not our parents, it’s our teachers, if it’s not our teachers it’s that ever present “society” that tells us we aren’t old enough to make decisions for ourselves so we’re to follow their rules until we’re old enough to “know better”.</p>
 				</div>
 
-				<ul class="stylish-list pl-5" id="YoungAdultService">
+				<ul class="stylish-list pl-5" id="YoungAdults">
 					<!---fill with services--->
 				</ul>
 
@@ -164,73 +175,96 @@
 	
 	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
-		jQuery(document).ready(function() {
+		jQuery(document).ready(function(){
       	      
 			fetch('/services')
-				.then(function(response) {
-					return response.json();
-				})
-				.then(function(data) {
-					data.map(addOverviewChildren);
-					data.map(addOverviewAdvisory);
-					data.map(addOverviewYoungAdults);
+				.then(response => response.json())
+				.then(function(serviceList){
+					let typoList = serviceList
+											.map(serv => serv.typology) //extract only typology
+											.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
+											.map(type => type.replace(/\s+/g, '')); //delete spaces
+					serviceList.forEach(function(service){
+						fetch('/services/' + service.id + '/locations/basic_info')
+							.then(secondResponse => secondResponse.json())
+							.then(function(serviceLocList){
+								let locList = serviceLocList
+														//extract region from location
+														.map(loc => loc.region)
+														//delete duplicates
+														.filter((elem, index, self) => (index == self.indexOf(elem)));
+
+								service.regionList = locList;
+							
+								addOverview(service, typoList);
+						});
+					});
+			});
+			
+			fetch('/locations/basic_info')
+				.then(response => response.json())
+				.then(function(locationList){
+					let regionList = locationList
+												.map(loc => loc.region) //extract only region
+												.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
+
+					addFilterButtons(regionList);					
+			});
+		
+		
+         function addFilterButtons(regionList){
+				regionList.forEach(function(reg){
+					$('#buttonContainer').append(`
+						<button class="filter_button m-4 p-2" id="${reg}" onClick="filterList(this.id)">${reg}</button>
+					`);
 				});
-            
-			function addOverviewChildren(service){
-				if(!service.typology.localeCompare("Children")){
-					$('#ChildrenService').append(`
-						<li class="my-2" style="border: 3px solid grey;">
-							<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
-								${service.name}
-							</a>
-							<div class="collapse" id="collapseService_${service.id}">
-								<div class="p-1">
-									${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
-									<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+			};
+			
+			
+			function addOverview(service, typoList){
+				typoList.forEach(function(type){					
+					/**spaces are deleted from input service typology in order to match with div Id, 
+					 * which has no spaces
+					 */
+					var typeName_NoSpaces = service.typology.replace(/\s+/g, ''); //delete spaces
+					if(typeName_NoSpaces === type)
+						$('#' + type).append(`
+							<li class="my-2 serviceOverview">
+								<p class="sr-only">${service.regionList}</p>
+								<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false">
+									${service.name}
+								</a>
+								<div class="collapse" id="collapseService_${service.id}">
+									<div class="p-1">
+										${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
+										<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+									</div>
 								</div>
-							</div>
-						</li>
-					`);
-				}
-			}
+							</li>
+						`);
+				});
+			};
+			
+		});
+		
+		function filterList(btnName){
+			$('li.serviceOverview').each(function(){
+				let elem = this; //jQuery object containing the single <li>
+				var srOnly_text = $(elem).find('p').text();
+				var regions = srOnly_text.split(',');
+				if($.inArray(btnName, regions) > -1)
+					$(elem).show();
+				else
+					$(elem).hide();
+			})
+		};
+		
+		function showEverything(){
+			$('li.serviceOverview').each(function(){
+				$(this).show();
+			});
+		}
             
-			function addOverviewAdvisory(service){
-				if(!service.typology.localeCompare("Advisory")){
-					$('#AdvisoryService').append(`
-						<li class="my-2" style="border: 3px solid grey;">
-							<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
-								${service.name}
-							</a>
-							<div class="collapse" id="collapseService_${service.id}">
-								<div class="p-1">
-									${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
-									<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-								</div>
-							</div>
-						</li>
-					`)
-				}
-			}
-            
-			function addOverviewYoungAdults(service){
-				if(!service.typology.localeCompare("Young Adults")){
-					//serviceTemp=service.overview.split(".");
-					$('#YoungAdultService').append(`
-						<li class="my-2" style="border: 3px solid grey;">
-							<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
-								${service.name}
-							</a>
-							<div class="collapse" id="collapseService_${service.id}">
-								<div class="p-1">
-									${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
-									<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-								</div>
-							</div>
-						</li>
-					`);
-				}
-			}
-        });
     </script>
     
 </body>
