@@ -376,6 +376,16 @@ app.get("/locations", function(req, res) {
 })
 
 
+// Returns basic data about locations. Used for preview thumbnails 
+app.get("/locations/basic_info", function(req, res) {
+	let myQuery = sqlDb("locations");
+	myQuery.select('id','name','region')
+		.then(result => {
+			res.send(JSON.stringify(result));
+	})
+})
+
+
 // Return data about a specific location based on its id 
 app.get("/locations/:id", function(req, res) {
 	let myQuery = sqlDb("locations");
