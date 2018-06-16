@@ -456,20 +456,20 @@ app.get("/services/:id/people/basic_info", function(req, res) {
 })
 
 
-// Return workers' data by service given a service id
-app.get("/services/:id/people", function(req, res) {
-	let myQuery = sqlDb("servicespeople");
-	myQuery.select().where("serviceId", req.params.id).innerJoin("people","servicespeople.personId","people.id")
+// Return a locations data given service id
+app.get("/services/:id/locations", function(req, res) {
+	let myQuery = sqlDb("serviceslocations");
+	myQuery.select().where("serviceId", req.params.id).innerJoin("locations","serviceslocations.locationId","locations.id")
 		.then(result => {
 			res.send(JSON.stringify(result));
 		})
 })
 
 
-// Return a locations data given service id
-app.get("/services/:id/locations", function(req, res) {
+// Return a locations basic data given service id
+app.get("/services/:id/locations/basic_info", function(req, res) {
 	let myQuery = sqlDb("serviceslocations");
-	myQuery.select().where("serviceId", req.params.id).innerJoin("locations","serviceslocations.locationId","locations.id")
+	myQuery.select('id', 'name', 'region').where("serviceId", req.params.id).innerJoin("locations","serviceslocations.locationId","locations.id")
 		.then(result => {
 			res.send(JSON.stringify(result));
 		})
