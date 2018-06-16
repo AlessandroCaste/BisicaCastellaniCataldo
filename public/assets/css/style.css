@@ -17,6 +17,35 @@ h2, h3, h4, h5 {
 	font-family: 'Fredericka the Great', cursive;
 	color : rgb(120,215,252);
 }
+
+body{
+	background-color: #FEFAFA;
+	font-size: calc(.9rem + 0.2vw);
+	padding-top: 170px;
+	margin: 0;
+}
+
+
+							/* ==== FOOTER STICKET TO BOTTOM ==== */
+
+
+html, body {
+	height: 100%;
+}
+body {
+  	display: flex;
+	flex-direction: column;
+}
+
+#content-wrapper{
+	flex: 1 0 auto;
+}
+
+footer{
+	flex-shrink: 0;
+}
+
+
 							/* ==== NAVBAR ==== */
 
 @media (min-width: 992px) {
@@ -69,13 +98,14 @@ h2, h3, h4, h5 {
 	background-color:#FEFAFA;
 }
 
+
+
 							/* ==== FOOTER ==== */
 
 footer{
     border-top: 1px solid #798992;
     margin-top: 40px;
     width: 100%;
-    flex-shrink: 0;
 }
 
 .footer_content{
@@ -99,23 +129,6 @@ footer{
 }
 
 
-							/* ==== FOOTER STICKET TO BOTTOM ==== */
-
-body{
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
-
-	background-color: #FEFAFA;
-	font-size: calc(.9rem + 0.2vw);
-	padding-top: 170px;
-	margin: 0;
-}
-
-.content-wrapper{
-	flex: 1 0 auto;
-}
-
 
 
 							/* ==== BREADCRUMB ==== */
@@ -131,7 +144,6 @@ body{
 .breadcrumb-item:not(child){
 	font-weight: bold;
 }
-
 
 
 
