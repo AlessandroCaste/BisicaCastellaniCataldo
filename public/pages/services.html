@@ -221,9 +221,7 @@
 			
 			function addOverview(service, typoList){
 				typoList.forEach(function(type){					
-					/**spaces are deleted from input service typology in order to match with div Id, 
-					 * which has no spaces
-					 */
+					//spaces are deleted from input service typology in order to match with div Id, which has no spaces
 					var typeName_NoSpaces = service.typology.replace(/\s+/g, ''); //delete spaces
 					if(typeName_NoSpaces === type)
 						$('#' + type).append(`
