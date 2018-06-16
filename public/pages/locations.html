@@ -141,22 +141,21 @@
 	
 	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
+		
+		'use strict';
+		
 		jQuery(document).ready(function() {
 			
-			var regionNames = [];
-			
 			fetch('/locations')
-				.then(function(response) {
-					return response.json();
+				.then(response => response.json())
+				.then(function(locations){
+					var regionList = locations
+												.map(loc => loc.region) //extract only region
+												.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
+					addFilterButton(regionList);
+					locations.map(addLocationCard);
 				})
-				.then(function(data) {
-					data.map(addLocationCard);
-					return data;
-				})
-				.then(function(data) {
-					data.map(updateRegionList);
-				})
-				.then(addFilterButton);
+			
 			
 			function addLocationCard(location){
 				$('#card_container').append(`
@@ -185,14 +184,9 @@
 				`);
 			};
 			
-			function updateRegionList(location){
-				if($.inArray(location.region, regionNames) == -1)
-					regionNames.push(location.region);
-			};
-			
-			function addFilterButton(){
-				regionNames.sort();
-				regionNames.forEach(function(elem){
+			function addFilterButton(regionList){
+				regionList.sort();
+				regionList.forEach(function(elem){
 					$('#buttonContainer').append(`
 						<button class="filter_button m-3 p-2" id="${elem}" onClick="filterCards(this.id)">${elem}</button>
 					`);
@@ -200,15 +194,20 @@
 			};			
 		});
 		
+		
+		/**every location-card's <div> is checked;
+		 * card's sr-only <p>, containing a 'region' string 
+		 * if there's No match between region string and the button Name the card is hided
+		 */
 		function filterCards(btnName){
-			var cards = $('#card_container').children();
-			cards.hide();
-			filteredCards = cards.filter(function (a) {
-				var src_text = $(this).find('p').text();
-				return btnName === src_text;
+			$('.location-card').each(function(){
+				let card = this; //jQuery object containing the single doctor-card's <div>
+				var region = $(card).find('p').text();
+				if(region === btnName)
+					$(card).show();
+				else
+					$(card).hide();
 			});
-			filteredCards.show();
-			scrollOnClick();
 		};
 		
 		
