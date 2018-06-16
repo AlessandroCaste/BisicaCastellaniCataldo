@@ -16,9 +16,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
-	<!--CUSTOM CSS and JS -->
+	<!--CUSTOM CSS -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-	<script src="../assets/js/script.js"></script>
 </head>
 
 <body>
@@ -35,8 +34,8 @@
 				</button>
 				<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
 					<ul class="navbar-nav" style="margin:auto">
-						<li class="nav-item"> <a class="nav-link navigation-text" href="../index.html">Home        </a> </li>
-						<li class="nav-item"> <a class="nav-link navigation-text" href="whoweare.html">Who We Are  </a> </li>
+						<li class="nav-item"><a class="nav-link navigation-text" href="../index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link navigation-text" href="whoweare.html">Who We Are</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle navigation-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Our offer
@@ -132,73 +131,62 @@
 		<div class="footer_content">
 			<div class="container-fluid">
 				<div class="row">
-				    <div class="col-md-6 col-xs-10 d-flex flex-column flex-md-row text-center align-items-center nav-itemfooter mb-3" >
-                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="../index.html">Home</a>
-
-                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="#">Privacy</a>
-
-                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="#">Volunteer</a>
-
-                        <a style="color: white; padding-left: 10px; padding-right: 10px" href="#">FAQ</a>
-
-                        <a style="color: white; border-right: none; padding-left: 10px; padding-right: 10px" href="#">Help Us!</a>
-                    </div>
-				<div class="col-md-4 col-xs-10 mb-3" >
-					<div class ="social">
-						<div class="a2a_kit a2a_kit_size_32 a2a_default_style d-flex justify-content-center" style="padding-top: 10px">
-							 <a class="a2a_button_facebook" href="https://www.facebook.com"></a>
-							 <a class="a2a_button_twitter" href="https://www.twitter.com" style="margin-left: 10px"></a>
-							 <a class="a2a_button_google_plus" href="https://www.plus.google.com" style="margin-left: 10px"></a>
-							 <a class="a2a_button_email" style="margin-left: 10px"></a>
-						</div>
-						<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<div class="col-md-6 col-xs-10 d-flex flex-column flex-md-row text-center align-items-center nav-itemfooter mb-3">
+						<a style="color: white; padding-left: 10px; padding-right: 10px" href="../index.html">Home</a>
+						<a style="color: white; padding-left: 10px; padding-right: 10px" href="#">Privacy</a>
+						<a style="color: white; padding-left: 10px; padding-right: 10px" href="#">Volunteer</a>
+						<a style="color: white; padding-left: 10px; padding-right: 10px" href="#">FAQ</a>
+						<a style="color: white; border-right: none; padding-left: 10px; padding-right: 10px" href="#">Help Us!</a>
 					</div>
-				</div>
-				<div class="col-md-2 col-xs-10">
-					<button href="#" type="button" class="btn donate-btn d-block mx-auto mb-3">
-						donate
-					</button>
-				</div>
+					<div class="col-md-4 col-xs-10 mb-3" >
+						<div class ="social">
+							<div class="a2a_kit a2a_kit_size_32 a2a_default_style d-flex justify-content-center" style="padding-top: 10px">
+								<a class="a2a_button_facebook" href="https://www.facebook.com"></a>
+								<a class="a2a_button_twitter" href="https://www.twitter.com" style="margin-left: 10px"></a>
+								<a class="a2a_button_google_plus" href="https://www.plus.google.com" style="margin-left: 10px"></a>
+								<a class="a2a_button_email" style="margin-left: 10px"></a>
+							</div>
+							<script async src="https://static.addtoany.com/menu/page.js"></script>
+						</div>
+					</div>
+					<div class="col-md-2 col-xs-10">
+						<button href="#" type="button" class="btn donate-btn d-block mx-auto mb-3">
+							donate
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</footer>
 	
 	
-    <!---------------------------------------------------->
+	<!---------------------------------------------------->
 	<!------------------ DYNAMIC SCRIPT ------------------>
 	<!---------------------------------------------------->
 	
 	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
-		jQuery(document).ready(function() {
+		jQuery(document).ready(function(){
+			
 			var serviceID = getAllUrlParams().id;
+			
 			fetch('/services/' + serviceID)
-				.then(function(response){
-					return response.json();
-				})
+				.then(response => response.json())
 				.then(function(serviceData){
 					fillserviceData(serviceData);
-					return serviceData;
-				});
+			});
 
 			fetch('/services/'+ serviceID+'/people')
-				.then(function(response) {
-					return response.json();
-				})
-				.then(function(data) {
-					data.map(addDoctorCard);
-					return data;
-				})
-
+				.then(response => response.json())
+				.then(function(doctors){
+					doctors.map(addDoctorCard);
+			});
+			
 			fetch('/services/'+ serviceID+'/locations')
-				.then(function(response) {
-					return response.json();
-				})
-				.then(function(data) {
-					data.map(addLocationCard);
-					return data;
-				})
+				.then(response => response.json())
+				.then(function(locations){
+					locations.map(addLocationCard);
+			});
 
 
 			
@@ -212,11 +200,10 @@
 				$('#serviceImg').attr("src", service[0].picture);
 			};
 
-
 			function addDoctorCard(doctor){
 				$('#card_containerPeople').append(`
 					<div class="doctor-card m-3 text-center">
-						<a href="profile.html?id=${doctor.id}">
+						<a href="personDetail.html?id=${doctor.id}">
 							<div class="card-link">
 								<div class="card-img-container">
 									<img class="img-fluid card-img" src="${doctor.picture}" alt="doctor_image">
@@ -225,7 +212,7 @@
 								<h3 class="mt-2">${doctor.name} ${doctor.surname}</h3>
 							</div>
 						</a>
-						<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="person.html?id=${doctor.id}">See More...</a>
+						<a class="btn d-md-none btn-sm btn-outline-secondary float-right mb-2" href="personDetail.html?id=${doctor.id}">See More...</a>
 					</div>
 				`);
 			};
