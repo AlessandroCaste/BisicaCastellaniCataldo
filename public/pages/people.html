@@ -151,15 +151,11 @@
 		jQuery(document).ready(function() {
 			
 			fetch('/people/basic_info')
-				.then(function(response) {
-					return response.json();
-				})
+				.then(response => response.json())
 				.then(function(doctors){
 					doctors.forEach(function(doc){
 						fetch('/people/' + doc.id + '/services/typology')
-							.then(function(secondResponse){
-								return secondResponse.json();
-							})
+							.then(secondResponse => secondResponse.json())
 							.then(function(typoList) {
 								doc.typoString = typoList.map(function(elem){
 															return elem.typology;
@@ -170,17 +166,12 @@
 				});
 			
 			fetch('/services/basic_info')
-			.then(function(response) {
-				return response.json();
-			})
+			.then(response => response.json())
 			.then(function(services){
-				let typoList = services.map(function(elem){
-										return elem.typology;
-									})
-									.filter(function(elem, index, self) {
-        								return index == self.indexOf(elem);
-    								});
-				createFilterButtons(typoList); 
+				let typoList = services
+										.map(serv => serv.typology)
+										.filter((elem, index, self) => index == self.indexOf(elem));
+				createFilterButtons(typoList);
 			});
 			
 			
