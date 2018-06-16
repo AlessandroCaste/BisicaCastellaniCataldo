@@ -159,32 +159,32 @@
 			<div class="col-lg-10 m-auto" id="myGroup">
 
 				<!--Advisory-->
-				<div class="pl-3 mt-3 d-none" style="border-left: 15px solid blue" id="AdvisoryTipology">
+				<div class="pl-3 mt-3 d-none" style="border-left: 15px solid blue" id="AdvisoryDescription">
 					<h2>Advisory</h2>
 					<img class="rounded_icon" src="../assets/img/icons/book.png">
 					<p>The goal of an advisory is to help students figure out who they are, where they’re headed, and how they’re going to get there. Through an advisory system, each student has an adult who knows them and helps them navigate high school so that they leave with a meaningful, personalized plan and are prepared for postsecondary options.</p>
 				</div>
-				<ul class="stylish-list pl-5" id="AdvisoryList">
+				<ul class="stylish-list pl-5" id="Advisory">
 					<!---fill with list--->
 				</ul>
 
 				<!--CHILDREN-->
-				<div class="pl-3 mt-5 d-none" style="border-left: 15px solid green" id="ChildrenTypology">
+				<div class="pl-3 mt-5 d-none" style="border-left: 15px solid green" id="ChildrenDescription">
 					<h2>Children</h2>
 					<img class="rounded_icon" src="../assets/img/icons/child.png">
 					<p>Children are the ones who are very vital for deciding how the world is gonna be after some years. So if one can do some good in the life of a child then there can be change, atleast a slightest change, in the world to come. And if most of them think on same lines then we can hope of a better future ahead. The main component which decides how the person is going to be in the future or the present is the amount of education he/she has within them.</p>
 				</div>
-				<ul class="stylish-list pl-5" id="ChildrenList">
+				<ul class="stylish-list pl-5" id="Children">
 					<!---fill with list--->
 				</ul>
 
 				<!--YOUNG ADULTS-->
-				<div class="pl-3 mt-5 d-none" style="border-left: 15px solid red" id="YoungTypology">
+				<div class="pl-3 mt-5 d-none" style="border-left: 15px solid red" id="YoungAdultsDescription">
 					<h2>Young Adults</h2>
 					<img class="rounded_icon" src="../assets/img/icons/young_adult.png">
 					<p>Growing up, we learn to resent being told what to do. It’s almost instinctive. If it’s not our parents, it’s our teachers, if it’s not our teachers it’s that ever present “society” that tells us we aren’t old enough to make decisions for ourselves so we’re to follow their rules until we’re old enough to “know better”.</p>
 				</div>
-				<ul class="stylish-list pl-5" id="YoungList">
+				<ul class="stylish-list pl-5" id="YoungAdults">
 					<!---fill with list--->       
 				</ul>
 			</div>
@@ -234,39 +234,44 @@
 		jQuery(document).ready(function() {
 			
 			var locationID = getAllUrlParams().id;
-			var folderName;
 			
+			
+			//first of all basic location data are fetched in order to fill all the general attributes
 			fetch('/locations/' + locationID)
-				.then(function(response) {
-					return response.json();
-				})
-				.then(function(data) {
-					fillLocationData(data);
-					return data;
+				.then(response => response.json())
+				.then(function(locationData) {
+					fillLocationData(locationData);
 				});
 			
+			// location slides, with picture-source and texts are fetched.
+			// Carousel, empty at the beginning is filled with data
 			fetch('/locations/' + locationID + "/slide")
-				.then(function(response){
-					return response.json();
-				})
-				.then(function(data){
-					createCarousel(data);
-					addCarouselData(data);
+				.then(response => response.json())
+				.then(function(slides){
+					createCarousel(slides);
+					addCarouselData(slides);
 				});
 			
+			// location services, with typology and overview are fetched.
+			// data is groupped by typology, and each services fills the corresponding area
 			fetch('/locations/' + locationID + '/services')
-				.then(function(response){
-					return response.json();
-				})
-				.then(function(data){
-					data.map(addChildrenService);
-					data.map(addAdvisoryService);
-					data.map(addYoungService);
-				});
+			.then(response => response.json())
+			.then(function(serviceList){
+				//typologies of services operated in this location
+				let typoList = serviceList
+											.map(serv => serv.typology) //extract only typology
+											.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
+											.map(type => type.replace(/\s+/g, '')); //delete spaces
+				
+				//each 'typology area' is filled with correct 'service overview'
+				typoList.map(addOverview, serviceList);
+				
+			});
+			
+			
 			
 			function fillLocationData(location){
 				document.title = location[0].name;
-				console.log(folderName);
 				$('#breadcrumbName').text(location[0].name);
 				
 				$('#locImg').attr({
@@ -290,7 +295,7 @@
 				
 				var coord = location[0].coordinates.split(',');
 				myMap(coord);
-			}
+			};
 			
 			function myMap(coord) {
 				var latlng = new google.maps.LatLng(coord[0],coord[1]);
@@ -322,7 +327,7 @@
 					//hide one of the division lines
 					$('#division_line1').hide();
 				}				
-			}
+			};
 			
 			function addCarouselData(slides){
 				slides.forEach(function(elem){
@@ -344,67 +349,7 @@
 				var caption = $('div.carousel-item:nth-child(1) .carousel-caption');
 				$('.new-caption-area').html(caption.html());
 				caption.css('display', 'none');
-			}
-			
-			function addChildrenService(service){
-				if(!service.typology.localeCompare("Children")){
-					var d = document.getElementById("ChildrenTypology");
-					d.classList.remove("d-none");
-					$('#ChildrenList').append(`
-						<li class="my-2" style="border: 3px solid grey;">
-							<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
-								${service.name}
-							</a>
-							<div class="collapse" id="collapseService_${service.id}">
-								<div class="p-1">
-									${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
-									<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-								</div>
-							</div>
-						</li>
-					`);
-				}
-			}
-            
-			function addAdvisoryService(service){
-				if(!service.typology.localeCompare("Advisory")){
-					var d = document.getElementById("AdvisoryTipology");
-					d.classList.remove("d-none");
-					$('#AdvisoryList').append(`
-						<li class="my-2" style="border: 3px solid grey;">
-							<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
-								${service.name}
-							</a>
-							<div class="collapse" id="collapseService_${service.id}">
-								<div class="p-1">
-									${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
-									<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-								</div>
-							</div>
-						</li>
-					`);
-				}
-			}
-            
-			function addYoungService(service){
-				if(!service.typology.localeCompare("Young Adults")){
-					var d = document.getElementById("YoungTypology");
-					d.classList.remove("d-none");
-					$('#YoungList').append(`
-						<li class="my-2" style="border: 3px solid grey;">
-							<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false" aria-controls="collapseService_1.1">
-								${service.name}
-							</a>
-							<div class="collapse" id="collapseService_${service.id}">
-								<div class="p-1">
-									${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
-									<a href="service.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
-								</div>
-							</div>
-						</li>
-					`);
-				}
-			} 
+			};
 			
 			/* "dinamically change carousel caption on other Div*/
 			$(function() {
@@ -413,7 +358,32 @@
 					$('.new-caption-area').html(caption.html());
 					caption.css('display', 'none');
 				});
-			});	
+			});
+			
+			function addOverview(serviceType){
+				//service list passed via 'this' argument
+				serviceList = this;
+				serviceList.forEach(function(service){
+					//spaces are deleted from input service typology in order to match with div Id, which has no spaces
+					var serviceName_NoSpaces = service.typology.replace(/\s+/g, ''); //delete spaces
+					if(serviceName_NoSpaces === serviceType){
+						$('#' + serviceType + 'Description').removeClass('d-none');
+						$('#' + serviceType).append(`
+							<li class="my-2 serviceOverview">
+								<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false">
+									${service.name}
+								</a>
+								<div class="collapse" id="collapseService_${service.id}">
+									<div class="p-1">
+										${service.overview.split(".")[0] + "." + service.overview.split(".")[1] + "..."}
+										<a href="serviceDetail.html?id=${service.id}" class="button redirect-btn ml-auto mr-3 my-1">Read More...</a>
+									</div>
+								</div>
+							</li>
+						`);
+					}
+				});
+			};
 		});
 
 	</script>
