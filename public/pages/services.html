@@ -179,7 +179,7 @@
 											.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
 											.map(type => type.replace(/\s+/g, '')); //delete spaces
 					serviceList.forEach(function(service){
-						fetch('/services/' + service.id + '/locations/basic_info')
+						fetch('/services/' + service.id + '/locations/basic-info')
 							.then(secondResponse => secondResponse.json())
 							.then(function(serviceLocList){
 								let locList = serviceLocList
@@ -193,7 +193,7 @@
 					});
 			});
 			
-			fetch('/locations/basic_info')
+			fetch('/locations/basic-info')
 				.then(response => response.json())
 				.then(function(locationList){
 					let regionList = locationList

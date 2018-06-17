@@ -65,7 +65,7 @@
 	</header>
   	
 	<!------------------ PRESENTATION IMAGE ------------------>
-	<div class="container-fluid">
+	<div class="container-fluid" id="content-wrapper">
 		<div  class="row">
 			<div class="col-lg-8 col-xxs-12 m-auto text-center">
 				<img src="../assets/img/presentation_img/people.jpg" class = "presentation-image" alt="The team">
@@ -74,29 +74,27 @@
 				</div>
 			</div>
 		</div>
-    </div>
 
-	<!------------------ DESCRIPTION CONTENT ------------------>
-	<div class="row">
-		<div class="col-lg-8 text-center m-auto">
-			<p>
-				We work with children who have moderate to severe learning and physical disabilities and sensory impairments – typically autism, cerebral palsy and muscular dystrophy. We also encounter rare syndromes and conditions.Referral into the Children with Disabilities Social Work Team comes via the Safeguarding Referral Team (SRT)  and provides a Children and Families Assessment which may lead to the provision of an allocated Social Worker or Social Work Assistant who will draw up a Child In Need Plan to offer Focused and/or Enhanced Social Care Services. These services are coordinated in order to support Stoke on Trent's vision for children and young people as set out in the Children &amp; Young People's Plan is for them
-			</p>
-
-			<h2> Meet us! </h2>
-			<p>Here you shall find everything you need to know about our past experiences and our areas of expertise. Find out if we work in the facility you're interested in!</p>
+		<!------------------ DESCRIPTION CONTENT ------------------>
+		<div class="row">
+			<div class="col-lg-8 text-center m-auto">
+				<p>We work with children who have moderate to severe learning and physical disabilities and sensory impairments – typically autism, cerebral palsy and muscular dystrophy. We also encounter rare syndromes and conditions.Referral into the Children with Disabilities Social Work Team comes via the Safeguarding Referral Team (SRT)  and provides a Children and Families Assessment which may lead to the provision of an allocated Social Worker or Social Work Assistant who will draw up a Child In Need Plan to offer Focused and/or Enhanced Social Care Services. These services are coordinated in order to support Stoke on Trent's vision for children and young people as set out in the Children &amp; Young People's Plan is for them</p>
+				
+				<h2>Meet us!</h2>
+				<p>Here you shall find everything you need to know about our past experiences and our areas of expertise. Find out if we work in the facility you're interested in!</p>
+			</div>
 		</div>
-	</div>
 
-	<!------------ FILTERING BUTTONS  ------------>
-	<div class="d-flex flex-row justify-content-around flex-wrap m-auto" id="buttonContainer" style="width: 50%">
-		<button class="filter_button m-4 p-2" id="allBtn" onClick="showAll()">All People</button>
-	</div>
+		<!------------ FILTERING BUTTONS  ------------>
+		<div class="d-flex flex-row justify-content-around flex-wrap m-auto" id="buttonContainer" style="width: 50%">
+			<button class="filter_button m-4 p-2" id="allBtn" onClick="showAll()">All People</button>
+		</div>
 
-	<!------------ DOCTOR CARDS  ------------>
-	<div class="container mt-5" id="onClickReturn">
-		<div class="d-flex flex-row flex-wrap justify-content-around" id="card_container">
-			<!--filled with cards-->
+		<!------------ DOCTOR CARDS  ------------>
+		<div class="container mt-5" id="onClickReturn">
+			<div class="d-flex flex-row flex-wrap justify-content-around" id="card_container">
+				<!--filled with cards-->
+			</div>
 		</div>
 	</div>
 
@@ -150,7 +148,7 @@
 		
 		jQuery(document).ready(function() {
 			
-			fetch('/people/basic_info')
+			fetch('/people/basic-info')
 				.then(response => response.json())
 				.then(function(doctors){
 					doctors.forEach(function(doc){
@@ -166,7 +164,7 @@
 					});
 			});
 			
-			fetch('/services/basic_info')
+			fetch('/services/basic-info')
 				.then(response => response.json())
 				.then(function(serviceList){
 					let typoList = serviceList

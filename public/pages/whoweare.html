@@ -134,7 +134,7 @@
 		jQuery(document).ready(function() {
 			
 			fetch('/whoweare')
-				.then(function(response => response.json())
+			.then(response => response.json())
 				.then(function(data) {
 					data.map(fillPage);
 				});
