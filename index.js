@@ -326,7 +326,7 @@ app.get("/people?sort=desc", function(req, res) {
 
 
 // Returns summary of info about about a specific worker based on her id 
-app.get("/people/basic_info", function(req, res) {
+app.get("/people/basic-info", function(req, res) {
 	let myQuery = sqlDb("people");
 	myQuery.select('id', 'name', 'surname', 'picture')
 		.then(result => {
@@ -378,7 +378,7 @@ app.get("/locations", function(req, res) {
 
 
 // Returns basic data about locations. Used for preview thumbnails 
-app.get("/locations/basic_info", function(req, res) {
+app.get("/locations/basic-info", function(req, res) {
 	let myQuery = sqlDb("locations");
 	myQuery.select('id','name','region')
 		.then(result => {
@@ -428,7 +428,7 @@ app.get("/services", function(req, res) {
 
 
 // Return Basic data about services 
-app.get("/services/basic_info", function(req, res) {
+app.get("/services/basic-info", function(req, res) {
 	let myQuery = sqlDb("services");
 	myQuery.select('id', 'name', 'typology')
 		.then(result => {
@@ -457,7 +457,7 @@ app.get("/services/:id/people", function(req, res) {
 })
 
 // Return workers' Basic data by service given a service id
-app.get("/services/:id/people/basic_info", function(req, res) {
+app.get("/services/:id/people/basic-info", function(req, res) {
 	let myQuery = sqlDb("servicespeople");
 	myQuery.select('id', 'name', 'surname', 'picture')
 		.where("serviceId", req.params.id).innerJoin("people","servicespeople.personId","people.id")
@@ -478,7 +478,7 @@ app.get("/services/:id/locations", function(req, res) {
 
 
 // Return a locations basic data given service id
-app.get("/services/:id/locations/basic_info", function(req, res) {
+app.get("/services/:id/locations/basic-info", function(req, res) {
 	let myQuery = sqlDb("serviceslocations");
 	myQuery.select('id', 'name', 'region').where("serviceId", req.params.id).innerJoin("locations","serviceslocations.locationId","locations.id")
 		.then(result => {

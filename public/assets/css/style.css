@@ -72,8 +72,10 @@ footer{
 .navbar-toggler-icon {
 	position : relative;
 	background-image: url("../img/icons/menu.png");
-	-ms-transform: scale(1.5, 1.5); /* IE 9 */
-	-webkit-transform: scale(1.5, 1.5); /* Safari */
+	-webkit-transform: scale(1.5, 1.5);
+	-moz-transform: scale(1.5, 1.5);
+	-ms-transform: scale(1.5, 1.5);
+	-o-transform: scale(1.5, 1.5);
 	transform: scale(1.5, 1.5);
 }
 
@@ -162,6 +164,10 @@ footer{
 
 	background-color: #5186BC;
 	box-shadow: -3px 5px 8px -5px rgba(0,0,0,0.5);
+	
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
 
@@ -173,12 +179,22 @@ footer{
 	border-left: 15px solid #5186BC;
 	border-top: 10px solid transparent;
 	border-bottom: 10px solid transparent;
+	
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
 
 .redirect-btn:hover{
-	transform: translateX(-8px);
 	color: #ecf0f1;
+	
+	-webkit-transform: translateX(-8px);
+	-moz-transform: translateX(-8px);
+	-ms-transform: translateX(-8px);
+	-o-transform: translateX(-8px);
+	transform: translateX(-8px);
+	
 }
 
 .redirect-btn:hover:before{
@@ -196,6 +212,9 @@ footer{
 	color: rgba(43, 136, 229, 0.8);
 	font-size: calc(.85rem + .1vw);
 
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
 	transition: all 0.2s;
 }
 
@@ -206,7 +225,13 @@ footer{
 
 .filter_button:active{
 	box-shadow: 0px 0px 0px 0px rgba(136,136,136,1);
+	
+	-webkit-transform: translate(1px, 3px);
+	-moz-transform: translate(1px, 3px);
+	-ms-transform: translate(1px, 3px);
+	-o-transform: translate(1px, 3px);
 	transform: translate(1px, 3px);
+
 }
 
 .donate-btn{
@@ -228,7 +253,13 @@ footer{
 
 .donate-btn:active{
 	box-shadow: 0 1px 0 0 #cc0000;
+	
+	-webkit-transform: translateY(1px);
+	-moz-transform: translateY(1px);
+	-ms-transform: translateY(1px);
+	-o-transform: translateY(1px);
 	transform: translateY(1px);
+
 }
 
 
@@ -243,7 +274,6 @@ blockquote{
 	border-radius: 5px;
 	min-height: 60px;
 	color: dimgrey;
-
 }
 
 blockquote.doctor_quote{
@@ -293,8 +323,12 @@ blockquote.carousel_quote{
 .doctor-card{
 	width: calc(14rem + 5vw);
 	background-color: #f4f4f4;
-	transition: all .6s ease-in-out;
 	position: relative;
+	
+	-webkit-transition: all 0.6s ease-in-out;
+	-moz-transition: all 0.6s ease-in-out;
+	-o-transition: all 0.6s ease-in-out;
+	transition: all 0.6s ease-in-out;
 }
 
 .location-card{
@@ -311,9 +345,13 @@ blockquote.carousel_quote{
 	width: 100%;
 	height: calc(6rem + 10vw);
 	object-fit: cover;
-	object-position : 50% 50%;
-	transition: all .45s;
+	object-position : 50% 50%;	
 	z-index: -1;
+	
+	-webkit-transition: all 0.45s;
+	-moz-transition: all 0.45s;
+	-o-transition: all 0.45s;
+	transition: all 0.45s;
 }
 
 .lens_img{
@@ -334,7 +372,11 @@ blockquote.carousel_quote{
 
 	opacity : 0.8;
 
-	transition: all .45s;
+	-webkit-transition: all 0.45s;
+	-moz-transition: all 0.45s;
+	-o-transition: all 0.45s;
+	transition: all 0.45s;
+	
 }
 
 .card-link:hover .lens_img{
@@ -342,8 +384,13 @@ blockquote.carousel_quote{
 }
 
 .card-link:hover .card-img{
-	transform: scale(1.15);
 	opacity: 0.3;
+	
+	-webkit-transform: scale(1.15);
+	-moz-transform: scale(1.15);
+	-ms-transform: scale(1.15);
+	-o-transform: scale(1.15);
+	transform: scale(1.15);
 }
 
 .card-link:hover h3{
@@ -393,6 +440,10 @@ ul.stylish-list li:before {
 	border-bottom-right-radius: 1em;
 	border-top-left-radius: 1em;
 
+	-webkit-transform: rotate(-17deg);
+	-moz-transform: rotate(-17deg);
+	-ms-transform: rotate(-17deg);
+	-o-transform: rotate(-17deg);
 	transform: rotate(-17deg);
 }
 
@@ -424,15 +475,22 @@ hr.division_line {
 hr.division_line:after {
 	content: "§";
 	color: #0077b3;
+	line-height: 1.3em;
+	background-color: #D3D3C2;
+	border-radius: 40px;
+	
 	display: inline-block;
 	position: relative;
 	top: -0.82em;
 	font-size: 1.3em;
 	padding: 0em .4125em 0.15em;
-	line-height: 1.3em;
-	background-color: #D3D3C2;
-	border-radius: 40px;
+	
 	box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.4);
+	
+	-webkit-transform: rotate(55deg);
+	-moz-transform: rotate(55deg);
+	-ms-transform: rotate(55deg);
+	-o-transform: rotate(55deg);
 	transform: rotate(55deg);
 }
 
