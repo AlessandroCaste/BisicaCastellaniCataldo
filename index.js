@@ -25,7 +25,7 @@ let locationSlideList = require("./other/locationslide.json");
 let whoweareList = require("./other/whoweare.json");
 
 // use it until testing
-// process.env.TEST = true;
+process.env.TEST = true;
 
 let sqlDb;
 
@@ -66,7 +66,7 @@ function initWhoweareTable(){
 				.createTable("whoweare", table => {
 					// create the table
 					table.string("picture");
-					table.string("text");
+					table.text("text");
 					table.string("quote");
 					table.string("quoteAuthor");
 				})
@@ -187,11 +187,11 @@ function initServicesTable() {
 }
 
 
-function initServicesLocationsTable() {
-	return sqlDb.schema.hasTable("serviceslocations").then(exists => {
+function initservicesLocationsTable() {
+	return sqlDb.schema.hasTable("servicesLocations").then(exists => {
 		if (!exists) {
 			sqlDb.schema
-				.createTable("serviceslocations", table => {
+				.createTable("servicesLocations", table => {
 					// create the table
 					table.integer("serviceId");
 					table.integer("locationId");
@@ -200,7 +200,7 @@ function initServicesLocationsTable() {
 					return Promise.all(
 						_.map(servicesLocationsList, p => {
 							// insert the row
-							return sqlDb("serviceslocations").insert(p);
+							return sqlDb("servicesLocations").insert(p);
 						})
 					);
 			});
@@ -212,11 +212,11 @@ function initServicesLocationsTable() {
 }
 
 
-function initServicesPeopleTable() {
-	return sqlDb.schema.hasTable("servicespeople").then(exists => {
+function initservicesPeopleTable() {
+	return sqlDb.schema.hasTable("servicesPeople").then(exists => {
 		if (!exists) {
 			sqlDb.schema
-				.createTable("servicespeople", table => {
+				.createTable("servicesPeople", table => {
 					// create the table
 					table.integer("serviceId");
 					table.integer("personId");
@@ -225,7 +225,7 @@ function initServicesPeopleTable() {
 					return Promise.all(
 						_.map(servicesPeopleList, p => {
 							// insert the row
-							return sqlDb("servicespeople").insert(p);
+							return sqlDb("servicesPeople").insert(p);
 						})
 					);
 			});
@@ -270,8 +270,8 @@ function initDb() {
 	initPeopleTable();
 	initLocationsTable();
 	initServicesTable();
-	initServicesLocationsTable();
-	initServicesPeopleTable();
+	initservicesLocationsTable();
+	initservicesPeopleTable();
 	initlocationSlideTable();
 	initWhoweareTable();
 	return true;
@@ -449,8 +449,8 @@ app.get("/services/:id", function(req, res) {
 
 // Return workers' data by service given a service id
 app.get("/services/:id/people", function(req, res) {
-	let myQuery = sqlDb("servicespeople");
-	myQuery.select().where("serviceId", req.params.id).innerJoin("people","servicespeople.personId","people.id")
+	let myQuery = sqlDb("servicesPeople");
+	myQuery.select().where("serviceId", req.params.id).innerJoin("people","servicesPeople.personId","people.id")
 		.then(result => {
 			res.send(JSON.stringify(result));
 		})
@@ -458,9 +458,9 @@ app.get("/services/:id/people", function(req, res) {
 
 // Return workers' Basic data by service given a service id
 app.get("/services/:id/people/basic-info", function(req, res) {
-	let myQuery = sqlDb("servicespeople");
+	let myQuery = sqlDb("servicesPeople");
 	myQuery.select('id', 'name', 'surname', 'picture')
-		.where("serviceId", req.params.id).innerJoin("people","servicespeople.personId","people.id")
+		.where("serviceId", req.params.id).innerJoin("people","servicesPeople.personId","people.id")
 		.then(result => {
 			res.send(JSON.stringify(result));
 		})
@@ -469,8 +469,8 @@ app.get("/services/:id/people/basic-info", function(req, res) {
 
 // Return a locations data given service id
 app.get("/services/:id/locations", function(req, res) {
-	let myQuery = sqlDb("serviceslocations");
-	myQuery.select().where("serviceId", req.params.id).innerJoin("locations","serviceslocations.locationId","locations.id")
+	let myQuery = sqlDb("servicesLocations");
+	myQuery.select().where("serviceId", req.params.id).innerJoin("locations","servicesLocations.locationId","locations.id")
 		.then(result => {
 			res.send(JSON.stringify(result));
 		})
@@ -479,8 +479,8 @@ app.get("/services/:id/locations", function(req, res) {
 
 // Return a locations basic data given service id
 app.get("/services/:id/locations/basic-info", function(req, res) {
-	let myQuery = sqlDb("serviceslocations");
-	myQuery.select('id', 'name', 'region').where("serviceId", req.params.id).innerJoin("locations","serviceslocations.locationId","locations.id")
+	let myQuery = sqlDb("servicesLocations");
+	myQuery.select('id', 'name', 'region').where("serviceId", req.params.id).innerJoin("locations","servicesLocations.locationId","locations.id")
 		.then(result => {
 			res.send(JSON.stringify(result));
 		})

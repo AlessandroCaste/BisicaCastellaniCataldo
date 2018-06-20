@@ -86,45 +86,54 @@
 		<div class="row mt-5">
 
 			<div class="d-flex flex-row justify-content-around flex-wrap m-auto" id="buttonContainer" style="width: 50%">
+				<span id="onClickReturn"> </span>
 				<button class="filter_button m-4 p-2" id="allBtn" onClick="showEverything()">All Regions</button>
+				<!--filled with other buttons-->
 			</div>
 			
 			
 			<!-----SERVICES CATEGORY----->
-			<div class="col-lg-10 m-auto" id="myGroup">
+			<div class="col-lg-10 m-auto" id="servicesGroup">
 
 				<!--Advisory-->
-				<div class="pl-3 mt-3" style="border-left: 15px solid blue">
-					<h2>Advisory</h2>
-					<img class="rounded_icon" src="../assets/img/icons/book.png">
-					<p>The goal of an advisory is to help students figure out who they are, where they’re headed, and how they’re going to get there. Through an advisory system, each student has an adult who knows them and helps them navigate high school so that they leave with a meaningful, personalized plan and are prepared for postsecondary options.</p>
+				<div class="serviceContainer" id="Advisory">
+					<div class="pl-3 mt-3" style="border-left: 15px solid blue" id="AdvisoryDescription">
+						<h2>Advisory</h2>
+						<img class="rounded_icon" src="../assets/img/icons/book.png">
+						<p>The goal of an advisory is to help students figure out who they are, where they’re headed, and how they’re going to get there. Through an advisory system, each student has an adult who knows them and helps them navigate high school so that they leave with a meaningful, personalized plan and are prepared for postsecondary options.</p>
+					</div>
 
+					<ul class="stylish-list pl-5" id="AdvisoryList">
+						<!---fill with services--->
+					</ul>
 				</div>
-				<ul class="stylish-list pl-5" id="Advisory">
-					<!---fill with services--->
-				</ul>
 
 				<!--CHILDREN-->
-				<div class="pl-3 mt-5" style="border-left: 15px solid green">
-					<h2>Children</h2>
-					<img class="rounded_icon" src="../assets/img/icons/child.png">
-					<p>Children are the ones who are very vital for deciding how the world is gonna be after some years. So if one can do some good in the life of a child then there can be change, atleast a slightest change, in the world to come. And if most of them think on same lines then we can hope of a better future ahead. The main component which decides how the person is going to be in the future or the present is the amount of education he/she has within them.</p>
+				<div class="serviceContainer" id="Children">
+					<div class="pl-3 mt-5" style="border-left: 15px solid green" id="ChildrenDescription">
+						<h2>Children</h2>
+						<img class="rounded_icon" src="../assets/img/icons/child.png">
+						<p>Children are the ones who are very vital for deciding how the world is gonna be after some years. So if one can do some good in the life of a child then there can be change, atleast a slightest change, in the world to come. And if most of them think on same lines then we can hope of a better future ahead. The main component which decides how the person is going to be in the future or the present is the amount of education he/she has within them.</p>					
+					</div>
+					
+					<ul class="stylish-list pl-5" id="ChildrenList">
+						<!---fill with services--->
+					</ul>
 				</div>
-				<ul class="stylish-list pl-5" id="Children">
-					<!---fill with services--->
-				</ul>
+				
 
 				<!--YOUNG ADULTS-->
-				<div class="pl-3 mt-5" style="border-left: 15px solid red">
-					<h2>Young Adults</h2>
-					<img class="rounded_icon" src="../assets/img/icons/young_adult.png">
-					<p>Growing up, we learn to resent being told what to do. It’s almost instinctive. If it’s not our parents, it’s our teachers, if it’s not our teachers it’s that ever present “society” that tells us we aren’t old enough to make decisions for ourselves so we’re to follow their rules until we’re old enough to “know better”.</p>
+				<div class="serviceContainer" id="YoungAdults">
+					<div class="pl-3 mt-5" style="border-left: 15px solid red" id="YoungAdultsDescription">
+						<h2>Young Adults</h2>
+						<img class="rounded_icon" src="../assets/img/icons/young_adult.png">
+						<p>Growing up, we learn to resent being told what to do. It’s almost instinctive. If it’s not our parents, it’s our teachers, if it’s not our teachers it’s that ever present “society” that tells us we aren’t old enough to make decisions for ourselves so we’re to follow their rules until we’re old enough to “know better”.</p>
+					</div>
+
+					<ul class="stylish-list pl-5" id="YoungAdultsList">
+						<!---fill with services--->
+					</ul>
 				</div>
-
-				<ul class="stylish-list pl-5" id="YoungAdults">
-					<!---fill with services--->
-				</ul>
-
 			</div>
 		</div>
 	</div>
@@ -181,10 +190,9 @@
 					serviceList.forEach(function(service){
 						fetch('/services/' + service.id + '/locations/basic-info')
 							.then(secondResponse => secondResponse.json())
-							.then(function(serviceLocList){
-								let locList = serviceLocList
-														.map(loc => loc.region) //extract region from location
-														.filter((elem, index, self) => (index == self.indexOf(elem))); //delete duplicates
+							.then(function(servLocationList){
+								let locList = servLocationList
+														.map(loc => loc.name); //extract name from location
 
 								service.regionList = locList;
 							
@@ -197,8 +205,7 @@
 				.then(response => response.json())
 				.then(function(locationList){
 					let regionList = locationList
-												.map(loc => loc.region) //extract only region
-												.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
+												.map(loc => loc.name); //extract only name
 
 					addFilterButtons(regionList);					
 			});
@@ -218,7 +225,7 @@
 					//spaces are deleted from input service typology in order to match with div Id, which has no spaces
 					var typeName_NoSpaces = service.typology.replace(/\s+/g, ''); //delete spaces
 					if(typeName_NoSpaces === type)
-						$('#' + type).append(`
+						$('#' + type + 'List').append(`
 							<li class="my-2 serviceOverview">
 								<p class="sr-only">${service.regionList}</p>
 								<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false">
@@ -246,13 +253,27 @@
 					$(elem).show();
 				else
 					$(elem).hide();
-			})
+			});
+			
+			$('.serviceContainer ul.stylish-list').each(function(){
+				let elem = this;
+				
+				$(elem).parent().show()
+				if( $(elem).children(':visible').length == 0 )
+					$(elem).parent().hide()
+			});
+			
+			scrollOnClick();
 		};
 		
 		function showEverything(){
+			$('.serviceContainer').show();
+
 			$('li.serviceOverview').each(function(){
 				$(this).show();
 			});
+			
+			scrollOnClick();
 		}
             
     </script>

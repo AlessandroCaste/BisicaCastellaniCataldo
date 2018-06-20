@@ -10,27 +10,10 @@ $(document).ready( function() {
 		}
 	});
 	
-	
-	/* "Location" More-Button change text
-	Use in final version of website
-	$('#show_doctor').click(function(){
-		var $this = $(this);
-		$this.toggleClass('SeeMore');
-		if($this.hasClass('SeeMore')){
-			$this.text('See Less');
-			$('html, body').animate({
-				scrollTop: ($this.offset().top)
-			});
-		}
-		else{
-			$this.text('See More Doctors');
-		}
-	});*/
-	
 	/* "Services" opening dropdown closes the other */	
 	$(function(){
-		$('#myGroup').on('show.bs.collapse','.collapse', function(){
-			$('#myGroup').find('.collapse.show').collapse('hide');
+		$('#servicesGroup').on('show.bs.collapse','.collapse', function(){
+			$('#servicesGroup').find('.collapse.show').collapse('hide');
 		});
 	});
 });
@@ -39,7 +22,7 @@ function showAll(){
 	var cards = $('#card_container').children();
 	cards.show();
 	scrollOnClick();
-		};
+};
 		
 function scrollOnClick(){
 	$('html, body').animate({
