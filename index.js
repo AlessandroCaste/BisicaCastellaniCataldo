@@ -25,7 +25,7 @@ let locationSlideList = require("./other/locationslide.json");
 let whoweareList = require("./other/whoweare.json");
 
 // use it until testing
-process.env.TEST = true;
+// process.env.TEST = true;
 
 let sqlDb;
 
