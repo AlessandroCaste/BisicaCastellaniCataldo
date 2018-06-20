@@ -160,7 +160,7 @@
 			function addLocationCard(location){
 				$('#card_container').append(`
 					<div class="location-card m-3 pb-md-2 text-center">
-						<p class="sr-only">${location.region}</p>
+						<span class="sr-only">${location.region}</span>
 						<a href="locationDetail.html?id=${location.id}">
 							<div class="card-link">
 								<div class="card-img-container">
@@ -195,14 +195,13 @@
 		});
 		
 		
-		/**every location-card's <div> is checked;
-		 * card's sr-only <p>, containing a 'region' string 
-		 * if there's No match between region string and the button Name the card is hided
+		/**Filter is done by the match between button name, and a string, placed in a 'sr-only' span.
+		 * If the button Name appears in the String, card is showed; in the other case, it's hided.
 		 */
 		function filterCards(btnName){
 			$('.location-card').each(function(){
 				let card = this; //jQuery object containing the single doctor-card's <div>
-				var region = $(card).find('p').text();
+				var region = $(card).find('span.sr-only').text();
 				if(region === btnName)
 					$(card).show();
 				else

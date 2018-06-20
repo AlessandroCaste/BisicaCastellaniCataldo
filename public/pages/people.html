@@ -202,9 +202,9 @@
 		
 		/*---------------*/
 		
-		/**every doctor-card's <div> is checked;
-		 * card's sr-only <p>, containing a string of the 'operating service category'
-		 * if there's No match between typology string and the button Name the card is hided
+		/**Filter is done by the match between button name, and a string, placed in a 'sr-only' span.
+		 * String is splitted in an array of services
+		 * If the button Name appears in the Array, the card is showed; in the other case, it's hided.
 		 */
 		function filterCards(btnName){
 			$('.doctor-card').each(function(){

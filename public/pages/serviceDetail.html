@@ -166,22 +166,28 @@
 	
 	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
+		
+		'use strict';
+		
 		jQuery(document).ready(function(){
 			
 			var serviceID = getAllUrlParams().id;
 			
+			//fill the correct div with data
 			fetch('/services/' + serviceID)
 				.then(response => response.json())
 				.then(function(serviceData){
 					fillserviceData(serviceData);
 			});
-
+			
+			//fetch doctors operating this service, and create their cards
 			fetch('/services/'+ serviceID+'/people')
 				.then(response => response.json())
 				.then(function(doctors){
 					doctors.map(addDoctorCard);
 			});
 			
+			//fetch where this service is done, and create their cards
 			fetch('/services/'+ serviceID+'/locations')
 				.then(response => response.json())
 				.then(function(locations){

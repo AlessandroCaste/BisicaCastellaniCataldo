@@ -186,6 +186,9 @@
 	
 	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
+		
+		'use strict';
+		
 		jQuery(document).ready(function() {
             
 			var doctorID = getAllUrlParams().id;
@@ -208,8 +211,8 @@
 												.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
 												.map(type => type.replace(/\s+/g, '')); //delete spaces
 
-					//each 'typology area' is filled with correct 'service overview'
-					typoList.map(addOverview, serviceList);
+					//each 'typology area' is maped to fill it with the correct 'service overview'
+					typoList.map(addOverview, serviceList); //serviceList is passed via this attribute
 			});
 			
 			function fillDoctorData(doctor){
@@ -223,8 +226,7 @@
 			}
             
 			function addOverview(serviceType){
-				//service list passed via 'this' argument
-				serviceList = this;
+				let serviceList = this; //service list passed via 'this' argumentß
 				serviceList.forEach(function(service){
 					//spaces are deleted from input service typology in order to match with div Id, which has no spaces
 					var serviceName_NoSpaces = service.typology.replace(/\s+/g, ''); //delete spaces

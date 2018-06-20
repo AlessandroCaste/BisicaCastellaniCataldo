@@ -241,6 +241,9 @@
 	
 	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
+		
+		'use strict';
+		
 		jQuery(document).ready(function() {
 			
 			var locationID = getAllUrlParams().id;
@@ -259,7 +262,6 @@
 				.then(response => response.json())
 				.then(function(slides){
 					createCarousel(slides);
-					addCarouselData(slides);
 			});
 			
 			// location services, with typology and overview are fetched.
@@ -273,8 +275,8 @@
 												.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
 												.map(type => type.replace(/\s+/g, '')); //delete spaces
 
-					//each 'typology area' is filled with correct 'service overview'
-					typoList.map(addOverview, serviceList);	
+					//each 'typology area' is maped to fill it with the correct 'service overview'
+					typoList.map(addOverview, serviceList); //serviceList is passed via this attribute
 			});
 			
 			
@@ -306,6 +308,68 @@
 				myMap(coord);
 			};
 			
+
+			
+			/**in case fetched 'slides' Array is empty the Carousel is hided
+			 * in the other case for every slide a <li> with the relative Bootstrap control class is created
+			 */
+			function createCarousel(data){
+				if(data.length > 0){
+					for(var i=0; i<data.length; i++){
+						$('#carousel-indicators').append(
+							`<li data-target="#carousel_location" data-slide-to=" ` + i + `"></li>`
+						);
+						$('#carousel-indicators div').first().addClass("active");
+						
+						addCarouselData(data);
+					}
+				}
+				else{
+					//hide carousel
+					$('#carousel').hide();
+					//hide one of the division lines
+					$('#division_line1').hide();
+				}				
+			};
+		
+			/**this function does something only if fetched 'slides' Array is not empty
+			 * For every slide a <div>, with content and Bootstrap control classes is addes
+			 *
+			 * Since our carousel captions are placed in a <div> external to the carousel itself,
+			 * the first caption in the array has to be placed during carousel population.
+			 * When the pages is fully loaded, it will a matter of Bootstrap move the captions. (see /assets/script.js)
+			 */
+			function addCarouselData(slides){
+				
+					slides.forEach(function(elem){
+						$('#carousel-inner').append(`
+							<div class="carousel-item">
+								<img class="d-block w-100" src="${elem.source}" alt="slide">
+								<div class="carousel-caption">
+									<blockquote class="carousel_quote">
+										<h4>${elem.header}</h4>
+										<p>${elem.description}</p>
+									</blockquote>
+								</div>
+							</div>
+						`)}	
+					);
+					$('#carousel-inner div').first().addClass("active");
+
+					//add first carousel caption in other div
+					$('.carousel').carousel();
+					
+					
+					var caption = $('div.carousel-item:nth-child(1) .carousel-caption');
+					//copying the caption in the new area
+					$('.new-caption-area').html(caption.html());
+					
+					//caption in carousel is hidden, since it has been copied in a new div
+					caption.css('display', 'none');
+				
+			};
+			
+			//Google Maps simple function, in order to have a placeholder of our location in the map
 			function myMap(coord) {
 				var latlng = new google.maps.LatLng(coord[0],coord[1]);
 				var mapOptions = {
@@ -320,45 +384,7 @@
 					title: 'Noi siamo qui'
 				});
 			};
-
-			function createCarousel(data){
-				if(data.length>0){
-					for(var i=0; i<data.length; i++){
-						$('#carousel-indicators').append(
-							`<li data-target="#carousel_location" data-slide-to=" ` + i + `"></li>`
-						);
-						$('#carousel-indicators div').first().addClass("active");
-					}
-				}
-				else{
-					//hide carousel
-					$('#carousel').hide();
-					//hide one of the division lines
-					$('#division_line1').hide();
-				}				
-			};
 			
-			function addCarouselData(slides){
-				slides.forEach(function(elem){
-					$('#carousel-inner').append(`
-						<div class="carousel-item">
-							<img class="d-block w-100" src="${elem.source}" alt="slide">
-							<div class="carousel-caption">
-								<blockquote class="carousel_quote">
-									<h4>${elem.header}</h4>
-									<p>${elem.description}</p>
-								</blockquote>
-							</div>
-						</div>
-					`)}	
-				);
-				$('#carousel-inner div').first().addClass("active");
-				//add first carousel caption in other div
-				$('.carousel').carousel();
-				var caption = $('div.carousel-item:nth-child(1) .carousel-caption');
-				$('.new-caption-area').html(caption.html());
-				caption.css('display', 'none');
-			};
 			
 			/* "dinamically change carousel caption on other Div*/
 			$(function() {
@@ -369,12 +395,14 @@
 				});
 			});
 			
+			
+			
 			function addOverview(serviceType){
-				//service list passed via 'this' argument
-				serviceList = this;
+				let serviceList = this; //service list passed via 'this' argument
 				serviceList.forEach(function(service){
 					//spaces are deleted from input service typology in order to match with div Id, which has no spaces
 					var serviceName_NoSpaces = service.typology.replace(/\s+/g, ''); //delete spaces
+					
 					if(serviceName_NoSpaces === serviceType){
 						$('#' + serviceType).removeClass('d-none');
 						$('#' + serviceType + 'List').append(`

@@ -178,15 +178,25 @@
 	
 	<script src="../assets/js/script.js"></script>
 	<script type="text/javascript">
+		
+		'use strict'; 
+		
 		jQuery(document).ready(function(){
       	      
+			/**First of all a List of all the typologies of services is created, in order to fill the correct area with the correct service
+			 * In order to match the filtering buttons, for every service, a list of operating locations is fetched and added as attribute
+			 * With the updated service every typology <div> is filled with service's overview
+			 */
 			fetch('/services')
 				.then(response => response.json())
 				.then(function(serviceList){
+					
 					let typoList = serviceList
 											.map(serv => serv.typology) //extract only typology
 											.filter((elem, index, self) => index == self.indexOf(elem)) //delete duplicates
 											.map(type => type.replace(/\s+/g, '')); //delete spaces
+				
+					
 					serviceList.forEach(function(service){
 						fetch('/services/' + service.id + '/locations/basic-info')
 							.then(secondResponse => secondResponse.json())
@@ -227,7 +237,7 @@
 					if(typeName_NoSpaces === type)
 						$('#' + type + 'List').append(`
 							<li class="my-2 serviceOverview">
-								<p class="sr-only">${service.regionList}</p>
+								<span class="sr-only">${service.regionList}</span>
 								<a class="d-block" data-toggle="collapse" href="#collapseService_${service.id}" role="button" aria-expanded="false">
 									${service.name}
 								</a>
@@ -244,12 +254,18 @@
 			
 		});
 		
+		/**Filter is done by the match between button name, and a string, placed in a 'sr-only' span.
+		 * String is splitted in an array of locations
+		 * If the button Name appears in the Array, the overview is showed; in the other case, it's hided.
+		 *
+		 * If a category <div> remains without 'visible' overviews, it's also hided.
+		 */
 		function filterList(btnName){
 			$('li.serviceOverview').each(function(){
 				let elem = this; //jQuery object containing the single <li>
-				var srOnly_text = $(elem).find('p').text();
-				var regions = srOnly_text.split(',');
-				if($.inArray(btnName, regions) > -1)
+				var srOnly_text = $(elem).find('span.sr-only').text();
+				var locations = srOnly_text.split(',');
+				if($.inArray(btnName, locations) > -1)
 					$(elem).show();
 				else
 					$(elem).hide();
